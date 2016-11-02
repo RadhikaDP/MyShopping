@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">				
+ 
+ 
+	<context:annotation-config />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
+<context:component-scan base-package="shop.controller"></context:component-scan>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<bean id="regService" class="shop.service.impl.RegServiceImpl" />
+	<bean id="regDao" class="shop.dao.impl.RegDaoImp" />
+	
+	<bean id="logService" class="shop.service.impl.LoginServiceImpl" />
+	<bean id="loginDao" class="shop.dao.impl.LoginDaoImp" />
+
+	<bean id="adminService" class="shop.service.impl.AdminServiceImpl" />
+	<bean id="adminDao" class="shop.dao.impl.AdminDaoImp" />
+
+	<bean id="catService" class="shop.service.impl.CategoryServiceImpl" />
+	<bean id="catDao" class="shop.dao.impl.CategoryDaoImp" />
+	
+	<bean id="custService" class="shop.service.impl.CustomerServiceImpl" />
+	<bean id="custDao" class="shop.dao.impl.CustomerDaoImp" />
+	
+    <bean id ="pService" class="shop.service.impl.ProductServiceImpl"/>
+	<bean id="productDao" class="shop.dao.impl.ProductDaoImp" />  
+	
+	<bean id="subService" class="shop.service.impl.SubCategoryServiceImpl" />
+	<bean id="subDao" class="shop.dao.impl.SubCategoryDaoImp" />
+	
+	<bean id="subService2" class="shop.service.impl.SubCategory2ServiceImpl" />
+	<bean id="subDao2" class="shop.dao.impl.SubCategory2DaoImp" />
+	
+	<bean id="orderService" class="shop.service.impl.OrderServiceDaoImpl" />
+	<bean id="order" class="shop.dao.impl.OrderDaoImp" />
+	
+	<bean id="cartService" class="shop.service.impl.CartServiceImpl" />
+	<bean id="cartDao" class="shop.dao.impl.CartDaoImp" />
+	
+	<bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">  
+	<property name="dataSource" ref="dataSource"></property>  
+	</bean>  
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5432/DemoDatabase" />
+		<property name="username" value="postgres" />
+		<property name="password" value="root@123" /></bean>
+	
+	 <mvc:resources mapping="/resources/**" location="/resources/theam1/"
+	cache-period="31556926"/>
+
+    <mvc:annotation-driven />
+</beans>
