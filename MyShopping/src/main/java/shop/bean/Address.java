@@ -1,10 +1,17 @@
 package shop.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Address {
+	@NotEmpty(message="flatno cannot be empty")
 private String flatno;
+	@NotEmpty(message="locality cannot be empty")
 private String locality;
+	@NotEmpty(message="town cannot be empty")
 private String town;
+	@NotEmpty(message="state cannot be empty")
 private String state;
+	@NotEmpty(message="pincode cannot be empty")
 private String pincode;
 public String getFlatno() {
 	return flatno;
