@@ -3,28 +3,33 @@ package shop.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import shop.bean.Address;
 import shop.bean.CreditCard;
 import shop.bean.Product;
-import shop.bean.SubCategory2;
-import shop.bean.Users;
+import shop.bean.SubCategory;
+import shop.service.CategoryService;
 import shop.service.ProductService;
 import shop.service.SubCategory2Service;
+import shop.service.SubCategoryService;
+import shop.validate.WarningMsg;
 
 
 @Controller
 public class ProductController {
 	
+	@Autowired
+	private SubCategoryService subService;
 	@Autowired
 	private ProductService pService;
 	
@@ -61,33 +66,54 @@ public class ProductController {
 	    } 
 	    @RequestMapping(value="/editsaveproduct",method = RequestMethod.POST)  
 	    public ModelAndView editsave(@ModelAttribute("product") Product cat){  
+	    	try{
 	    	pService.update(cat);  
+	    	}
+	      	catch(Exception e){
+				String msg="Product Already Exists";
+				WarningMsg.showDialog(msg);
+				
+			}
 	        return new ModelAndView("redirect:/product");  
 	    }
 	    
-	    @RequestMapping("/productform")  
-	    public ModelAndView showform(){  
-	        return new ModelAndView("productform","command",new Product());  
+	    @RequestMapping(value="/productform",method=RequestMethod.GET)  
+	    public ModelAndView showform(@ModelAttribute("product") Product cat){  
+	    	
+	    	List<SubCategory> subcategory = subService.getList();	
+	    	return new ModelAndView("productform", "subcategory", subcategory);		
+
+	        
 	    } 
 	    
 	    @RequestMapping(value="/saveproduct",method = RequestMethod.POST)  
 	    public ModelAndView save(@ModelAttribute("product") Product cat) throws Exception{  
+	    	try{
 	    	pService.save(cat);  
+	    	}
+	    	catch(Exception e){
+				String msg="Brand Already Exists";
+				WarningMsg.showDialog(msg);
+			}
 	        return new ModelAndView("redirect:/product");
 	    }
 	    
 	
 	    @RequestMapping(value="/displayProducts/{id}",method = RequestMethod.GET)  
-	    public ModelAndView displayProducts(HttpServletRequest request,HttpServletResponse res,@PathVariable int id){
+	    public ModelAndView displayProducts(HttpServletRequest request,HttpServletResponse res,@PathVariable int id,HttpSession session){
 	    	
 	    	
 	    	ModelAndView model=new ModelAndView("displayProducts");
 	    	List<Product> sub2 = pService.getProductList(id);
+	    	  session  = request.getSession(false);
+			  String username= (String) session.getAttribute("name");	
 	    	model.addObject("sub2",sub2);	 
 	    	
+	    	model.addObject(username);
 			return model;
 	    }
 		
+	    
     @RequestMapping(value="/displayProducts/buynow/{id}",method = RequestMethod.GET)  
 	    public ModelAndView AddToCart(HttpServletRequest request,HttpServletResponse res,@PathVariable int id){
 	    	
@@ -96,22 +122,43 @@ public class ProductController {
 	    	model.addObject("sub2",sub2);	    	
 			return model;
 	    }
-    @RequestMapping(value="/displayProducts/buynow/address",method = RequestMethod.GET)  
-    public ModelAndView checkout(@ModelAttribute("address") Address ad){  
+    @RequestMapping(value="/displayProducts/buynow/{id}/{ids}",method = RequestMethod.GET)  
+    public ModelAndView producttobuy(HttpServletRequest request,HttpServletResponse res,@PathVariable int ids){
+    	
+    	ModelAndView model=new ModelAndView("buynow");
+    	Product pro =  pService.getProductById(ids);
+    	model.addObject("pro",pro);	    	
+		return model;
+    }
+    
+    @RequestMapping(value="address",method = RequestMethod.POST)  
+    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @ModelAttribute("order") Address ad,BindingResult result){  
+    	
+    	if(result.hasErrors()){
+    		ModelAndView model=new ModelAndView("address");
+    		return model;
+    	}
     	ModelAndView model=new ModelAndView("address");   
     	model.addObject(ad);
 		return model;
           
     }
-    @RequestMapping(value="/displayProducts/buynow/billing",method = RequestMethod.GET)  
-    public ModelAndView billing(@ModelAttribute("creditcard") CreditCard cd){  
-    	ModelAndView model=new ModelAndView("billing");   
+    @RequestMapping(value="/displayProducts/buynow/address1",method = RequestMethod.POST)  
+    public ModelAndView checkout(HttpServletRequest request,HttpServletResponse res,@Valid @ModelAttribute("creditcard") CreditCard cd){  
+    	ModelAndView model=new ModelAndView("billing"); 
     	model.addObject(cd);
 		return model;
           
     }
-    @RequestMapping(value="/displayProducts/buynow/ordersuccess",method = RequestMethod.GET)  
-    public ModelAndView placeOrder(){  
+    
+      @RequestMapping(value="/displayProducts/buynow/billing",method = RequestMethod.POST)  
+      public ModelAndView billing(HttpServletRequest request,HttpServletResponse res){  
+    	ModelAndView model=new ModelAndView("ordersuccess");   
+		return model;
+          
+    }
+    @RequestMapping(value="/displayProducts/buynow/ordersuccess",method = RequestMethod.POST)  
+    public ModelAndView placeOrder(HttpServletRequest request,HttpServletResponse res){  
     	ModelAndView model=new ModelAndView("ordersuccess");   
 		return model;
           

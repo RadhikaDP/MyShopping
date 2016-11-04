@@ -25,12 +25,12 @@ public class OrderDaoImp implements OrderDao{
 			        public Order mapRow(ResultSet rs, int row) throws SQLException {  
 			        	Order e=new Order();  
 			            e.setProductid(rs.getInt(1));  
-			            e.setCustomerid(rs.getInt(2)); 
-			            e.setOrderid(rs.getInt(3)); 
+			            e.setUsername(rs.getInt(3)); 
+			            e.setOrderid(rs.getInt(2)); 
 			            return e;  
 			        }  
 			    });
 	
-
+			    
 }
 }

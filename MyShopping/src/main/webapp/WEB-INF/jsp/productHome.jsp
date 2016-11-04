@@ -13,7 +13,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </head>
- <body background-image:url('bg.jpg');>
+ <body >
  <br/><br/><br/>
   <div align="center">
 <a href="productform">Add Product</a>  

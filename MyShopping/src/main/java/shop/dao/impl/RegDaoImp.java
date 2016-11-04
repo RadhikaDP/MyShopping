@@ -30,12 +30,9 @@ public class RegDaoImp implements RegDao {
 		boolean b=false;
 		try{
 			System.out.println(regBean.getUsername());
+			
 		    String sql="insert into public.user(username,password,email,phone) values('"+regBean.getUsername()+"','"+AESCrypt.encrypt(regBean.getPassword())+"','"+regBean.getEmail()+"','"+regBean.getPhone()+"')";  
 		    int i = template.update(sql);
-/*		String query = "insert into public.user values(?,?,?,?)";
-		int i=template.update(query,
-				new Object[] {regBean.getUsername(), AESCrypt.encrypt(regBean.getPassword()), regBean.getEmail(),
-						regBean.getPhone()});*/
 		
 		if(i==1){
 			b=true;

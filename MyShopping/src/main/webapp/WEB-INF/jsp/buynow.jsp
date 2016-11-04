@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registration</title>
+<title>buynow</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
@@ -19,23 +19,27 @@
 <%@ page isELIgnored="false" %>
 
 <script type="text/javascript">
+
 function computecost()
 {
 	var quantity=document.getElementById("quantity").value;
-
-	document.getElementById("total").value=quantity*${sub2[0].price};
-	}
+  
+	
+	document.getElementById("total").value=quantity*${pro.price};
+	document.getElementById("total").disabled = "true";
+	
+}
 
 </script>
 
 </head>
-<body id="login" background-image:url('bg.jpg');>
+<body id="login">
 
   <h2 class="form-heading"> </h2>
 <br></br>
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th></tr> 
-   <c:forEach var="pro" items="${sub2}">   
+
    <tr>  
    <td>${pro.productname}</td>  
    <td>${pro.productbrand}</td>  
@@ -43,19 +47,23 @@ function computecost()
    <td>${pro.description}</td>  
    <td></td>
    </tr>  
-   </c:forEach>  
+
    </table>  
-   <form method="get" action="address">
-   <div><br>
-   <label for="name">quantity</label>
+   <form method="post" action="/MyShopping/address"  >
+    <div><br>
+   <label for="name">Number Of Items</label>
    <input type ="text" name="quantity" id="quantity" size="2">
+   
    <br><br>
    <input type ="button" value="total cost" name="total"  onclick= "computecost();">
     <input type ="text"  name="total" id="total" onclick= "this.blur();">
    </div>
    <br>
-   <input type="submit" value="Proceed to checkout" id ="submit">
+   <input type="submit" value="Proceed to checkout" id ="submit" onclick="return validate();">
    <input type="reset" value="clear" />
-   </form>
+   </form> 
+      
+
+   
 </body>
 </html>

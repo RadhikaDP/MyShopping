@@ -15,11 +15,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<style>
-    .error {
-        color: red; font-weight: bold;
-    }
-</style>
 </head>
 <body id="login" background-image:url('bg.jpg');>
   <div class="app-cam">
@@ -28,9 +23,7 @@
  <br></br>
         <form:form action="admin" method="post" modelAttribute="admin"  >
             <table border="0">
-               <!--  <tr>
-                    <td colspan="2" align="center"><h2> LOGIN</h2></td>
-                </tr> -->
+
                 <tr>
                     
                     <td><form:input path="username" name="uname" placeholder="UserName"/></td>
@@ -41,10 +34,9 @@
                     <td><form:password path="password" name="upass" placeholder="Password" /></td>
                     <td align="left"><form:errors path="password" cssClass="error"  /></td>
                 </tr>            
-                <tr>
-              
-                
-                    <td colspan="2" align="center"><input type="submit" value="login"  /></td>
+                <tr>              
+                    <td colspan="1" align="center"><input type="submit" value="login"  /></td>
+                  
                 </tr>
             </table>
             <p><a href="login"> Back</a></p>

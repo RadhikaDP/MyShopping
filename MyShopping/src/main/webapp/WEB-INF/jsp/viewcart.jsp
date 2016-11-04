@@ -15,17 +15,13 @@
 
 <h1>Cart</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th></tr> 
-
+ <tr><th>Product name</th><tr>
    <c:forEach var="cart" items="${cart}">   
    <tr>  
-   <td>${cart.cartid}</td>  
-   <td>${cart.username}</td>  
-   <td>${cart.productid}</td>
+   <td>${cart.productname}</td>  
    <td><a href="deletcart/${cart.cartid }">Remove</a></td>    
    </tr>  
    </c:forEach>  
-   </table>  
-   
+   </table>     
 </body>
 </html>

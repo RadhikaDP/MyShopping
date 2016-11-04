@@ -15,7 +15,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </head>
-<body id="login" background-image:url('bg.jpg');>
+<body id="login" >
   <div class="app-cam">
  <div align="center">
  <h2 class="form-heading"> REGISTRATION</h2>
@@ -25,19 +25,23 @@
              
                 <tr>
                    
-                    <td><form:input path="username" placeholder="User Name" /></td>
+                    <td><form:input path="username" pattern="[A-Za-z]{1,25}" title="only alphabets MAXLENGTH=25" placeholder="User Name" /></td>
+                     <td align="left"><form:errors path="username" cssClass="error"/></td>
                 </tr>
                 <tr>
                     
-                    <td><form:password path="password" placeholder="Password" /></td>
+                    <td><form:password path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" placeholder="Password" /></td>
+                     <td align="left"><form:errors path="password" cssClass="error"/></td>
                 </tr>
                 <tr>
                   
-                    <td><form:input path="email" placeholder="E-mail" /></td>
+                    <td><form:input path="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email  must be in the following order: characters@characters.domain(2-3 letter) " placeholder="E-mail" /></td>
+                     <td align="left"><form:errors path="email" cssClass="error"/></td>
                 </tr>
                 <tr>
                     
-                    <td><form:input path="phone" placeholder="Phone Number"/></td>
+                    <td><form:input path="phone"  pattern="[0-9]{10}" title="Enter 10 digit mobile number" placeholder="Phone Number"/></td>
+                     <td align="left"><form:errors path="phone" cssClass="error"/></td>
                 </tr>
                 <tr>
                 	

@@ -4,7 +4,7 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<html>
 <jsp:include page="/WEB-INF/jsp/homeheader.jsp"></jsp:include> 
 <br/>
 <br/>
@@ -16,21 +16,16 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <style>
-    .error {
-        color: red; font-weight: bold;
-    }
 </style>
 </head>
-<body id="login" background-image:url('bg.jpg');>
+<body id="login">
   <div class="app-cam">
  <div align="center">
  <h2 class="form-heading"> LOGIN</h2>
  <br></br>
         <form:form action="login" method="post" modelAttribute="login"  >
             <table border="0">
-               <!--  <tr>
-                    <td colspan="2" align="center"><h2> LOGIN</h2></td>
-                </tr> -->
+           
                 <tr>
                     
                     <td><form:input path="username" name="uname" placeholder="User Name"/></td>
@@ -53,3 +48,4 @@
     </div>
 </body>
 <jsp:include page="/WEB-INF/jsp/homefooter.jsp"></jsp:include> 
+</html>

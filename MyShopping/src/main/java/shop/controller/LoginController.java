@@ -1,8 +1,6 @@
 package shop.controller;
 
 import java.util.List;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -61,33 +60,35 @@ public class LoginController {
     }
    
     @RequestMapping(value="/login",method = RequestMethod.POST)
-    public ModelAndView processLogin(@ModelAttribute("user")@Valid Login login,BindingResult result,Users reg,@ModelAttribute("cat") Category cat) {
+    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
     	
     	if (result.hasErrors()) {
     		
-    		String msg="Fields can not be empty";
-			WarningMsg.showDialog(msg);
     		ModelAndView model=new ModelAndView("login");	
 	    	model.addObject("login",login);
 	    	return model;
     	 
     	}
 		try {
-
+			
+			
 			boolean islogSuccesful = logService.authenticateUser(login);
 		
 				if (islogSuccesful) {
 				
+					 HttpSession session=request.getSession();  
+					 String username=login.getUsername(); //Creating Session for the User
+			         session.setAttribute("name",username );
+					
 					logger.info(" successfull");
 					List<Category> category = catService.getUserList();	
 					List<SubCategory> sub = subservice.getList();
 					List<SubCategory2> sub2 = subService2.getList();
-			    	ModelAndView model=new ModelAndView("user");
-			    	
+			    	ModelAndView model=new ModelAndView("user");			    	
 			    	model.addObject("category",category);
 			    	model.addObject("sub",sub);
 			    	model.addObject("sub2",sub2);
-			//    	 redirectAttributes.addFlashAttribute("username", login.getUsername());
+			    	
 			    	return model;
 									
 					} 
@@ -111,6 +112,16 @@ public class LoginController {
 		return null;
 
 
+    }
+    
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+
+    public ModelAndView LogoutProcess(HttpServletRequest req,HttpServletResponse res){
+    	
+    	HttpSession session  = req.getSession();
+    	  session.removeAttribute("name");
+    	  session.invalidate();  
+    	  return new ModelAndView("redirect:login");  
     }
 
 }

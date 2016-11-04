@@ -4,6 +4,14 @@ public class Cart {
 private int cartid;
 private String username;
 private int productid;
+private String productname;
+
+public String getProductname() {
+	return productname;
+}
+public void setProductname(String productname) {
+	this.productname = productname;
+}
 public int getCartid() {
 	return cartid;
 }

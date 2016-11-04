@@ -11,11 +11,11 @@ import shop.service.OrderService;
 
 public class OrderServiceDaoImpl implements OrderService{
 	@Autowired
-private OrderDao order;
+private OrderDao orderDao;
 	@Override
 	public List<Order> getOrders() {
 
-		return order.getOrders();
+		return orderDao.getOrders();
 	}
 
 }

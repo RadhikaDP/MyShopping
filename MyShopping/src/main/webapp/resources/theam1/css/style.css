@@ -7,8 +7,10 @@ p {margin: 0;}
 html, body{
   	font-family: 'Roboto', sans-serif;
     font-size: 100%;
-  	background:#000;
-  	overflow-x: hidden;
+    background-image: url('../images/bg.jpg'); 
+     background-repeat: no-repeat;
+       background-size: cover;
+  	   
 }
 body a{
 	transition:0.5s all;
@@ -2061,14 +2063,7 @@ h2.form-heading {
   display: inline-block;
   width: 100%;
 }
-html, body#login{
-  background: url(../images/bg.jpg)no-repeat;
-  background-size:cover;
-  -webkit-background-size:cover;
-  -moz-background-size:cover;
-  -o-background-size:cover;
-  -ms-background-size:cover;
-}
+
 .app-cam {
   width:22%;
   margin:3em auto auto auto;

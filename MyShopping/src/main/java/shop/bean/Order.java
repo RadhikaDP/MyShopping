@@ -3,7 +3,11 @@ package shop.bean;
 public class Order {
 private int orderid;
 private int productid;
-private int customerid;
+private int username;
+private double total;
+private int quantity;
+
+
 public int getOrderid() {
 	return orderid;
 }
@@ -16,11 +20,23 @@ public int getProductid() {
 public void setProductid(int productid) {
 	this.productid = productid;
 }
-public int getCustomerid() {
-	return customerid;
+public int getUsername() {
+	return username;
 }
-public void setCustomerid(int customerid) {
-	this.customerid = customerid;
+public void setUsername(int username) {
+	this.username = username;
+}
+public double getTotal() {
+	return total;
+}
+public void setTotal(double total) {
+	this.total = total;
+}
+public int getQuantity() {
+	return quantity;
+}
+public void setQuantity(int quantity) {
+	this.quantity = quantity;
 }
 
 }

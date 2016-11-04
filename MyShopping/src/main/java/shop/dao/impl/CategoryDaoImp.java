@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import shop.bean.Category;
 import shop.dao.CategoryDao;
+import shop.validate.WarningMsg;
 
 public class CategoryDaoImp implements CategoryDao{
 	@Autowired
@@ -55,7 +56,8 @@ public class CategoryDaoImp implements CategoryDao{
 
 	@Override
 	public int save(Category cat) {
-	    String sql="insert into public.category(category) values('"+cat.getCategory()+"')";  
+		String sql=null;	
+	    sql="insert into public.category(category) values('"+cat.getCategory()+"')";  
 	    return template.update(sql); 
 	}
 

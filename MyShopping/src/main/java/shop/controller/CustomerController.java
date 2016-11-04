@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import shop.bean.Users;
 import shop.service.CustomerService;
+import shop.validate.WarningMsg;
 
 
 @Controller
@@ -33,7 +34,14 @@ public class CustomerController {
     
     @RequestMapping(value="/editsave",method = RequestMethod.POST)  
     public ModelAndView editsave(@ModelAttribute("user") Users user){  
+    	try{
     	custService.update(user);  
+    	}
+      	catch(Exception e){
+			String msg="User Already Exists";
+			WarningMsg.showDialog(msg);
+			 return new ModelAndView("redirect:/customerform");  
+		}
         return new ModelAndView("redirect:/viewcustomer");  
     }
     
@@ -51,7 +59,14 @@ public class CustomerController {
     
     @RequestMapping(value="/save",method = RequestMethod.POST)  
     public ModelAndView save(@ModelAttribute("user") Users user) throws Exception{  
+    	try{
     	custService.save(user);  
+    	}
+      	catch(Exception e){
+			String msg="User Already Exists";
+			WarningMsg.showDialog(msg);
+			 return new ModelAndView("redirect:/customerform");  
+		}
         return new ModelAndView("redirect:/viewcustomer");
     } 
     

@@ -2,6 +2,7 @@ package shop.controller;
 
 import java.sql.SQLException;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import shop.validate.WarningMsg;
 import shop.bean.Admin;
-import shop.bean.Login;
 import shop.service.AdminService;
 
 
@@ -37,8 +38,15 @@ public class AdminController {
     }
     
     @RequestMapping(value="/admin",method = RequestMethod.POST)
-    public ModelAndView processLogin(@ModelAttribute("admin")@Valid Admin admin) {
+    public ModelAndView processLogin(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("admin")@Valid Admin admin,BindingResult result) {
 
+	if (result.hasErrors()) {
+    		
+    		ModelAndView model=new ModelAndView("adminLogin");	
+	    	return model;
+    	 
+    	}
+    	
 			boolean islogSuccesful;
 			try {
 				islogSuccesful = adminService.authenticateUser(admin);

@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
- <body background-image:url('bg.jpg'); style='width:100%;height:100%' >
+ <body  >
 <table width="770" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="25" align="left" valign="top">&nbsp;</td>

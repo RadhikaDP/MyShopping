@@ -1,10 +1,8 @@
 package shop.dao.impl;
 
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,11 +24,11 @@ public class ProductDaoImp implements ProductDao {
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {  
 	        	Product e=new Product();  
 	            e.setId(rs.getInt(1));  
-	            e.setSub2id(rs.getInt(2));
-	            e.setProductname(rs.getString(3)); 	 
-	            e.setProductbrand(rs.getString(4));
-	            e.setPrice(rs.getDouble(5));
-	            e.setDescription(rs.getString(6));
+	            e.setSubcategory(rs.getString(6));
+	            e.setProductname(rs.getString(2)); 	 
+	            e.setProductbrand(rs.getString(3));
+	            e.setPrice(rs.getDouble(4));
+	            e.setDescription(rs.getString(5));
 	   
 	            return e;  
 	        }  
@@ -51,13 +49,13 @@ public class ProductDaoImp implements ProductDao {
 
 	@Override
 	public int update(Product c) {
-	    String sql="update public.products set sub2id='"+c.getSub2id()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
+	    String sql="update public.products set sub2id='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
 	    return template.update(sql); 
 	}
 
 	@Override
 	public int save(Product c) {
-	    String sql="insert into public.products(sub2id,productname,productbrand,price,description) values('"+c.getSub2id() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription()  +"')";  
+	    String sql="insert into public.products(sub2id,productname,productbrand,price,description) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription()  +"')";  
 	    return template.update(sql); 
 	}
 	public List<Product> getProductList(int id) {
@@ -66,13 +64,14 @@ public class ProductDaoImp implements ProductDao {
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {  
 	            Product e=new Product();  
 	           e.setId(rs.getInt(1));   
-	           e.setSub2id(rs.getInt(2));
-	           e.setProductname(rs.getString(3));
-	           e.setProductbrand(rs.getString(4));
-	           e.setPrice(rs.getDouble(5));
-	           e.setDescription(rs.getString(6));
+	           e.setSubcategory(rs.getString(6));
+	           e.setProductname(rs.getString(2));
+	           e.setProductbrand(rs.getString(3));
+	           e.setPrice(rs.getDouble(4));
+	           e.setDescription(rs.getString(5));
 	            return e;  
 	        }  
 	    });
 	}
+
 }

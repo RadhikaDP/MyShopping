@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import shop.bean.Category;
+
 import shop.bean.SubCategory;
 import shop.service.SubCategoryService;
+import shop.validate.WarningMsg;
 
 
 @Controller
@@ -52,7 +53,7 @@ public class SubCategoryController {
 	    } 
 	    
 	    @RequestMapping(value="/savesubcategory",method = RequestMethod.POST)  
-	    public ModelAndView save(@ModelAttribute("subcategory") SubCategory cat,BindingResult result) throws Exception{  
+	    public ModelAndView save(@ModelAttribute("subcategory") SubCategory cat,BindingResult result) {  
 	    	 boolean error = false;
 	    	   if(cat.getCategory().isEmpty()){
 	    	        result.rejectValue("category", "error.category");
@@ -62,7 +63,16 @@ public class SubCategoryController {
 	    	    	return new ModelAndView("redirect:/subcategoryform");
 	    	       
 	    	    }
-	    	subService.save(cat);  
+	    	  try{
+	    	      subService.save(cat);  
+	    	  }
+	    	  catch(Exception e){
+	    		  
+	    		  String msg="select existing category and new subcategory";
+					WarningMsg.showDialog(msg);
+	    	  }
+	    	  
 	        return new ModelAndView("redirect:/subcategory");
+	    	  
 	    }
 }

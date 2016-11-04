@@ -16,26 +16,32 @@
 <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Enter your Address details </h1>
- <form:form action="billing" method="get" modelAttribute="address">
+ <div align="center">
+<h3>Enter your Address details </h3>
+ <form:form action="address1" method="post" modelAttribute="address">
             <table border="0">
              
                 <tr>
                    
                     <td><form:input path="flatno" placeholder="Flat no / House no" /></td>
+                    <td align="left"><form:errors path="flatno" /></td>
                 </tr>
                 <tr>
                     
                     <td><form:input path="locality" placeholder="Locality" /></td>
+                    <td align="left"><form:errors path="locality"/></td>
                 </tr>
                 <tr>
                     <td><form:input path="town" placeholder="Towm" /></td>
+                    <td align="left"><form:errors path="town" /></td>
                 </tr>
                 <tr>     
                     <td><form:input path="state" placeholder="State"/></td>
+                    <td align="left"><form:errors path="state" /></td>
                 </tr>
                  <tr>     
                     <td><form:input path="pincode" placeholder="Pincode"/></td>
+                    <td align="left"><form:errors path="pincode" /></td>
                 </tr>
                 <tr>
                 	
@@ -44,5 +50,6 @@
             </table>
            
         </form:form>
+        </div>
 </body>
 </html>

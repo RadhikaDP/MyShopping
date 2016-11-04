@@ -8,7 +8,6 @@ public class Login {
 	@NotEmpty
 	private String username;
 	@NotEmpty
-    @Size(min = 6, max = 15)
 	private String password;
 	
 	public String getUsername() {

@@ -27,5 +27,6 @@
    </table>  
    <br/>  
    <a href="subcategoryform">Add New Category</a>  
+   <br><a href="categoryHome">Back</a>
 </body>
 </html>

@@ -2,7 +2,7 @@ package shop.bean;
 
 public class Product {
 	private int id;
-	private int sub2id;
+	private String subcategory;
 	private String productname;
 	private String productbrand;
 	private double price;
@@ -14,11 +14,11 @@ public class Product {
 		this.id = id;
 	}
 
-	public int getSub2id() {
-		return sub2id;
+	public String getSubcategory() {
+		return subcategory;
 	}
-	public void setSub2id(int sub2id) {
-		this.sub2id = sub2id;
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
 	}
 	public String getProductname() {
 		return productname;

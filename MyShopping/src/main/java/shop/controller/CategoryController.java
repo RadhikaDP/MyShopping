@@ -18,6 +18,7 @@ import shop.bean.Category;
 import shop.bean.Users;
 import shop.service.AdminService;
 import shop.service.CategoryService;
+import shop.validate.WarningMsg;
 
 
 @Controller
@@ -63,8 +64,14 @@ public class CategoryController {
 	    } 
 	    
 	    @RequestMapping(value="/savecategory",method = RequestMethod.POST)  
-	    public ModelAndView save(@ModelAttribute("category") Category cat) throws Exception{  
+	    public ModelAndView save(@ModelAttribute("category") Category cat) {  
+	    	try{
 	    	catService.save(cat);  
+	    	}
+	    	catch(Exception e){
+				String msg="Category Already Exists";
+				WarningMsg.showDialog(msg);
+			}
 	        return new ModelAndView("redirect:/category");
 	    }
 }

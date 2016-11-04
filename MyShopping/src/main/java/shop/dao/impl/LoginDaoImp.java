@@ -27,9 +27,6 @@ public class LoginDaoImp implements LoginDao{
 	@Override
 	public boolean authenticateUser(Login login) throws SQLException  {
 
-		
-		
-		System.out.println(login.getUsername());
 		boolean b=false;
 		try{
 
