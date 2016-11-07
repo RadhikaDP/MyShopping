@@ -28,20 +28,15 @@
                         <li><a href="#">${catLevel1.getCategory()}</a> 
                             <ul class="droprightMenu">                  
                                 <c:forEach items="${sub}" var="catLevel2"> 
-                                    <c:choose>                                                  
-                                     <c:when test="${ catLevel1.getCategory()==catLevel2.getCategory() }">                     
-                                        <li><a href="#">${catLevel2.getSubcategory() }</a> 
-                                          <%--   <ul class="droprightMenu">                                       
-                                                <c:forEach items="${sub2}" var="catLevel3">
-                                                    <c:if test="${catLevel2.getSubcategory()==catLevel3.getSubcategory()}">
-                                                        <li><a href="displayProducts/${catLevel3.id}">${catLevel3.getSubcategory2() }</a></li>
-                                                    </c:if>
-                                                </c:forEach>                                               
-                                            </ul>   --%>                                         
-                                            </li>
-                                    </c:when>
-                                   <c:otherwise><li> <a href="displayProducts/${catLevel2.id}">  ${catLevel2.getSubcategory() } </a> </li></c:otherwise>
-                                   </c:choose> 
+                                    <c:forEach items="${sub}" var="catLevel2"> 
+                                                                         
+                                     <c:if test="${catLevel1.getCategory() == catLevel2.getCategory()}">     
+                                                     
+                                        <li><a href="displayProducts/${catLevel2.id}">${catLevel2.getSubcategory() }</a> 
+                                                                                                                       
+                                        </li>
+                                    </c:if>                                                                                                     
+                                 <%--   <li><a href="displayProducts/${catLevel2.id}">${catLevel2.getSubcategory() }</a>  --%>  
                                 </c:forEach>                               
                             </ul></li>
                 </c:forEach>
