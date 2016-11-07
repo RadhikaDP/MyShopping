@@ -1,5 +1,6 @@
 package shop.controller;
-import java.util.Iterator;
+
+
 import java.util.List;
 
 
@@ -7,19 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import shop.bean.Address;
 import shop.bean.Cart;
-import shop.bean.Product;
+import shop.bean.CreditCard;
+import shop.bean.Order;
 import shop.service.CartService;
 import shop.service.OrderService;
 import shop.service.ProductService;
-import shop.validate.WarningMsg;
+
 
 @Controller
 public class OrderController {
@@ -31,22 +36,13 @@ public class OrderController {
 	@Autowired
 	private ProductService pService;
 	
-	   @RequestMapping(value="MyShopping/order",method = RequestMethod.GET)  
-	    public ModelAndView delete(@PathVariable int id){  
-		   orderService.getOrders();  
-	        return new ModelAndView("redirect:/myorder");  
-	    }  
+
 	   
 	   @RequestMapping(value="/displayProducts/addcart/{id}/{proname}/{sub2id}",method = RequestMethod.GET)  
-	    public ModelAndView addtocart(@PathVariable int id,@PathVariable int sub2id,@PathVariable String proname,HttpServletRequest request,HttpServletResponse res, HttpSession session ){  	
+	    public ModelAndView addtocart(@PathVariable int id,@PathVariable String sub2id,@PathVariable String proname,HttpServletRequest request,HttpServletResponse res, HttpSession session ){  	
 		   session  = request.getSession(false);
-		  String username= (String) session.getAttribute("name");	   		 		
-		 
-		   cartService.save(id,username,proname);
-		   
-
-		 
-		 
+		  String username= (String) session.getAttribute("name");	   		 			 
+		   cartService.save(id,username,proname);	 
 		 return new ModelAndView("redirect:/displayProducts/"+sub2id); 
 	    }  
 	   
@@ -67,4 +63,43 @@ public class OrderController {
 	    	   
 	    	     return new ModelAndView("redirect:/viewcart"); 
 	    }  
+	   @RequestMapping(value="address/{proname}",method = RequestMethod.POST)  
+	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable String proname,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
+	    	
+	    	if(result.hasErrors()){
+	    		ModelAndView model=new ModelAndView("buynow");
+	    		return model;
+	    	}
+	    	session  = request.getSession(false);
+			  String username= (String) session.getAttribute("name");
+	    	
+	    	ModelAndView model=new ModelAndView("address");   
+	    	int quantity = od.getQuantity();
+	    	double total = od.getTotal();
+	    	orderService.Addorder(proname,username,quantity,total);
+	    	
+			return model;
+	          
+	    }
+	
+	    @RequestMapping(value="address1",method = RequestMethod.POST)  
+	    public ModelAndView addaddress(HttpServletRequest request,HttpServletResponse res,@ModelAttribute("address")Address ad){  
+	    	ModelAndView model=new ModelAndView("ordersuccess"); 
+	    	orderService.addAddress(ad);
+			return model;
+	          
+	    }
+	    
+
+	
+		   
+		   @RequestMapping(value="vieworder",method = RequestMethod.GET)  
+		    public ModelAndView vieworder(HttpServletRequest request,HttpServletResponse res,HttpSession session ){  
+			   session  = request.getSession(false);
+			   String username= (String) session.getAttribute("name");
+		         ModelAndView model = new ModelAndView("vieworders");
+		    	    List<Order> order = orderService.getOrders(username);      	    
+		    	    model.addObject("order",order);	    	    	    	     	  
+		         return model;
+		    }  
 }
