@@ -49,17 +49,17 @@ public class ProductDaoImp implements ProductDao {
 
 	@Override
 	public int update(Product c) {
-	    String sql="update public.products set sub2id='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
+	    String sql="update public.products set subcategory='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
 	    return template.update(sql); 
 	}
 
 	@Override
 	public int save(Product c) {
-	    String sql="insert into public.products(sub2id,productname,productbrand,price,description) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription()  +"')";  
+	    String sql="insert into public.products(subcategory,productname,productbrand,price,description) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription()  +"')";  
 	    return template.update(sql); 
 	}
-	public List<Product> getProductList(int id) {
-		String sql="select * from public.products where sub2id="+id+"";
+	public List<Product> getProductList(String id) {
+		String sql="select * from public.products where subcategory='"+id+"'";
 	    return template.query(sql,new RowMapper<Product>(){  
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {  
 	            Product e=new Product();  
