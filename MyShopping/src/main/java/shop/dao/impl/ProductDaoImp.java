@@ -58,7 +58,23 @@ public class ProductDaoImp implements ProductDao {
 	    String sql="insert into public.products(subcategory,productname,productbrand,price,description) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription()  +"')";  
 	    return template.update(sql); 
 	}
-	public List<Product> getProductList(String id) {
+	public List<Product> getProductList(int id) {
+		String sql="select * from public.products where subid='"+id+"'";
+	    return template.query(sql,new RowMapper<Product>(){  
+	        public Product mapRow(ResultSet rs, int row) throws SQLException {  
+	            Product e=new Product();  
+	           e.setId(rs.getInt(1));   
+	           e.setSubcategory(rs.getString(6));
+	           e.setProductname(rs.getString(2));
+	           e.setProductbrand(rs.getString(3));
+	           e.setPrice(rs.getDouble(4));
+	           e.setDescription(rs.getString(5));
+	            return e;  
+	        }  
+	    });
+	}
+
+	public List<Product> getbysubname(String id) {
 		String sql="select * from public.products where subcategory='"+id+"'";
 	    return template.query(sql,new RowMapper<Product>(){  
 	        public Product mapRow(ResultSet rs, int row) throws SQLException {  
