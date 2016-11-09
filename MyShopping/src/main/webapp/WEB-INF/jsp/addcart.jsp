@@ -15,7 +15,7 @@
   
 <h1>Products List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th></tr> 
+<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th><th>Remove</th><th>BuyNow</th></tr> 
    <c:forEach var="pro" items="${sub2}">   
    <tr>  
    <td>${pro.productname}</td>  

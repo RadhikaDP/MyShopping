@@ -20,14 +20,14 @@
 
 <script type="text/javascript">
 
-function computecost()
+function  computecost()
 {
 	var quantity=document.getElementById("quantity").value;
   
-	
-	document.getElementById("total").value=quantity*${pro.price};
-	document.getElementById("total").disabled = "true";
-	
+ 	/* document.getElementById("total").disabled = "true";   */
+	document.getElementById("total").value= quantity*${pro.price};
+ 
+
 }
 
 </script>
@@ -47,22 +47,29 @@ function computecost()
    <td>${pro.description}</td>  
    <td></td>
    </tr>  
-
-   </table>  
-   <form method="post" action="/MyShopping/address"  >
-    <div><br>
-   <label for="name">Number Of Items</label>
-   <input type ="text" name="quantity" id="quantity" size="2">
-   
-   <br><br>
-   <input type ="button" value="total cost" name="total"  onclick= "computecost();">
-    <input type ="text"  name="total" id="total" onclick= "this.blur();">
-   </div>
-   <br>
-   <input type="submit" value="Proceed to checkout" id ="submit" onclick="return validate();">
-   <input type="reset" value="clear" />
-   </form> 
-      
+   </table>     
+       <form:form action="/MyShopping/address/${pro.productname }" method="post" modelAttribute="order"  >
+            <table border="0">
+           		   <tr>
+                    <td>Quantity</td>
+                    <td><form:input path="quantity" name="quantity" id="quantity" placeholder="Quantity" /></td>
+                    <td align="left"><form:errors path="quantity" cssClass="error"/></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="total cost"  onclick=" computecost()"  /></td>
+                    <td><form:input path="total" name="total" id="total"  readonly="readonly"/></td>
+                    <td align="left"><form:errors path="total" cssClass="error"/></td>
+                    <td></td>
+                </tr>
+                         
+                <tr>
+                <td></td>
+                    <td colspan="2" align="center"><input type="submit" value="Proceed to pay" /></td>
+                </tr>
+                <tr><td><input type="reset" value="clear" /></td></tr>
+            </table>
+        </form:form>
 
    
 </body>

@@ -1,29 +1,30 @@
 package shop.bean;
 
 public class Order {
-private int orderid;
-private int productid;
-private int username;
+private int id;
+private String productname;
+private String username;
 private double total;
 private int quantity;
 
 
-public int getOrderid() {
-	return orderid;
+
+public String getProductname() {
+	return productname;
 }
-public void setOrderid(int orderid) {
-	this.orderid = orderid;
+public void setProductname(String productname) {
+	this.productname = productname;
 }
-public int getProductid() {
-	return productid;
+public int getId() {
+	return id;
 }
-public void setProductid(int productid) {
-	this.productid = productid;
+public void setId(int id) {
+	this.id = id;
 }
-public int getUsername() {
+public String getUsername() {
 	return username;
 }
-public void setUsername(int username) {
+public void setUsername(String username) {
 	this.username = username;
 }
 public double getTotal() {

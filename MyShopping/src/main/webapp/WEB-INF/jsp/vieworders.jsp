@@ -3,7 +3,7 @@
          <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html><jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <%@ page isELIgnored="false" %>
@@ -15,7 +15,7 @@
   
 <h1>Order List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Product name</th><th>total</th><th>quantity</th><th>Delete</th></tr>  
+<tr><th>Product name</th><th>total</th><th>quantity</th><th>Cancel Order</th></tr>  
    <c:forEach var="cust" items="${order}">   
    <tr>   
    <td>${cust.productname}</td>  

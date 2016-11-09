@@ -25,8 +25,13 @@ private OrderDao orderDao;
 	}
 	@Override
 	public int addAddress(Address ad) {
-		// TODO Auto-generated method stub
+		
 		return orderDao.addAddress( ad);
+	}
+	@Override
+	public int cancelorder(int id) {
+		
+		return orderDao.cancelorder(id);
 	}
 
 

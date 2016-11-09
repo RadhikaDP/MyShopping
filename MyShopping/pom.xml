@@ -35,11 +35,11 @@
             <artifactId>spring-orm</artifactId>
             <version>4.2.4.RELEASE</version>
         </dependency>
-	<dependency>
+ 	<dependency>
     <groupId>jstl</groupId>
     <artifactId>jstl</artifactId>
     <version>1.2</version>
-	</dependency>
+	</dependency> 
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>

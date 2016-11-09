@@ -10,28 +10,29 @@
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title><%@ page isELIgnored="false" %>
-<style>
-   .error 
-    {
-        color: #ff0000;
-        font-weight: bold;
-    }
-    </style>
+
 </head>
 
 <body>
         <h1>Add New sub Category</h1>  
-       <form:form method="post" action="savesubcategory" >    
+       <form:form method="post" action="savesubcategory" modelAttribute="command" >    
         <table >    
          <tr>    
-          <td><spring:message code="lbl.category" text="Category" /></td> 
-          <td><form:input path="category"  /></td> 
-          <td><form:errors path="category" cssClass="error" /></td> 
+         		<td>
+         Category:
+          </td>
+          <td>
+          <form:select path="category" name="category" id="category" items="${category}"  >
+          
+          </form:select>
+          </td>
+          <td><form:errors path="category"  /></td> 
          </tr>   
-          <tr>    
-          <td><spring:message code="lbl.subcategory" text="Sub-Category" /></td>  
+          <tr>           		<td>
+         Sub-Category:
+          </td>   
           <td><form:input path="subcategory"  /></td>  
-          <td><form:errors path="subcategory" cssClass="error" /></td> 
+          <td><form:errors path="subcategory"/></td> 
          </tr>   
          <tr>    
           <td> </td>    

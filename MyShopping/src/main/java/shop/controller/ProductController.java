@@ -133,7 +133,7 @@ public class ProductController {
 	    	model.addObject("sub2",sub2);	    	
 			return model;
 	    }
-    @RequestMapping(value="/displayProducts/buynow/{id}/{ids}",method = RequestMethod.GET)  
+    @RequestMapping(value="/displayProducts/buynow/{subcategory}/{ids}",method = RequestMethod.GET)  
     public ModelAndView producttobuy(HttpServletRequest request,HttpServletResponse res,@PathVariable int ids,@ModelAttribute("order") Order od){
     	
     	ModelAndView model=new ModelAndView("buynow");

@@ -2,6 +2,7 @@ package shop.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import shop.bean.SubCategory2;
-import shop.bean.SubCategory;
 import shop.service.SubCategory2Service;
 
 

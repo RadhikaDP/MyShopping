@@ -22,11 +22,11 @@
   
 <h1>Product List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Id</th><th>Subcategory Id <th>Product Name</th><th>Product Brand</th><th>Price</th><th>Description</th></tr>  
+<tr><th>Id</th><th>Subcategory</th> <th>Product Name</th><th>Product Brand</th><th>Price</th><th>Description</th><th>Edit</th><th>Delete</th></tr>  
    <c:forEach var="cat" items="${product}">   
    <tr>  
    <td>${cat.id}</td>  
-   <td>${cat.sub2id }</td>
+   <td>${cat.subcategory }</td>
    <td>${cat.productname}</td>  
    <td>${cat.productbrand}</td>  
    <td>${cat.price}</td>  

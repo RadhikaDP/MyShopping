@@ -2,12 +2,14 @@ package shop.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import shop.bean.Category;
-import shop.bean.Users;
-import shop.service.AdminService;
 import shop.service.CategoryService;
 import shop.validate.WarningMsg;
 
@@ -58,13 +58,20 @@ public class CategoryController {
 	        return new ModelAndView("redirect:/category");  
 	    }
 	    
-	    @RequestMapping("/categoryform")  
-	    public ModelAndView showform(){  
-	        return new ModelAndView("categoryform","command",new Category());  
+	    @RequestMapping(value="/categoryform",method = RequestMethod.GET)  
+	    public ModelAndView showform( Category cat){  
+	        return new ModelAndView("categoryform","command",cat);  
 	    } 
 	    
 	    @RequestMapping(value="/savecategory",method = RequestMethod.POST)  
-	    public ModelAndView save(@ModelAttribute("category") Category cat) {  
+	    public ModelAndView save(@Valid @ModelAttribute("category") Category cat,BindingResult result) {  
+	      	if (result.hasErrors()) {
+	    		
+	    		ModelAndView model=new ModelAndView("categoryform");	
+		    	model.addObject("login",cat);
+		    	return model;
+	    	 
+	    	}
 	    	try{
 	    	catService.save(cat);  
 	    	}

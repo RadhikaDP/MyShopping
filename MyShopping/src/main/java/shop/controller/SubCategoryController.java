@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,8 @@ public class SubCategoryController {
 	        return new ModelAndView("editsubcategory","command",cat);  
 	    } 
 	   @RequestMapping(value="/deletesubcategory/{id}",method = RequestMethod.GET)  
-	    public ModelAndView delete(@PathVariable int id){  
+	   
+	   public ModelAndView delete(@PathVariable int id){  
 		   subService.delete(id);  
 	        return new ModelAndView("redirect:/subcategory");  
 	    } 
@@ -48,31 +50,34 @@ public class SubCategoryController {
 	    }
 	    
 	    @RequestMapping("/subcategoryform")  
-	    public ModelAndView showform(){  
-	        return new ModelAndView("subcategoryform","command",new SubCategory());  
+	    public ModelAndView showform(@ModelAttribute("command") SubCategory cat){  
+	    	List<String> category = subService.getallcategory();
+	    	return new ModelAndView("subcategoryform", "category", category);		
+	      
 	    } 
 	    
 	    @RequestMapping(value="/savesubcategory",method = RequestMethod.POST)  
-	    public ModelAndView save(@ModelAttribute("subcategory") SubCategory cat,BindingResult result) {  
-	    	 boolean error = false;
-	    	   if(cat.getCategory().isEmpty()){
-	    	        result.rejectValue("category", "error.category");
-	    	        error = true;
-	    	    }
-	    	    if(error) {
-	    	    	return new ModelAndView("redirect:/subcategoryform");
-	    	       
-	    	    }
+	    public ModelAndView save(@Valid @ModelAttribute("command") SubCategory cate,BindingResult result) {  
+	    	if (result.hasErrors()) {
+	    		
+	    		ModelAndView model=new ModelAndView("subcategoryform");	
+	    		List<String> category = subService.getallcategory();
+		    	model.addObject("category",category);
+		    	return model;
+	    	 
+	    	}
+	    	   
 	    	  try{
-	    	      subService.save(cat);  
+	    	      subService.save(cate,cate.getCategory(),cate.getSubcategory());  
 	    	  }
 	    	  catch(Exception e){
 	    		  
-	    		  String msg="select existing category and new subcategory";
+	    		  String msg="subcategory already exists";
 					WarningMsg.showDialog(msg);
 	    	  }
 	    	  
 	        return new ModelAndView("redirect:/subcategory");
 	    	  
 	    }
+	
 }

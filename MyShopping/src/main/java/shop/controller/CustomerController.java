@@ -5,9 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class CustomerController {
 	
     @RequestMapping(value = "/customer",method = RequestMethod.GET)
 
-    public ModelAndView LoginProcess(HttpServletRequest request,HttpServletResponse res,Users user){
+    public ModelAndView LoginProcess(HttpServletRequest request,HttpServletResponse res, Users user){
     	
     	ModelAndView model=new ModelAndView("customer");
     	model.addObject("user",user);
@@ -58,7 +60,17 @@ public class CustomerController {
     }  
     
     @RequestMapping(value="/save",method = RequestMethod.POST)  
-    public ModelAndView save(@ModelAttribute("user") Users user) throws Exception{  
+    public ModelAndView save(@Valid @ModelAttribute("registration") Users user,BindingResult result,HttpServletRequest request,HttpServletResponse res) throws Exception{  
+    	
+    	if (result.hasErrors()) {
+    		
+    		ModelAndView model=new ModelAndView("customerform");	
+	    	model.addObject("user",user);
+	    	return model;
+    	 
+    	}
+    	
+    	
     	try{
     	custService.save(user);  
     	}
@@ -78,7 +90,7 @@ public class CustomerController {
     }
     
     @RequestMapping("/customerform")  
-    public ModelAndView showform(){  
-        return new ModelAndView("customerform","command",new Users());  
+    public ModelAndView showform(  @ModelAttribute("registration") Users user){  
+        return new ModelAndView("customerform","command",user);  
     } 
 }

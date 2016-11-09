@@ -13,11 +13,12 @@
 
 <body>
         <h1>Add New Category</h1>  
-       <form:form method="post" action="savecategory">    
+       <form:form method="post" action="savecategory"  modelAttribute="category">    
         <table >    
          <tr>    
           <td>Name : </td>   
-          <td><form:input path="category"  /></td>  
+          <td><form:input path="category"  pattern="[A-Za-z]{1,30}" title="only alphabets MAX LENGTH=30" /></td>  
+          <td align="left"><form:errors path="category" /></td>
          </tr>     
          <tr>    
           <td> </td>    

@@ -45,4 +45,10 @@ public class OrderDaoImp implements OrderDao{
 		        }  
 		    }); 
 	}
+
+	@Override
+	public int cancelorder(int id) {
+		String sql="delete from public.order where orderid="+id+"";  
+	    return template.update(sql);
+	}
 }

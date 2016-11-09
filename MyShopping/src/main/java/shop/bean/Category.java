@@ -1,7 +1,11 @@
 package shop.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Category {
 	private int id;
+	@NotEmpty
+
 	private String category;
 
 	public String getCategory() {

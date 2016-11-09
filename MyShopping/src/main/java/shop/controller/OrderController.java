@@ -33,8 +33,7 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private CartService cartService;
-	@Autowired
-	private ProductService pService;
+
 	
 
 	   
@@ -63,8 +62,8 @@ public class OrderController {
 	    	   
 	    	     return new ModelAndView("redirect:/viewcart"); 
 	    }  
-	   @RequestMapping(value="address/{proname}",method = RequestMethod.POST)  
-	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable String proname,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
+	   @RequestMapping(value="address/{proname:[a-zA-Z0-9\\s]*}",method = RequestMethod.POST)  
+	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable("proname") String proname,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
 	    	
 	    	if(result.hasErrors()){
 	    		ModelAndView model=new ModelAndView("buynow");
@@ -83,15 +82,17 @@ public class OrderController {
 	    }
 	
 	    @RequestMapping(value="address1",method = RequestMethod.POST)  
-	    public ModelAndView addaddress(HttpServletRequest request,HttpServletResponse res,@ModelAttribute("address")Address ad){  
+	    public ModelAndView addaddress(HttpServletRequest request,HttpServletResponse res,@Valid @ModelAttribute("address")Address ad,BindingResult result){  
+	    	if(result.hasErrors()){
+	    		ModelAndView model=new ModelAndView("address");
+	    		return model;
+	    	}
 	    	ModelAndView model=new ModelAndView("ordersuccess"); 
 	    	orderService.addAddress(ad);
 			return model;
 	          
 	    }
-	    
 
-	
 		   
 		   @RequestMapping(value="vieworder",method = RequestMethod.GET)  
 		    public ModelAndView vieworder(HttpServletRequest request,HttpServletResponse res,HttpSession session ){  
@@ -100,6 +101,12 @@ public class OrderController {
 		         ModelAndView model = new ModelAndView("vieworders");
 		    	    List<Order> order = orderService.getOrders(username);      	    
 		    	    model.addObject("order",order);	    	    	    	     	  
+		         return model;
+		    }  
+		   @RequestMapping(value="cancelOrder/{id}",method = RequestMethod.GET)  
+		    public ModelAndView cancelorder(HttpServletRequest request,HttpServletResponse res,@PathVariable int id ){  		
+		         ModelAndView model = new ModelAndView("cancelorder");
+		         orderService.cancelorder(id);	    	   	    	     	  
 		         return model;
 		    }  
 }

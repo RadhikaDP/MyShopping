@@ -76,14 +76,14 @@ public class AdminController {
 
     }
     
-    @RequestMapping(value = "/contact",method = RequestMethod.GET)
+    @RequestMapping(value = "contact",method = RequestMethod.GET)
 
     public ModelAndView ContactProcess(HttpServletRequest request,HttpServletResponse res){
     	
     	ModelAndView model=new ModelAndView("contact");
     	return model;
     }
-    @RequestMapping(value = "/about",method = RequestMethod.GET)
+    @RequestMapping(value = "about",method = RequestMethod.GET)
 
     public ModelAndView AboutProcess(HttpServletRequest request,HttpServletResponse res){
     	

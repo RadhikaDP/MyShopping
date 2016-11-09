@@ -1,5 +1,8 @@
 package shop.controller;
 
+
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,7 +62,7 @@ public class LoginController {
     	return model;
     }
    
-    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @RequestMapping(value={"/login"},method = RequestMethod.POST)
     public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
     	
     	if (result.hasErrors()) {
@@ -77,18 +80,20 @@ public class LoginController {
 				if (islogSuccesful) {
 				
 					 HttpSession session=request.getSession();  
-					 String username=login.getUsername(); //Creating Session for the User
+					 String username=login.getUsername(); 
 			         session.setAttribute("name",username );
 					
 					logger.info(" successfull");
+					
 					List<Category> category = catService.getUserList();	
 					List<SubCategory> sub = subservice.getList();
-					List<SubCategory2> sub2 = subService2.getList();
-			    	ModelAndView model=new ModelAndView("user");			    	
-			    	model.addObject("category",category);
+					ModelAndView model=new ModelAndView("user");
+					model.addObject("category",category);		    	
 			    	model.addObject("sub",sub);
-			    	model.addObject("sub2",sub2);
+					
+			    				    	
 			    	
+			    
 			    	return model;
 									
 					} 

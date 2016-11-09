@@ -8,11 +8,28 @@ private String flatno;
 	@NotEmpty(message="locality cannot be empty")
 private String locality;
 	@NotEmpty(message="town cannot be empty")
+	private String country;
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	@NotEmpty(message="country cannot be empty")
 private String town;
 	@NotEmpty(message="state cannot be empty")
 private String state;
 	@NotEmpty(message="pincode cannot be empty")
 private String pincode;
+
+	private String productname;
+	
+public String getProductname() {
+		return productname;
+	}
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
 public String getFlatno() {
 	return flatno;
 }

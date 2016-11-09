@@ -1,6 +1,7 @@
 package shop.dao.impl;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,9 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import shop.bean.Cart;
-import shop.bean.Users;
 import shop.dao.CartDao;
-import shop.validate.AESCrypt;
 import shop.validate.WarningMsg;
 
 public class CartDaoImp implements CartDao{

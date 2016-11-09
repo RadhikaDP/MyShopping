@@ -20,7 +20,7 @@
          </tr>   
          <tr>    
           <td>Subcategory Id : </td>   
-          <td><form:input path="sub2id"  /></td>  
+          <td><form:input path="subcategory"  /></td>  
          </tr>     
          <tr>    
           <td>Product name :</td>    

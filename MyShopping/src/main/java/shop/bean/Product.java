@@ -1,12 +1,19 @@
 package shop.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Product {
 	private int id;
+	@NotEmpty(message="subcategory cannot be empty")
 	private String subcategory;
+	@NotEmpty(message="productname cannot be empty")
 	private String productname;
+	@NotEmpty(message="productbrand cannot be empty")
 	private String productbrand;
 	private double price;
+	@NotEmpty(message="description cannot be empty")
 	private String description;
+	
 	public int getId() {
 		return id;
 	}

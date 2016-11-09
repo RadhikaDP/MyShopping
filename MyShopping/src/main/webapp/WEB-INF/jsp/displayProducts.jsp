@@ -21,7 +21,7 @@
 <body> 
 <h1>Products List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th></tr> 
+<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th><th>Add to cart</th><th>Buy Now</th></tr> 
 
    <c:forEach var="pro" items="${sub2}">   
    <tr>  
@@ -29,8 +29,8 @@
    <td>${pro.productbrand}</td>  
    <td>${pro.price}</td>
    <td>${pro.description}</td>
-   <td><a href="addcart/${pro.id}/${pro.productname}/${pro.sub2id}">Add to Cart</a></td>  
-   <td><a href="buynow/${pro.sub2id }/${pro.id}">Buy Now </a></td>  
+   <td><a href="addcart/${pro.id}/${pro.productname}/${pro.subcategory}">Add to Cart</a></td>  
+   <td><a href="buynow/${pro.subcategory}/${pro.id}">Buy Now </a></td>  
    </tr>  
    </c:forEach>  
    </table>  
