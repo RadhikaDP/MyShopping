@@ -7,13 +7,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>buynow</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
-<link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <%@ page isELIgnored="false" %>

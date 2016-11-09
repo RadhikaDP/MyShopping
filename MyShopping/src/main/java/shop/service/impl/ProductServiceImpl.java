@@ -49,9 +49,15 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getProductList(String id) {
-		// TODO enerated method stub
+	public List<Product> getProductList(int id) {
+
 		return productDao.getProductList(id);
+	}
+
+	@Override
+	public List<Product> getbysubname(String id) {
+		
+		return productDao.getbysubname(id);
 	}
 
 	

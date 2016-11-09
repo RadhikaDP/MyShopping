@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${cat.subcategory}
+
         <h1>Add New Product</h1>  
        <form:form method="post" action="saveproduct" modelAttribute="product">    
         <table >    
@@ -23,11 +23,14 @@ ${cat.subcategory}
          Select Subcategory:
           </td>
           <td>  
-           
+          <form:select path="category" name="category" id="category" items="${category}"  >
+          
+          </form:select>
+             </td><td>   
           <form:select path="subcategory" name="subcategory" id="subcategory" items="${subcategory}"  >
           
           </form:select>
-       
+               
           </td>  
          </tr>  
          <tr>    

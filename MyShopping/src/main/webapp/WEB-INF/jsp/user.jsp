@@ -9,6 +9,7 @@
 <head><%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/dropdownmenue.css" />
@@ -23,7 +24,7 @@
  <div align="center">
 <div >
 			<ul class="dropdownMenu">
-				
+				<li><a href="/MyShopping/home">Home</a>
 				<li><a href="#">Categories</a>			
 				
 			 	 <ul class="droprightMenu">  
@@ -35,7 +36,7 @@
                                                                          
                                   <c:if test="${catLevel1.getCategory().equals(catLevel2.getCategory())}">     
                                                      
-                                        <li><a href="displayProducts/${catLevel2.getSubcategory()}">${catLevel2.getSubcategory() }</a> 
+                                        <li><a href="displayProducts/${catLevel2.getId()}">${catLevel2.getSubcategory() }</a> 
                                                                                                                        
                                         </li>
                                     </c:if>                                                                                                                            
@@ -46,12 +47,12 @@
      </li>
 				<li><a href="#">My Account</a>
 					<ul class="droprightMenu">
-						<li><a href="viewcart">Cart</a></li>
-						<li><a href="vieworder">Orders</a></li>						
+						<li><a href="/MyShopping/viewcart">Cart</a></li>
+						<li><a href="/MyShopping/vieworder">Orders</a></li>						
 					</ul></li>
-					<li><a href="/Myshopping/about">About Us</a></li>
+					<li><a href="/MyShopping/about">About Us</a></li>
 					<li><a href="/MyShopping/contact">Contact Us</a></li>
-					<li><a href="logout">Logout</a></li>
+					<li><a href="/MyShopping/logout">Logout</a></li>
 				
 			</ul>
 			</div>		</div>

@@ -93,7 +93,9 @@ public class ProductController {
 	    		
 	    		ModelAndView model=new ModelAndView("productform");	
 	    		List<String> subcategory = subService.getcategoryList();
+	    		List<String> category = subService.getallcategory();
 		    	model.addObject("subcategory",subcategory);
+		    	model.addObject("category",category);
 		    	return model;
 	    	 
 	    	}
@@ -111,7 +113,7 @@ public class ProductController {
 	    
 	
 	    @RequestMapping(value="/displayProducts/{id}",method = RequestMethod.GET)  
-	    public ModelAndView displayProducts(HttpServletRequest request,HttpServletResponse res,@PathVariable String id,HttpSession session){
+	    public ModelAndView displayProducts(HttpServletRequest request,HttpServletResponse res,@PathVariable int id,HttpSession session){
 	    	
 	    	
 	    	ModelAndView model=new ModelAndView("displayProducts");
@@ -129,7 +131,7 @@ public class ProductController {
 	    public ModelAndView AddToCart(HttpServletRequest request,HttpServletResponse res,@PathVariable String id){
 	    	
 	    	ModelAndView model=new ModelAndView("buynow");
-	    	List<Product> sub2 = pService.getProductList(id);
+	    	List<Product> sub2 = pService.getbysubname(id);
 	    	model.addObject("sub2",sub2);	    	
 			return model;
 	    }

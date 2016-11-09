@@ -13,6 +13,10 @@ public class Product {
 	private double price;
 	@NotEmpty(message="description cannot be empty")
 	private String description;
+	private int subid;
+	@NotEmpty(message="subcategory cannot be empty")
+	private String category;
+	@NotEmpty(message="subcategory cannot be empty")
 	
 	public int getId() {
 		return id;
@@ -51,6 +55,19 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public int getSubid() {
+		return subid;
+	}
+	public void setSubid(int subid) {
+		this.subid = subid;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	
 	
 }

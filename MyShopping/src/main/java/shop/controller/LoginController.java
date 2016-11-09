@@ -54,14 +54,24 @@ public class LoginController {
 	
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
-    public ModelAndView registeringProcess(HttpServletRequest request,HttpServletResponse res,Login login){
+    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
     	
     	ModelAndView model=new ModelAndView("login");
     	model.addObject("login",login);
     	logger.info("Registration model created");
     	return model;
     }
-   
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+
+    public ModelAndView gethomepage(HttpServletRequest request,HttpServletResponse res,Login login){
+    	
+    	List<Category> category = catService.getUserList();	
+		List<SubCategory> sub = subservice.getList();
+		ModelAndView model=new ModelAndView("user");
+		model.addObject("category",category);		    	
+    	model.addObject("sub",sub);	  
+    	return model;
+    }
     @RequestMapping(value={"/login"},method = RequestMethod.POST)
     public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
     	

@@ -10,7 +10,8 @@ public interface ProductService {
 	public int delete(int id);
 	public int update(Product c);
 	public int save(Product c);
-	public List<Product> getProductList(String id);
+	public List<Product> getProductList(int id);
+	public List<Product> getbysubname(String id);
 
 	
 }
