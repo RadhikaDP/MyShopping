@@ -24,22 +24,19 @@
 				<li><a href="#">Home</a></li>				
 				<li><a href="#">Categories</a>			
 				 <ul class="droprightMenu">  
-                 <c:forEach items="${category}" var="catLevel1">               
-                        <li><a href="#">${catLevel1.getCategory()}</a> 
+                    <c:forEach items="${category}" var="catLevel1">     
+                           
+                        <li ><a href="#">${catLevel1.getCategory()}</a> 
                             <ul class="droprightMenu">                  
                                 <c:forEach items="${sub}" var="catLevel2"> 
-                                    <c:forEach items="${sub}" var="catLevel2"> 
                                                                          
-                                     <c:if test="${catLevel1.getCategory() == catLevel2.getCategory()}">     
+                                  <c:if test="${catLevel1.getCategory().equals(catLevel2.getCategory())}">     
                                                      
-                                        <li><a href="displayProducts/${catLevel2.id}">${catLevel2.getSubcategory() }</a> 
+                                        <li><a href="displayProducts/${catLevel2.getSubcategory()}">${catLevel2.getSubcategory() }</a> 
                                                                                                                        
                                         </li>
-                                    </c:if>                                                                                                     
-                                 <%--   <li><a href="displayProducts/${catLevel2.id}">${catLevel2.getSubcategory() }</a>  --%>  
-                                </c:forEach>                               
-                            </ul></li>
-                </c:forEach>
+                                    </c:if>                                                                                                                            
+                                </c:forEach>
               </ul>	</li>
 				<li><a href="#">My Account</a>
 					<ul class="droprightMenu">
