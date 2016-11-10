@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import shop.bean.Address;
-import shop.bean.CreditCard;
+
 import shop.bean.Order;
 import shop.bean.Product;
 import shop.service.ProductService;
-import shop.service.SubCategory2Service;
 import shop.service.SubCategoryService;
 import shop.validate.WarningMsg;
 
@@ -32,11 +29,7 @@ public class ProductController {
 	private SubCategoryService subService;
 	@Autowired
 	private ProductService pService;
-	
-	@Autowired
-	private SubCategory2Service subService2;
-	
-	
+		
     private Logger logger=Logger.getLogger(ProductController.class);
     @RequestMapping(value = "/productHome",method = RequestMethod.GET)
 
@@ -145,7 +138,7 @@ public class ProductController {
     	ModelAndView model=new ModelAndView("buynow");
     	Product pro =  pService.getProductById(ids);
     	model.addObject("pro",pro);	    	
-    	model.addObject(od);
+    	
 		return model;
     }
     

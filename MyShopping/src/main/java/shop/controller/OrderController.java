@@ -50,7 +50,8 @@ public class OrderController {
 		   session  = request.getSession(false);
 		   String username= (String) session.getAttribute("name");
 	         ModelAndView model = new ModelAndView("viewcart");
-	    	    List<Cart> cart = cartService.getCartproducts(username);      	    
+	    	    List<Cart> cart = cartService.getCartproducts(username);      	
+	    	    
 	    	    model.addObject("cart",cart);	    	    	    	     	  
 	         return model;
 	    }  

@@ -16,11 +16,12 @@
 
 <h1>Cart</h1>  
 <table border="2" width="70%" cellpadding="2">  
- <tr><th>Product name</th><th>Remove</th><tr>
+ <tr><th>Product name</th><th>Remove</th><th>Buy</th><tr>
    <c:forEach var="cart" items="${cart}">   
    <tr>  
    <td>${cart.productname}</td>  
    <td><a href="deletcart/${cart.cartid }">Remove from cart</a></td>    
+   <td><a href="/MyShopping/displayProducts/buynow/${cart.productname}/${cart.productid}">Buy Now</a></td>
    </tr>  
    </c:forEach>  
    </table>     
