@@ -43,7 +43,7 @@ function selectsubcategory(){
          Select Category:
           </td>
           <td>  
-          <form:select path="category" name="category" id="category" items="${category}"  onchange="selectsubcategory()">
+          <form:select path="category" name="category" id="category" items="${category}"  >
           
           </form:select></td>
           </tr>
