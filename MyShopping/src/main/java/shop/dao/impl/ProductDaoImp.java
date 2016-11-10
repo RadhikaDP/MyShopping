@@ -60,14 +60,15 @@ public class ProductDaoImp implements ProductDao {
 		sub=c.getSubcategory();
 		cat= c.getCategory();
 		int subid=getsubid(cat,sub);
-		System.out.println(subid);
-	    String sql="insert into public.products(subcategory,productname,productbrand,price,description,subid,category) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription() +"',"+c.getSubid()+",'"+c.getCategory() +"')";  
+
+	    String sql="insert into public.products(subcategory,productname,productbrand,price,description,subid,category) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription() +"',"+subid+",'"+c.getCategory() +"')";  
 	    return template.update(sql); 
 	}
 	
 	public int getsubid(String cat,String sub){
-		String sql="select id from subcategory where category='"+cat+"' and subcategory='"+sub+"'";
-		return template.update(sql);
+		String sql="select id from subcategory where category=? and subcategory= ?";
+		int subid = (int)template.queryForObject(sql, new Object[] {cat,sub},Integer.class);
+		return subid;
 	}
 	
 	
