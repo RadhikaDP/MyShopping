@@ -24,7 +24,7 @@ function  computecost()
 {
 	var quantity=document.getElementById("quantity").value;
   
- 	/* document.getElementById("total").disabled = "true";   */
+ 	 document.getElementById("total").disabled = "true";  
 	document.getElementById("total").value= quantity*${pro.price};
  
 

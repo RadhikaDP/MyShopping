@@ -19,8 +19,9 @@ public class OrderDaoImp implements OrderDao{
 	}
 
 	@Override
-	public int Addorder(String proname, String username, int quantity, double total) {
-		
+	public int Addorder(String proname, String username, int quantity, double price) {
+	
+		double total = quantity*price;
 		String sql="insert into public.order(username,total,quantity,proname) values('"+username+"',"+  total+","+ quantity +",'"+ proname +"')";  
 	    return template.update(sql); 
 		
