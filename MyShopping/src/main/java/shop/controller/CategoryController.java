@@ -1,5 +1,6 @@
 package shop.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -54,7 +55,13 @@ public class CategoryController {
 	    } 
 	    @RequestMapping(value="/editsavecategory",method = RequestMethod.POST)  
 	    public ModelAndView editsave(@ModelAttribute("category") Category cat){  
+	    	try{
 	    	catService.update(cat);  
+	    	}
+	    	catch(Exception e){
+	    	String msg ="Category Already Exists";
+	    	WarningMsg.showDialog(msg);
+	    	}
 	        return new ModelAndView("redirect:/category");  
 	    }
 	    

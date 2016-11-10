@@ -28,7 +28,7 @@
 				<li><a href="/MyShopping/categoryHome">Category </a></li>
 					<li><a href="/MyShopping/productHome">Product </a>
 				<li><a href="/MyShopping/customer">Customer </a>
-				<li><a href="/MyShopping/admin">Logout</a></li>				
+				<li><a href="/MyShopping/adminlogout">Logout</a></li>				
 			</ul>
 			</div>		</div>
 		</nav>
