@@ -80,15 +80,19 @@ public class ProductController {
 	    @RequestMapping(value="/productform",method=RequestMethod.GET)  
 	    public ModelAndView showform( @ModelAttribute("product") Product cat){  
 	    	
-	    	List<String> subcategory = subService.getcategoryList();	
-	    	
-	    	return new ModelAndView("productform", "subcategory", subcategory);		
-
+	    		
+	    	ModelAndView model=new ModelAndView("productform");	
+	    	List<String> subcategory = subService.getcategoryList();
+	    	List<String> category = subService.getallcategory();
+	    	model.addObject("subcategory",subcategory);
+	    	model.addObject("category",category);	
+	    	return model;
+	    	 
 	        
 	    } 
 	    
 	    @RequestMapping(value="/saveproduct",method = RequestMethod.POST)  
-	    public ModelAndView save(@Valid @ModelAttribute("product") Product cat,BindingResult result) throws Exception{  
+	    public ModelAndView save( @ModelAttribute("product") Product cat,BindingResult result) throws Exception{  
           if (result.hasErrors()) {
 	    		
 	    		ModelAndView model=new ModelAndView("productform");	

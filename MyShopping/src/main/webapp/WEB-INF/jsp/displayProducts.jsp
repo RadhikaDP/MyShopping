@@ -30,7 +30,7 @@
    <td>${pro.productbrand}</td>  
    <td>${pro.price}</td>
    <td>${pro.description}</td>
-   <td><a href="addcart/${pro.id}/${pro.productname}/${pro.subcategory}">Add to Cart</a></td>  
+   <td><a href="addcart/${pro.id}/${pro.productname}/${pro.subid}">Add to Cart</a></td>  
    <td><a href="buynow/${pro.subcategory}/${pro.id}">Buy Now </a></td>  
    </tr>  
    </c:forEach>  

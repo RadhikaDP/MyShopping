@@ -38,7 +38,7 @@ public class OrderController {
 
 	   
 	   @RequestMapping(value="/displayProducts/addcart/{id}/{proname}/{sub2id}",method = RequestMethod.GET)  
-	    public ModelAndView addtocart(@PathVariable int id,@PathVariable String sub2id,@PathVariable String proname,HttpServletRequest request,HttpServletResponse res, HttpSession session ){  	
+	    public ModelAndView addtocart(@PathVariable int id,@PathVariable int sub2id,@PathVariable String proname,HttpServletRequest request,HttpServletResponse res, HttpSession session ){  	
 		   session  = request.getSession(false);
 		  String username= (String) session.getAttribute("name");	   		 			 
 		   cartService.save(id,username,proname);	 
@@ -62,8 +62,8 @@ public class OrderController {
 	    	   
 	    	     return new ModelAndView("redirect:/viewcart"); 
 	    }  
-	   @RequestMapping(value="address/{proname:[a-zA-Z0-9\\s]*}",method = RequestMethod.POST)  
-	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable("proname") String proname,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
+	   @RequestMapping(value="address/{proname:[a-zA-Z0-9\\s]*}/{price}",method = RequestMethod.POST)  
+	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable("proname") String proname, @PathVariable("price") double price,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
 	    	
 	    	if(result.hasErrors()){
 	    		ModelAndView model=new ModelAndView("buynow");
@@ -74,8 +74,8 @@ public class OrderController {
 	    	
 	    	ModelAndView model=new ModelAndView("address");   
 	    	int quantity = od.getQuantity();
-	    	double total = od.getTotal();
-	    	orderService.Addorder(proname,username,quantity,total);
+	   
+	    	orderService.Addorder(proname,username,quantity,price);
 	    	
 			return model;
 	          
