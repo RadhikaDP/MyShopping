@@ -15,8 +15,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/dropdownmenue.css" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-</script>
+
+
 </head>
 <body>
 
@@ -24,11 +24,11 @@
  <div align="center">
 <div >
 			<ul class="dropdownMenu">
-				<li><a href="/MyShopping/admin">Home</a>
-				<li><a href="/MyShopping/categoryHome">Category </a></li>
-					<li><a href="/MyShopping/productHome">Product </a>
-				<li><a href="/MyShopping/customer">Customer </a>
-				<li><a href="/MyShopping/admin">Logout</a></li>				
+				<li><a href="/MyShopping/login">Sign In</a>
+				<li><a href="/MyShopping/registration">Sign Up</a></li>
+					<li><a href="/MyShopping/admin">Admin</a>
+				<li><a href="/MyShopping/about">About us</a>
+				<li><a href="/MyShopping/contact">contact us</a></li>				
 			</ul>
 			</div>		</div>
 		</nav>

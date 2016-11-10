@@ -5,7 +5,6 @@
   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<jsp:include page="/WEB-INF/jsp/homeheader.jsp"></jsp:include> 
 <br/>
 <br/>
 <head>
@@ -19,6 +18,7 @@
 </style>
 </head>
 <body id="login">
+ <jsp:include page="/WEB-INF/jsp/temp.jsp"></jsp:include> 
   <div class="app-cam">
  <div align="center">
  <h2 class="form-heading"> LOGIN</h2>
@@ -47,5 +47,5 @@
     </div>
     </div>
 </body>
-<jsp:include page="/WEB-INF/jsp/homefooter.jsp"></jsp:include> 
+
 </html>

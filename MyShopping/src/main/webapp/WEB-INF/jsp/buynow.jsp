@@ -16,6 +16,13 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 <%@ page isELIgnored="false" %>
 
 <script type="text/javascript">

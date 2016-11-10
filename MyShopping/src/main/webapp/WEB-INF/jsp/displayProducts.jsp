@@ -18,6 +18,13 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <%@ page isELIgnored="false" %>
+<script type="text/javascript">
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 </head>
 <body> 
 <h1>Products List</h1>  

@@ -4,6 +4,13 @@
 <html>
 <jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
+<script type="text/javascript">
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>

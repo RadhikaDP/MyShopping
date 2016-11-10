@@ -5,7 +5,7 @@
   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<jsp:include page="/WEB-INF/jsp/homeheader.jsp"></jsp:include> 
+<jsp:include page="/WEB-INF/jsp/temp.jsp"></jsp:include> 
 <br/>
 <br/>
 <head>
@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body id="login" background-image:url('bg.jpg');>
   <div class="app-cam">
@@ -44,4 +45,3 @@
     </div>
     </div>
 </body>
-<jsp:include page="/WEB-INF/jsp/homefooter.jsp"></jsp:include> 

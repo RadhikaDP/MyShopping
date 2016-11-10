@@ -9,6 +9,13 @@
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 </head>
 <body>
         <h1>Add New Customer</h1>  

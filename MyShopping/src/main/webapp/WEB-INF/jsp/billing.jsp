@@ -15,6 +15,13 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 </head>
 <body>
  <div align="center">

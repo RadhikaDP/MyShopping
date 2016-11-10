@@ -9,30 +9,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+if(session.getAttribute("name")==null){
+	response.sendRedirect("/MyShopping/login");
+}
+%>
+</script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script language="javascript" type="text/javascript">
-function selectsubcategory(){
-
-	  var dropdown1 =document.getElementById("category").value;
-	 	 	
-}
 
 </script>
 </head>
 <body>
 
-<%--   <% String c= request.getParameter("dropdown1"); %><%=c%>
- 
-	<sql:setDataSource var="res" driver="org.postgresql.Driver"
-	     url="jdbc:postgresql://localhost:5432/DemoDatabase"
-	     user="postgres"  password="root@123"/>
-
-	<sql:query dataSource="${res}" var="result">
-	SELECT subcategory from subcategory where category='<%=c%>'
-	</sql:query>  --%>
         <h1>Add New Product</h1>  
        <form:form method="post" action="saveproduct" modelAttribute="product">    
         <table >    

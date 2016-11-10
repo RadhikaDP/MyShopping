@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
 </head>
 <body id="login" background-image:url('bg.jpg');>
   <div class="app-cam">
@@ -26,4 +25,3 @@
     </div>
     </div>
 </body>
-<jsp:include page="/WEB-INF/jsp/homefooter.jsp"></jsp:include> 
