@@ -48,7 +48,7 @@ function  computecost()
    <td></td>
    </tr>  
    </table>     
-       <form:form action="/MyShopping/address/${pro.productname }" method="post" modelAttribute="order"  >
+       <form:form action="/MyShopping/address/${pro.productname }/${pro.price}" method="post" modelAttribute="order"  >
             <table border="0">
            		   <tr>
                     <td>Quantity</td>
