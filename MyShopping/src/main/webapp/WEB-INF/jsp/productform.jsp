@@ -77,11 +77,7 @@ function selectsubcategory(){
           <td><form:input path="description" /></td>  
           <td align="left"><form:errors path="description" /></td>
          </tr>   
-         <tr>    
-          <td>Subcategory Id</td>    
-          <td><form:input path="subid" /></td>  
-          <td align="left"><form:errors path="description" /></td>
-         </tr>
+      
          <tr>    
           <td> </td>    
           <td><input type="submit" value="Save" /></td>    

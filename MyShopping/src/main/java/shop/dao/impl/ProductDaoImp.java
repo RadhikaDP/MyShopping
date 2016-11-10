@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import shop.bean.Product;
+import shop.bean.SubCategory;
 import shop.dao.ProductDao;
 
 public class ProductDaoImp implements ProductDao {
