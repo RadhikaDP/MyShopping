@@ -17,10 +17,18 @@ public class RegDaoImp implements RegDao {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	/*
+	 * database connection details are passed to datasource.
+	 */
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	
+	/**
+	 * isRegSuccesful() method : This method register new user. 
+	 * It encripts user password using AES Encription algorithm and  Inserts user details into user table , on success returns true else false.
+	 */
 	@Override
 	public boolean isRegSuccesful(Users regBean)  {
 

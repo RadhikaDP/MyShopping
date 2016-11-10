@@ -28,10 +28,14 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	/**
+	 * returns Collection of subcategory
+	 */
 	@Override
 	public List<SubCategory> getList() {
 	    return template.query("select * from public.subcategory",new RowMapper<SubCategory>(){  
@@ -44,7 +48,9 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 	        }  
 	    });
 	}
-
+/**
+ * returns list of all subcategories from subcategory table.
+ */
 	@Override
 	public List<String> getcategoryList() {
 	    return template.query("select subcategory from public.subcategory",new RowMapper<String>(){  
@@ -54,7 +60,9 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 	        }  
 	    });
 	}
-	
+	/**
+	 * returns list of all categories from category table.
+	 */
 	@Override
 	public List<String> getallcategory() {
 	    return template.query("select category from public.category",new RowMapper<String>(){  
@@ -64,23 +72,31 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 	        }  
 	    });
 	}
-	
+/**
+ * returns subcategory based on id.
+ */
 	@Override
 	public SubCategory getsubcategoryId(int id) {
 		 String sql="select * from public.subcategory where id=?";  
 		    return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<SubCategory>(SubCategory.class)); 
 	}
-
+/**
+ * deletes subcategory based on id.
+ */
 	@Override
 	public int delete(int id) {
 	    String sql="delete from public.subcategory where id="+id+"";  
 	    return template.update(sql);	}
-
+/**
+ * updates subcategory with new edited values from jsp.
+ */
 	@Override
 	public int update(SubCategory c) {
 	    String sql="update public.subcategory set category='"+c.getCategory()+"',subcategory='"+c.getSubcategory()+"' where id="+c.getId()+"";  
 	    return template.update(sql); 	}
-
+/**
+ * checks combination of category and subcategory  existance if exists then returns back to same page else new category and subcategory will be added
+ */
 	@Override
 	public int save(SubCategory cat,String category,String subcategory) {
 		boolean check= checkcatexistance(category,subcategory);
@@ -137,6 +153,9 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 		   
 
 	   }
+    /**
+     * returns category from subcategory
+     */
 	@Override
 	public List<String> getcatofsub() {
 		 return template.query("select category from public.subcategory",new RowMapper<String>(){  
@@ -147,49 +166,4 @@ public class SubCategoryDaoImp implements SubCategoryDao {
 		    });
 	}
 
-	@Override
-	public List<String> getmensubcat() {
-		 return template.query("select subcategory from public.subcategory where category='Men'",new RowMapper<String>(){  
-		        public String mapRow(ResultSet rs, int row) throws SQLException {  	            
-		           return rs.getString(1);
-		              
-		        }  
-		    });
-	}
-	@Override
-	public List<String> getwomensubcat() {
-		 return template.query("select subcategory from public.subcategory where category='Women'",new RowMapper<String>(){  
-		        public String mapRow(ResultSet rs, int row) throws SQLException {  	            
-		           return rs.getString(1);
-		              
-		        }  
-		    });
-	}
-	@Override
-	public List<String> getbookssubcat() {
-		 return template.query("select subcategory from public.subcategory where category='Books'",new RowMapper<String>(){  
-		        public String mapRow(ResultSet rs, int row) throws SQLException {  	            
-		           return rs.getString(1);
-		              
-		        }  
-		    });
-	}
-	@Override
-	public List<String> getbabysubcat() {
-		 return template.query("select subcategory from public.subcategory where category='Baby and Kids'",new RowMapper<String>(){  
-		        public String mapRow(ResultSet rs, int row) throws SQLException {  	            
-		           return rs.getString(1);
-		              
-		        }  
-		    });
-	}
-	@Override
-	public List<String> getecsubcat() {
-		 return template.query("select subcategory from public.subcategory where category='Electronic Devices'",new RowMapper<String>(){  
-		        public String mapRow(ResultSet rs, int row) throws SQLException {  	            
-		           return rs.getString(1);
-		              
-		        }  
-		    });
-	}
 }

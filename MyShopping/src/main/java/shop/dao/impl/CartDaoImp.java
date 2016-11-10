@@ -29,16 +29,27 @@ public class CartDaoImp implements CartDao{
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	/**
+	 * 
+	 * @param dataSource : database connection details are passed to datasource.
+	 */
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	
+/**
+ * delete() method : cart details are deleted with given id.
+ * @param id : cart id 
+ */
 	@Override
 	public int delete(int id) {
 	    String sql="delete from public.cart where cartid="+id+"";  
 	    return template.update(sql);  
 	}
-
+/**
+ * getCartproducts() : returns collection of Cart of loged user 
+ */
 	@Override
 	public List<Cart> getCartproducts(String username) {
 		  return template.query("select * from public.cart where username='"+username+"'",new RowMapper<Cart>(){  
@@ -52,6 +63,12 @@ public class CartDaoImp implements CartDao{
 		        }  
 		    }); 
 	}
+	/**
+	 * save() method : checkexistance() method is called to check whether product already exists in cart ,If product does not exists in cart saves username, product id , product name into database.
+	 * @param username : username of loged user.
+	 * @param proname : name of the product to insert into cart.
+	 * @param proid : product id 
+	 */
 	@Override
 	public int save(int proid, String username,String proname) {
 		
@@ -68,7 +85,12 @@ public class CartDaoImp implements CartDao{
 
 		
 	}
-
+/**
+ * checkexistance() method ; takes two parameters username and product id to check whether product exist in cart.
+ * @param proid : product id
+ * @param username : username of loged user.
+ * @return
+ */
    public boolean checkexistance(int proid,String username){
 
 		boolean b=false;

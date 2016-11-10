@@ -33,6 +33,10 @@ public class RegistrationController {
 	    	logger.info("Registration model created");
 	    	return model;
 	    }
+	    /**
+	     * processRegistration() method : Inserts new user details and isRegSuccesful returns true and redirects to ligin page else redirects to registration page.
+	     * @return
+	     */
 	    
 	    @RequestMapping(value="/registration",method = RequestMethod.POST)
 	    public ModelAndView processRegistration(@Valid @ModelAttribute("registration") Users reg, BindingResult result,Login log) {
@@ -43,7 +47,7 @@ public class RegistrationController {
 	    	}
 	    	
 			try {
-
+				
 				boolean isRegSuccesful = regService.isRegSuccesful(reg);
 			
 					if (isRegSuccesful) {

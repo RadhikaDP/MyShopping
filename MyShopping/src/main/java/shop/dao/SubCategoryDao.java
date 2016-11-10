@@ -12,9 +12,5 @@ public interface SubCategoryDao {
 	public int delete(int id);
 	public int update(SubCategory c);
 	public int save(SubCategory cat,String category,String subcategory);
-	public List<String> getmensubcat();
-	public List<String> getwomensubcat();
-	public List<String> getbookssubcat();
-	public List<String> getbabysubcat();
-	public List<String> getecsubcat();
+
 }

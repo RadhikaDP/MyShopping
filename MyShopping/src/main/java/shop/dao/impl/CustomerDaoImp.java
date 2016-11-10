@@ -20,30 +20,41 @@ public class CustomerDaoImp implements CustomerDao{
 	public void setTemplate(JdbcTemplate template) {  
 	    this.template = template;  
 	}
+	/**
+	 * inserts user details into user table.
+	 */
 	@Override
 	public int save(Users p) throws Exception {
 	    String sql="insert into public.user(username,password,email,phone) values('"+p.getUsername()+"','"+AESCrypt.encrypt(p.getPassword())+"','"+p.getEmail()+"','"+p.getPhone()+"')";  
 	    return template.update(sql); 
 	}
-
+	/**
+	 * updates user table with edited values .
+	 */
 	@Override
 	public int update(Users p) {
 	    String sql="update public.user set username='"+p.getUsername()+"', email='"+p.getEmail()+"', phone='"+p.getPhone()+"' where id="+p.getId()+"";  
 	    return template.update(sql);  
 	}
-
+/**
+ * delets user from user table having userid as id.
+ */
 	@Override
 	public int delete(int id) {
 	    String sql="delete from public.user where id="+id+"";  
 	    return template.update(sql);  
 	}
-
+	/**
+	 * returns user details of user having userid as id.
+	 */
 	@Override
 	public Users getEmpById(int id) {
 	    String sql="select * from public.user where id=?";  
 	    return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Users>(Users.class));  
 	}
-
+	/**
+	 * returs collection of all customers or users .
+	 */
 	@Override
 	public List<Users> getCustomers() {
 	    return template.query("select * from public.user",new RowMapper<Users>(){  

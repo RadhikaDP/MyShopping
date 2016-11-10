@@ -52,6 +52,7 @@ public class LoginController {
 	@Autowired
 	private SubCategory2Service subService2;
 	
+	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
     public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
@@ -61,17 +62,26 @@ public class LoginController {
     	logger.info("Registration model created");
     	return model;
     }
+    
     @RequestMapping(value = "/home",method = RequestMethod.GET)
 
     public ModelAndView gethomepage(HttpServletRequest request,HttpServletResponse res,Login login){
-    	
+    	//returns collection of all  categories.
     	List<Category> category = catService.getUserList();	
+    	//returns collection of all subcategories.
 		List<SubCategory> sub = subservice.getList();
 		ModelAndView model=new ModelAndView("user");
 		model.addObject("category",category);		    	
     	model.addObject("sub",sub);	  
     	return model;
     }
+    /**
+     * 
+     * @param login :  modelattributes username and password.
+  	* @param islogSuccesful  : returns true if user is authentic else returns false.
+  	* If user enter in valid credentials then user will be redirected to login page.
+     * @return 
+     */
     @RequestMapping(value={"/login"},method = RequestMethod.POST)
     public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
     	
@@ -94,16 +104,13 @@ public class LoginController {
 			         session.setAttribute("name",username );
 					
 					logger.info(" successfull");
-					
+					//returns collection of all  categories.
 					List<Category> category = catService.getUserList();	
+					//returns collection of all subcategories.
 					List<SubCategory> sub = subservice.getList();
 					ModelAndView model=new ModelAndView("user");
 					model.addObject("category",category);		    	
-			    	model.addObject("sub",sub);
-					
-			    				    	
-			    	
-			    
+			    	model.addObject("sub",sub);			    
 			    	return model;
 									
 					} 
@@ -128,7 +135,10 @@ public class LoginController {
 
 
     }
-    
+    /**
+     * user session is invalidated and session attributes are removed.
+     * redirected to user login page.
+     */
     @RequestMapping(value = "/logout",method = RequestMethod.GET)
 
     public ModelAndView LogoutProcess(HttpServletRequest req,HttpServletResponse res){

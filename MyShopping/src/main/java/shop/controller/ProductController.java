@@ -42,24 +42,28 @@ public class ProductController {
     }
 
 	@RequestMapping("/product")
-	public ModelAndView getUserList(HttpServletRequest request,HttpServletResponse response,Product cat) {			
+	public ModelAndView getUserList(HttpServletRequest request,HttpServletResponse response,Product cat) {	
+		//returns collection products
 					List<Product> product = pService.getList();				
 					return new ModelAndView("product", "product", product);				
 	}
 	
 	   @RequestMapping(value="/editproduct/{id}")  
 	    public ModelAndView edit(@PathVariable int id){  
+		   //returns product based on product id
 		   Product cat=pService.getProductById(id);  
 	        return new ModelAndView("editproduct","command",cat);  
 	    } 
 	   @RequestMapping(value="/deleteproduct/{id}",method = RequestMethod.GET)  
 	    public ModelAndView delete(@PathVariable int id){  
+		 //deletes product based on product id
 		   pService.delete(id);  
 	        return new ModelAndView("redirect:/product");  
 	    } 
 	    @RequestMapping(value="/editsaveproduct",method = RequestMethod.POST)  
 	    public ModelAndView editsave(@ModelAttribute("product") Product cat){  
 	    	try{
+	    		//updates product with new product details passed through jsp page.
 	    	pService.update(cat);  
 	    	}
 	      	catch(Exception e){
@@ -75,7 +79,9 @@ public class ProductController {
 	    	
 	    		
 	    	ModelAndView model=new ModelAndView("productform");	
+	    	// returns list of all subcategories from subcategory table.
 	    	List<String> subcategory = subService.getcategoryList();
+	    	//returns list of all categories from category table.
 	    	List<String> category = subService.getallcategory();
 	    	model.addObject("subcategory",subcategory);
 	    	model.addObject("category",category);	
@@ -89,7 +95,9 @@ public class ProductController {
           if (result.hasErrors()) {
 	    		
 	    		ModelAndView model=new ModelAndView("productform");	
+	    		// returns list of all subcategories from subcategory table.
 	    		List<String> subcategory = subService.getcategoryList();
+	    		//returns list of all categories from category table.
 	    		List<String> category = subService.getallcategory();
 		    	model.addObject("subcategory",subcategory);
 		    	model.addObject("category",category);
@@ -115,6 +123,7 @@ public class ProductController {
 	    	
 	    	
 	    	ModelAndView model=new ModelAndView("displayProducts");
+	    	//returns product based on id
 	    	List<Product> sub2 = pService.getProductList(id);
 	    	  session  = request.getSession(false);
 			  String username= (String) session.getAttribute("name");	
@@ -123,12 +132,17 @@ public class ProductController {
 	    	model.addObject(username);
 			return model;
 	    }
-		
+		/**
+		 * 
+		 * @param id : name of subcategory
+		 * @return
+		 */
 	    
     @RequestMapping(value="/displayProducts/buynow/{id}",method = RequestMethod.GET)  
 	    public ModelAndView AddToCart(HttpServletRequest request,HttpServletResponse res,@PathVariable String id){
 	    	
 	    	ModelAndView model=new ModelAndView("buynow");
+	    	//returns product by subcategory name 
 	    	List<Product> sub2 = pService.getbysubname(id);
 	    	model.addObject("sub2",sub2);	    	
 			return model;
@@ -137,6 +151,7 @@ public class ProductController {
     public ModelAndView producttobuy(HttpServletRequest request,HttpServletResponse res,@PathVariable int ids,@ModelAttribute("order") Order od){
     	
     	ModelAndView model=new ModelAndView("buynow");
+    	//returns product based on id.
     	Product pro =  pService.getProductById(ids);
     	model.addObject("pro",pro);	    	
     	

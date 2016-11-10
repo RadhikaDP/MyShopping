@@ -17,7 +17,9 @@ public class OrderDaoImp implements OrderDao{
 	public void setTemplate(JdbcTemplate template) {  
 	    this.template = template;  
 	}
-
+	/**
+	 * Addorder() inserts username, product name, price and quantity of product into order table.
+	 */
 	@Override
 	public int Addorder(String proname, String username, int quantity, double price) {
 	
@@ -26,12 +28,16 @@ public class OrderDaoImp implements OrderDao{
 	    return template.update(sql); 
 		
 	}
+	//inserts address details into address table.
 	@Override
 	public int addAddress(Address ad) {
 		String sql="insert into public.address(flatno,locality,town,state,pincode) values('"+ad.getFlatno()+"','"+  ad.getLocality()+"','"+ ad.getTown() +"','"+ ad.getState() +"','"+ad.getPincode()+"')";  
 	    return template.update(sql); 
 		
 	}
+	/**
+	 * getOrders() ; returns collection of orders made by the user.
+	 */
 	@Override
 	public List<Order> getOrders(String username) {
 		  return template.query("select * from public.order where username='"+username+"'",new RowMapper<Order>(){  
@@ -46,7 +52,9 @@ public class OrderDaoImp implements OrderDao{
 		        }  
 		    }); 
 	}
-
+/**
+ * deletes order from order table with orderid as id 
+ */
 	@Override
 	public int cancelorder(int id) {
 		String sql="delete from public.order where orderid="+id+"";  

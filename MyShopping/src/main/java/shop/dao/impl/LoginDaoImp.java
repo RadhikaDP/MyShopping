@@ -24,6 +24,9 @@ public class LoginDaoImp implements LoginDao{
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	/**
+	 * authenticateUser() method : checks authentication of user from database.
+	 */
 	@Override
 	public boolean authenticateUser(Login login) throws SQLException  {
 

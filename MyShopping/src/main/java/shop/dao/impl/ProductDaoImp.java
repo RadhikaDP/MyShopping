@@ -19,6 +19,9 @@ public class ProductDaoImp implements ProductDao {
 	public void setTemplate(JdbcTemplate template) {  
 	    this.template = template;  
 	}
+	/**
+	 * returns collection of products
+	 */
 	@Override
 	public List<Product> getList() {
 	    return template.query("select * from public.products",new RowMapper<Product>(){  
@@ -37,24 +40,33 @@ public class ProductDaoImp implements ProductDao {
 	    });
 	}
 
+	/**
+	 * returns product based on id.
+	 */
 	@Override
 	public Product getProductById(int id) {
 		 String sql="select * from public.products where id=?";  
 		    return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Product>(Product.class));  
 	}
-
+	/**
+	 * deletes product based on id.
+	 */
 	@Override
 	public int delete(int id) {
 	    String sql="delete from public.products where id="+id+"";  
 	    return template.update(sql); 
 	}
-
+	/**
+	 * updates product table with new edited values.
+	 */
 	@Override
 	public int update(Product c) {
 	    String sql="update public.products set subcategory='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
 	    return template.update(sql); 
 	}
-
+	/**
+	 * Inserts products into product table.
+	 */
 	@Override
 	public int save(Product c) {
 		String sub,cat;
@@ -65,14 +77,19 @@ public class ProductDaoImp implements ProductDao {
 	    String sql="insert into public.products(subcategory,productname,productbrand,price,description,subid,category) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription() +"',"+subid+",'"+c.getCategory() +"')";  
 	    return template.update(sql); 
 	}
-	
+	/**
+	 * 
+	 * @returns id of subcategory based on category and subcategory parameters 
+	 */
 	public int getsubid(String cat,String sub){
 		String sql="select id from subcategory where category=? and subcategory= ?";
 		int subid = (int)template.queryForObject(sql, new Object[] {cat,sub},Integer.class);
 		return subid;
 	}
 	
-	
+	/**
+	 * returns collection of products based on subcategory id.
+	 */
 	public List<Product> getProductList(int id) {
 		String sql="select * from public.products where subid='"+id+"'";
 	    return template.query(sql,new RowMapper<Product>(){  
@@ -90,7 +107,9 @@ public class ProductDaoImp implements ProductDao {
 	        }  
 	    });
 	}
-
+	/**
+	 * returns collection of products based on subcategory .
+	 */
 	public List<Product> getbysubname(String id) {
 		String sql="select * from public.products where subcategory='"+id+"'";
 	    return template.query(sql,new RowMapper<Product>(){  

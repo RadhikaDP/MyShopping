@@ -18,15 +18,19 @@ public class AdminDaoImp implements AdminDao{
 	public DataSource getDataSource() {
 		return dataSource;
 	}
+	/**
+	 * Database connection details are passed to datasource.
+	 */
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	/**
+	 * authenticateUser() method : This method takes username and password from  login page and checks whether username and password exists in database .
+	 */
 	@Override
 	public boolean authenticateUser(Admin login) throws SQLException  {
-
-		
-		
+			
 		System.out.println(login.getUsername());
 		boolean b=false;
 		try{
