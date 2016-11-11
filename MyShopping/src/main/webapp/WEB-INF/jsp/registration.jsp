@@ -25,7 +25,7 @@
              
                 <tr>
                    
-                    <td><form:input path="username" pattern="[A-Za-z]{1,25}" title="only alphabets MAXLENGTH=25" placeholder="User Name" /></td>
+                    <td><form:input path="username" pattern="[A-Za-z0-1]{1,25}" title="only alphabets and numbers MAXLENGTH=25" placeholder="User Name" /></td>
                      <td align="left"><form:errors path="username" cssClass="error"/></td>
                 </tr>
                 <tr>

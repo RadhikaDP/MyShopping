@@ -27,8 +27,8 @@ if(session.getAttribute("name")==null){
 </script>
 </head>
 <body> 
-<h1>Products List</h1>  
-<table border="2" width="70%" cellpadding="2">  
+<h2 class="form-heading">Products List</h2>  
+<table border="2" width="70%" cellpadding="2" >  
 <tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th><th>Add to cart</th><th>Buy Now</th></tr> 
 
    <c:forEach var="pro" items="${sub2}">   

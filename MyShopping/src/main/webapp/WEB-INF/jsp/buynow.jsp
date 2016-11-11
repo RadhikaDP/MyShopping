@@ -55,29 +55,30 @@ function  computecost()
    <td></td>
    </tr>  
    </table>     
+    <div class="app-cam">
        <form:form action="/MyShopping/address/${pro.productname }/${pro.price}" method="post" modelAttribute="order"  >
             <table border="0">
            		   <tr>
                     <td>Quantity</td>
-                    <td><form:input path="quantity" name="quantity" id="quantity" placeholder="Quantity" /></td>
+                    <td><form:input path="quantity" name="quantity" id="quantity" pattern="[0-9]{1,2}" title="maximum quantity is 99" placeholder="Quantity" onchange="computecost()"/></td>
                     <td align="left"><form:errors path="quantity" cssClass="error"/></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><input type="button" value="total cost"  onclick=" computecost()"  /></td>
+                    <td>Total Amount</td>
                     <td><form:input path="total" name="total" id="total"  readonly="readonly"/></td>
                     <td align="left"><form:errors path="total" cssClass="error"/></td>
                     <td></td>
                 </tr>
-                         
+                      <tr></tr>   
                 <tr>
                 <td></td>
                     <td colspan="2" align="center"><input type="submit" value="Proceed to pay" /></td>
                 </tr>
-                <tr><td><input type="reset" value="clear" /></td></tr>
+                <tr><td  align="center"><input type="reset" value="clear" /></td></tr>
             </table>
         </form:form>
-
+</div>
    
 </body>
 </html>

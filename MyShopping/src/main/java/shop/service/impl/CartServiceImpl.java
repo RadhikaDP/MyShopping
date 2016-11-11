@@ -1,11 +1,8 @@
 package shop.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import shop.bean.Cart;
-import shop.bean.Users;
 import shop.dao.CartDao;
 import shop.service.CartService;
 

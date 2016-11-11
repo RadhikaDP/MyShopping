@@ -5,7 +5,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
-<head>
+<head><%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>checkout</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
@@ -25,12 +25,13 @@ if(session.getAttribute("name")==null){
 </script>
 </head>
 <body>
+
  <div align="center">
-<h3>Enter your Address details </h3>
+<h3>Enter your Address details </h3> <%-- ${orderid } --%>
  <form:form action="/MyShopping/address1" method="post" modelAttribute="address">
             <table border="0">
              
-                <tr>
+                <tr >
                    
                     <td><form:input path="flatno" placeholder="Flat no / House no" pattern="[0-9]{1,6}" title="only digits are allowed"/></td>
                     <td align="left"><form:errors path="flatno" /></td>
@@ -41,7 +42,7 @@ if(session.getAttribute("name")==null){
                     <td align="left"><form:errors path="locality"/></td>
                 </tr>
                   <tr>
-           				<td>
+           				<td >
                          <form:select path="country" name="country" class="countries" id="countryId">
                                      <form:option value="">Select Contry</form:option>
                                     </form:select>
@@ -49,15 +50,15 @@ if(session.getAttribute("name")==null){
                 </tr>
                  <tr>     
                 
-                    <td>
+                    <td >
                     <form:select path="state" name="state" class="states" id="stateId">
                                      <form:option value="">Select State</form:option>
                                     </form:select>
                     </td>
                 </tr>
                 <tr>
-           			<td>
-                         <form:select path="town" name="city" class="cities" id="cityId">
+           			<td >
+                         <form:select path="town" name="city" class="cities" id="cityId" >
                                      <form:option value="">Select City</form:option>
                                     </form:select>
                     </td>
@@ -75,5 +76,6 @@ if(session.getAttribute("name")==null){
            
        </form:form>
         </div>
+
 </body>
 </html>

@@ -2,7 +2,7 @@ package shop.service;
 
 import java.util.List;
 import shop.bean.Product;
-import shop.bean.SubCategory2;
+
 
 public interface ProductService {
 	public List<Product> getList();

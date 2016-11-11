@@ -1,12 +1,8 @@
 package shop.service.impl;
 
 import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import shop.bean.Product;
-import shop.bean.SubCategory2;
 import shop.dao.ProductDao;
 import shop.service.ProductService;
 

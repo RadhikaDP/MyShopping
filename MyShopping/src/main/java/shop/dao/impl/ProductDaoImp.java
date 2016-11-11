@@ -1,6 +1,7 @@
 package shop.dao.impl;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import shop.bean.Product;
-import shop.bean.SubCategory;
 import shop.dao.ProductDao;
 
 public class ProductDaoImp implements ProductDao {

@@ -28,12 +28,12 @@
            
                 <tr>
                     
-                    <td><form:input path="username" name="uname" placeholder="User Name"/></td>
+                    <td><form:input path="username" name="uname" placeholder="User Name" pattern="[A-Za-z0-1]{1,25}" title="only alphabets and numbers MAXLENGTH=25"/></td>
                     <td align="left"><form:errors path="username" cssClass="error"/></td>
                 </tr>
                 <tr>
                   
-                    <td><form:password path="password" name="upass" placeholder="Password" /></td>
+                    <td><form:password path="password" name="upass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>
                     <td align="left"><form:errors path="password" cssClass="error"/></td>
                 </tr>            
                 <tr>

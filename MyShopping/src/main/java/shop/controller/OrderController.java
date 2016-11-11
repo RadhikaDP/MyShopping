@@ -4,6 +4,7 @@ package shop.controller;
 import java.util.List;
 
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,10 @@ import javax.validation.Valid;
 
 import shop.bean.Address;
 import shop.bean.Cart;
-import shop.bean.CreditCard;
 import shop.bean.Order;
 import shop.service.CartService;
 import shop.service.OrderService;
-import shop.service.ProductService;
+
 
 
 @Controller
@@ -95,9 +95,15 @@ public class OrderController {
 	    	
 	    	ModelAndView model=new ModelAndView("address");   
 	    	int quantity = od.getQuantity();
+	    	int orderid = od.getId();
+	    	System.out.println(orderid);
+	    	if(quantity<0 || price==0.0){
+	    		ModelAndView model1=new ModelAndView("redirect:/home");
+	    		return model1;
+	    	}
 	    	//inserts product details into order table.
 	    	orderService.Addorder(proname,username,quantity,price);
-	    	
+	    	model.addObject("orderid",orderid);
 			return model;
 	          
 	    }

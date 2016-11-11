@@ -1,9 +1,8 @@
 package shop.dao;
 
 import java.util.List;
-
 import shop.bean.Cart;
-import shop.bean.Users;
+
 
 
 public interface CartDao {

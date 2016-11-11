@@ -25,7 +25,6 @@ import shop.service.AdminService;
  * AdminController.java: defined under shop.controller package
  * AdminController is a controller class to handle requests for adminPage.
  * Here administrator Can view product,customer,category section
- * @author rapa0716
  *
  */
 @Controller

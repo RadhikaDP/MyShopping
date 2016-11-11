@@ -1,9 +1,8 @@
 package shop.controller;
 
 
-
-import java.util.ArrayList;
 import java.util.List;
+
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +25,9 @@ import shop.validate.WarningMsg;
 import shop.bean.Category;
 import shop.bean.Login;
 import shop.bean.SubCategory;
-import shop.bean.SubCategory2;
 import shop.bean.Users;
 import shop.service.CategoryService;
 import shop.service.LoginService;
-import shop.service.SubCategory2Service;
 import shop.service.SubCategoryService;
 
 
@@ -49,8 +46,6 @@ public class LoginController {
 	@Autowired
 	private SubCategoryService subservice;
 	
-	@Autowired
-	private SubCategory2Service subService2;
 	
 	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)

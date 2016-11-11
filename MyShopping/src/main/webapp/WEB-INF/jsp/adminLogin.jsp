@@ -17,7 +17,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 </head>
-<body id="login" background-image:url('bg.jpg');>
+<body >
   <div class="app-cam">
  <div align="center">
  <h2 class="form-heading"> ADMIN LOGIN</h2>

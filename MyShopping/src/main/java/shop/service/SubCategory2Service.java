@@ -1,8 +1,6 @@
 package shop.service;
 
 import java.util.List;
-
-import shop.bean.SubCategory;
 import shop.bean.SubCategory2;
 
 public interface SubCategory2Service {

@@ -1,9 +1,7 @@
 package shop.dao;
 
 import java.util.List;
-
 import shop.bean.Product;
-import shop.bean.SubCategory2;
 
 
 
