@@ -27,17 +27,18 @@ public String getUsername() {
 public void setUsername(String username) {
 	this.username = username;
 }
-public double getTotal() {
-	return total;
-}
-public void setTotal(double total) {
-	this.total = total;
-}
 public int getQuantity() {
 	return quantity;
 }
 public void setQuantity(int quantity) {
 	this.quantity = quantity;
 }
+public BigDecimal getTotal() {
+	return total;
+}
+public void setTotal(BigDecimal total) {
+	this.total = total;
+}
+
 
 }
