@@ -93,11 +93,15 @@ public class LoginController {
 			boolean islogSuccesful = logService.authenticateUser(login);
 		
 				if (islogSuccesful) {
+				boolean isactive = logService.isActive(login.getUsername(), reg);
+			//	System.out.println("..............."+isactive);
 				
-					 HttpSession session=request.getSession();  
-					 String username=login.getUsername(); 
-			         session.setAttribute("name",username );
+				if(isactive){
+					HttpSession session= request.getSession(true);
 					
+					session.setMaxInactiveInterval(300);
+					
+					session.setAttribute("name", login.getUsername());				
 					logger.info(" successfull");
 					//returns collection of all  categories.
 					List<Category> category = catService.getUserList();	
@@ -107,7 +111,14 @@ public class LoginController {
 					model.addObject("category",category);		    	
 			    	model.addObject("sub",sub);			    
 			    	return model;
-									
+				}	
+				else{
+					String msg="session time out";
+					WarningMsg.showDialog(msg);
+			    	ModelAndView model=new ModelAndView("login");	
+			    	model.addObject("login",login);
+			    	return model;			
+				}
 					} 
 				else {
 
