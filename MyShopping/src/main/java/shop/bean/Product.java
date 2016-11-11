@@ -1,5 +1,7 @@
 package shop.bean;
 
+import java.math.BigDecimal;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Product {
@@ -10,7 +12,7 @@ public class Product {
 	private String productname;
 	@NotEmpty(message="productbrand cannot be empty")
 	private String productbrand;
-	private double price;
+	private BigDecimal price;
 	@NotEmpty(message="description cannot be empty")
 	private String description;
 	private int subid;
@@ -43,12 +45,6 @@ public class Product {
 	public void setProductbrand(String productbrand) {
 		this.productbrand = productbrand;
 	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
 	public String getDescription() {
 		return description;
 	}
@@ -66,6 +62,12 @@ public class Product {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 	
