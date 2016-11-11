@@ -1,10 +1,12 @@
 package shop.bean;
 
+import java.math.BigDecimal;
+
 public class Order {
 private int id;
 private String productname;
 private String username;
-private double total;
+private BigDecimal total;
 private int quantity;
 
 

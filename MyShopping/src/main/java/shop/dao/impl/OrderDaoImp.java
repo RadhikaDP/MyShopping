@@ -1,5 +1,6 @@
 package shop.dao.impl;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,9 +22,10 @@ public class OrderDaoImp implements OrderDao{
 	 * Addorder() inserts username, product name, price and quantity of product into order table.
 	 */
 	@Override
-	public int Addorder(String proname, String username, int quantity, double price) {
-	
-		double total = quantity*price;
+	public int Addorder(String proname, String username, int quantity, BigDecimal price) {
+		
+		BigDecimal total =calculateCost(quantity,price);
+		
 		String sql="insert into public.order(username,total,quantity,proname) values('"+username+"',"+  total+","+ quantity +",'"+ proname +"')";  
 	    return template.update(sql); 
 		
@@ -46,7 +48,7 @@ public class OrderDaoImp implements OrderDao{
 		            e.setId(rs.getInt(1));  
 		            e.setProductname(rs.getString(5));
 		            e.setUsername(rs.getString(2));  
-		            e.setTotal(rs.getDouble(3)); 
+		            e.setTotal(rs.getBigDecimal(3)); 
 		            e.setQuantity(rs.getInt(4));
 		            return e;  
 		        }  
@@ -60,4 +62,13 @@ public class OrderDaoImp implements OrderDao{
 		String sql="delete from public.order where orderid="+id+"";  
 	    return template.update(sql);
 	}
+	
+	  public BigDecimal calculateCost(int Quantity, BigDecimal Price)
+	    {
+		    BigDecimal itemCost  = BigDecimal.ZERO;
+		    BigDecimal totalCost = BigDecimal.ZERO;
+		   itemCost  = Price.multiply(new BigDecimal(Quantity));
+		   totalCost = totalCost.add(itemCost);
+	        return totalCost;
+	    }
 }

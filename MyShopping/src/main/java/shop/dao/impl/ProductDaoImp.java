@@ -31,7 +31,7 @@ public class ProductDaoImp implements ProductDao {
 	            e.setSubcategory(rs.getString(6));
 	            e.setProductname(rs.getString(2)); 	 
 	            e.setProductbrand(rs.getString(3));
-	            e.setPrice(rs.getDouble(4));
+	            e.setPrice(rs.getBigDecimal(4));
 	            e.setDescription(rs.getString(5));
 	            e.setSubid(rs.getInt(7));
 		           e.setCategory(rs.getString(8));
@@ -99,7 +99,7 @@ public class ProductDaoImp implements ProductDao {
 	           e.setSubcategory(rs.getString(6));
 	           e.setProductname(rs.getString(2));
 	           e.setProductbrand(rs.getString(3));
-	           e.setPrice(rs.getDouble(4));
+	           e.setPrice(rs.getBigDecimal(4));
 	           e.setDescription(rs.getString(5));
 	           e.setSubid(rs.getInt(7));
 	           e.setCategory(rs.getString(8));
@@ -119,7 +119,7 @@ public class ProductDaoImp implements ProductDao {
 	           e.setSubcategory(rs.getString(6));
 	           e.setProductname(rs.getString(2));
 	           e.setProductbrand(rs.getString(3));
-	           e.setPrice(rs.getDouble(4));
+	           e.setPrice(rs.getBigDecimal(4));
 	           e.setDescription(rs.getString(5));
 	           e.setSubid(rs.getInt(7));
 	           e.setCategory(rs.getString(8));

@@ -1,5 +1,6 @@
 package shop.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ private OrderDao orderDao;
 		return orderDao.getOrders(username);
 	}
 	@Override
-	public int Addorder(String proname, String username, int quantity, double total) {
+	public int Addorder(String proname, String username, int quantity, BigDecimal total) {
 		
 		return orderDao.Addorder(proname, username, quantity, total);
 	}

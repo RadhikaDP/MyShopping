@@ -1,6 +1,7 @@
 package shop.controller;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -84,7 +85,7 @@ public class OrderController {
 	    * @return
 	    */
 	   @RequestMapping(value="address/{proname:[a-zA-Z0-9\\s]*}/{price}",method = RequestMethod.POST)  
-	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable("proname") String proname, @PathVariable("price") double price,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
+	    public ModelAndView getcheckout(HttpServletRequest request,HttpServletResponse res, @PathVariable("proname") String proname, @PathVariable("price") BigDecimal price,@Valid @ModelAttribute("order") Order od,BindingResult result, HttpSession session , @ModelAttribute("address") Address ad){  
 	    	
 	    	if(result.hasErrors()){
 	    		ModelAndView model=new ModelAndView("buynow");
@@ -97,7 +98,7 @@ public class OrderController {
 	    	int quantity = od.getQuantity();
 	    	int orderid = od.getId();
 	    	System.out.println(orderid);
-	    	if(quantity<0 || price==0.0){
+	    	if(quantity<0){
 	    		ModelAndView model1=new ModelAndView("redirect:/home");
 	    		return model1;
 	    	}
