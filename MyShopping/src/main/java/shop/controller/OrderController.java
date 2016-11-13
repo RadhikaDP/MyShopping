@@ -29,7 +29,7 @@ import shop.service.OrderService;
 
 @Controller
 public class OrderController {
-	
+	int oid =90;
 	@Autowired
 	private OrderService orderService;
 	@Autowired

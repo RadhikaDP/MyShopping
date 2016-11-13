@@ -60,6 +60,12 @@ public String getPincode() {
 public void setPincode(String pincode) {
 	this.pincode = pincode;
 }
+public int getOrderid() {
+	return orderid;
+}
+public void setOrderid(int orderid) {
+	this.orderid = orderid;
+}
 
 
 }
