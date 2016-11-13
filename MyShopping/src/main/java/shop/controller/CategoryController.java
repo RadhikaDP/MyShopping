@@ -48,6 +48,7 @@ public class CategoryController {
 		
 		//getUserList() : returns collection of Category from category table
 		List<Category> category = catService.getUserList();				
+		logger.info("category model created");
 		return new ModelAndView("category", "category", category);				
 	}
 	

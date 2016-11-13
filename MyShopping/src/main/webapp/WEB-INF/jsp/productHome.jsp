@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
 <%
 if(session.getAttribute("name")==null){
 	response.sendRedirect("/MyShopping/login");
@@ -22,9 +23,10 @@ if(session.getAttribute("name")==null){
  <body >
  <br/><br/><br/>
   <div align="center">
-<a href="productform">Add Product</a>  
-<br/>
-<a href="product">View Product</a> 
+  <h3>
+<a href="productform">Add Product</a>  </h3>
+<br/><h3>
+<a href="product">View Product</a> </h3>
 </div>
 </body> 
 </html>

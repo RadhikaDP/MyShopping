@@ -25,23 +25,41 @@ if(session.getAttribute("name")==null){
 }
 %>
 </script>
+
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
 <body> 
-<h2 class="form-heading">Products List</h2>  
-<table border="2" width="70%" cellpadding="2" >  
-<tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th><th>Add to cart</th><th>Buy Now</th></tr> 
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Products
+          </h4>
+ </div>
+<table  >  
+<tr><th class="col-xs-2">Product name</th><th class="col-xs-2">Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2">Add to cart</th><th class="col-xs-2">Buy Now</th></tr> 
 
    <c:forEach var="pro" items="${sub2}">   
    <tr>  
-   <td>${pro.productname}</td>  
-   <td>${pro.productbrand}</td>  
-   <td>${pro.price}</td>
-   <td>${pro.description}</td>
-   <td><a href="addcart/${pro.id}/${pro.productname}/${pro.subid}">Add to Cart</a></td>  
-   <td><a href="buynow/${pro.subcategory}/${pro.id}">Buy Now </a></td>  
+   <td class="col-xs-2">${pro.productname}</td>  
+   <td class="col-xs-2">${pro.productbrand}</td>  
+   <td class="col-xs-2">${pro.price}</td>
+   <td class="col-xs-2">${pro.description}</td>
+   <td class="col-xs-2"><a href="addcart/${pro.id}/${pro.productname}/${pro.subid}">Add to Cart</a></td>  
+   <td class="col-xs-2"><a href="buynow/${pro.subcategory}/${pro.id}">Buy Now </a></td>  
    </tr>  
    </c:forEach>  
    </table>  
-   
+   </div></div></div>
 </body>
 </html>

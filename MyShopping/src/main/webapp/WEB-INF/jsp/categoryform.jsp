@@ -4,9 +4,11 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html><jsp:include page="/WEB-INF/jsp/adminHome.jsp"></jsp:include> 
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title><%@ page isELIgnored="false" %>
 <script type="text/javascript">
@@ -19,6 +21,7 @@ if(session.getAttribute("name")==null){
 </head>
 
 <body>
+<div align="center">
         <h1>Add New Category</h1>  
        <form:form method="post" action="savecategory"  modelAttribute="category">    
         <table >    
@@ -33,7 +36,7 @@ if(session.getAttribute("name")==null){
          </tr>    
         </table>    
        </form:form>
-       <a href="categoryHome">Back</a>
+       <a href="categoryHome">Back</a></div>
        </body>
 
 </html>

@@ -16,34 +16,51 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
 <%
 if(session.getAttribute("name")==null){
 	response.sendRedirect("/MyShopping/login");
 }
 %>
 </script>
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
 <body>
-  
-  
-<h1>Product List</h1>  
-<table border="2" width="70%" cellpadding="2">  
-<tr><th>Id</th><th>Subcategory</th> <th>Product Name</th><th>Product Brand</th><th>Price</th><th>Description</th><th>Edit</th><th>Delete</th></tr>  
+    <div align="center">
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Product List
+          </h4>
+ </div> 
+<table>  
+<tr><th class="col-xs-2">Id</th><th class="col-xs-2">Subcategory</th> <th class="col-xs-2">Product Name</th><th class="col-xs-2">Product Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2" >Edit</th><th class="col-xs-2">Delete</th></tr>  
    <c:forEach var="cat" items="${product}">   
    <tr>  
-   <td>${cat.id}</td>  
-   <td>${cat.subcategory }</td>
-   <td>${cat.productname}</td>  
-   <td>${cat.productbrand}</td>  
-   <td>${cat.price}</td>  
-   <td>${cat.description}</td> 
-   <td><a href="editproduct/${cat.id}">Edit</a></td>  
-   <td><a href="deleteproduct/${cat.id}">Delete</a></td>  
+   <td class="col-xs-2">${cat.id}</td>  
+   <td class="col-xs-2">${cat.subcategory }</td>
+   <td class="col-xs-2">${cat.productname}</td>  
+   <td class="col-xs-2">${cat.productbrand}</td>  
+   <td class="col-xs-2">${cat.price}</td>  
+   <td class="col-xs-2">${cat.description}</td> 
+   <td class="col-xs-2"><a href="editproduct/${cat.id}">Edit</a></td>  
+   <td class="col-xs-2"><a href="deleteproduct/${cat.id}">Delete</a></td>  
    </tr>  
    </c:forEach>  
-   </table>  
+   </table>  </div></div></div>
    <br/>  
    <a href="productform">Add New Product</a>  
-     <br>  <a href="productHome">Back</a>
+     <br>  <a href="productHome">Back</a></div>
 </body>
 </html>

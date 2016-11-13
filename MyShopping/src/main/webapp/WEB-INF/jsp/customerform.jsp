@@ -3,9 +3,11 @@
          <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html><jsp:include page="/WEB-INF/jsp/adminHome.jsp"></jsp:include> 
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -17,7 +19,7 @@ if(session.getAttribute("name")==null){
 %>
 </script>
 </head>
-<body>
+<body><div align="center">
         <h1>Add New Customer</h1>  
        <form:form method="post" action="save" modelAttribute="registration">    
         <table >    
@@ -47,6 +49,6 @@ if(session.getAttribute("name")==null){
          </tr>    
         </table>    
        </form:form>
-        <br>  <a href="customer">Back</a>
+        <br>  <a href="customer">Back</a></div>
        </body>
 </html>

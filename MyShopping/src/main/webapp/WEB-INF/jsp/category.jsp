@@ -6,6 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -16,24 +17,45 @@ if(session.getAttribute("name")==null){
 }
 %>
 </script>
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
-<body>
-  
-  
-<h1>Category List</h1>  
-<table border="2" width="70%" cellpadding="2">  
-<tr><th>Id</th><th>Name</th><th>Edit</th><th>Delete</th></tr>  
+
+<body >
+  <div align="center">
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Cart
+          </h4>
+ </div>
+<table >  
+<tr><th class="col-xs-2">Id</th><th class="col-xs-2">Name</th><th class="col-xs-2">Edit</th><th class="col-xs-2">Delete</th></tr>  
    <c:forEach var="cat" items="${category}">   
    <tr>  
-   <td>${cat.id}</td>  
-   <td>${cat.category}</td>  
-   <td><a href="editcategory/${cat.id}">Edit</a></td>  
-   <td><a href="deletecategory/${cat.id}">Delete</a></td>  
+   <td class="col-xs-2">${cat.id}</td>  
+   <td class="col-xs-2">${cat.category}</td>  
+   <td class="col-xs-2"><a href="editcategory/${cat.id}">Edit</a></td>  
+   <td class="col-xs-2"><a href="deletecategory/${cat.id}">Delete</a></td>  
    </tr>  
    </c:forEach>  
-   </table>  
+   </table> 
+    
+   </div></div></div>
    <br/>  
-   <a href="categoryform">Add New Category</a>  <br>
+   <a href="categoryform" >Add New Category</a>  <br>
    <a href="categoryHome">Back</a>
+   </div>
 </body>
+
 </html>

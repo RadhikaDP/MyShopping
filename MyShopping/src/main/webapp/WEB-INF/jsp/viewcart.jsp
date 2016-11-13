@@ -24,20 +24,38 @@ if(session.getAttribute("name")==null){
 }
 %>
 </script>
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
 <body>
   
-
-<h1>Cart</h1>  
-<table border="2" width="70%" cellpadding="2"  >  
- <tr><th>Product name</th><th>Remove</th><th>Buy</th><tr>
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Cart
+          </h4>
+ </div>
+<table  >  
+ <tr><th class="col-xs-2">Product name</th><th class="col-xs-2">Remove</th><th class="col-xs-2">Buy</th><tr>
    <c:forEach var="cart" items="${cart}">   
    <tr>  
-   <td>${cart.productname}</td>  
-   <td><a href="deletcart/${cart.cartid }">Remove from  cart</a></td>    
-   <td><a href="/MyShopping/displayProducts/buynow/${cart.productname}/${cart.productid}">Buy Now</a></td>
+   <td class="col-xs-2">${cart.productname}</td>  
+   <td class="col-xs-2"><a href="deletcart/${cart.cartid }">Remove from  cart</a></td>    
+   <td class="col-xs-2"><a href="/MyShopping/displayProducts/buynow/${cart.productname}/${cart.productid}">Buy Now</a></td>
    </tr>  
    </c:forEach>  
-   </table>     
+   </table>   
+   </div>
+   </div></div>  
 </body>
 </html>

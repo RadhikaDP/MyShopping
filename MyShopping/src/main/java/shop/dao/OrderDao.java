@@ -11,7 +11,7 @@ import shop.bean.Order;
 public interface OrderDao {
 	
 	public int Addorder(String proname,String username,int quantity,BigDecimal total);
-	public int addAddress(Address ad);
+	public int addAddress(Address ad,int orderid);
 	public List<Order> getOrders(String username);
 	public int cancelorder(int id);
 }

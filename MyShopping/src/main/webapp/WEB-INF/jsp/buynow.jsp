@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
+    <jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>buynow</title>
@@ -38,13 +38,32 @@ function  computecost()
 }
 
 </script>
-
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
-<body id="login">
+<body >
 
+    <div align="center">
+
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Product 
+          </h4>
+ </div>
   <h2 class="form-heading"> </h2>
 <br></br>
-<table border="2" width="70%" cellpadding="2">  
+<table >  
 <tr><th>Product name</th><th>Brand</th><th>Price</th><th>Description</th></tr> 
 
    <tr>  
@@ -52,9 +71,9 @@ function  computecost()
    <td>${pro.productbrand}</td>  
    <td>${pro.price}</td>
    <td>${pro.description}</td>  
-   <td></td>
+   
    </tr>  
-   </table>     
+   </table>     </div></div></div>
     <div class="app-cam">
        <form:form action="/MyShopping/address/${pro.productname }/${pro.price}" method="post" modelAttribute="order"  >
             <table border="0">
@@ -77,8 +96,6 @@ function  computecost()
                 </tr>
                 <tr><td  align="center"><input type="reset" value="clear" /></td></tr>
             </table>
-        </form:form>
-</div>
-   
+        </form:form></div></div>
 </body>
 </html>

@@ -25,9 +25,9 @@ private OrderDao orderDao;
 		return orderDao.Addorder(proname, username, quantity, total);
 	}
 	@Override
-	public int addAddress(Address ad) {
+	public int addAddress(Address ad,int orderid) {
 		
-		return orderDao.addAddress( ad);
+		return orderDao.addAddress( ad,orderid);
 	}
 	@Override
 	public int cancelorder(int id) {

@@ -26,13 +26,14 @@ if(session.getAttribute("name")==null){
  <body >
  <br/><br/><br/>
   <div align="center">
-<a href="categoryform">Add Category</a>  
-<br/>
-<a href="category">View Category</a> 
-<br/>
-<a href="subcategoryform">Add SubCategory</a>  
-<br/>
-<a href="subcategory">View SubCategory</a> 
+  <h3>
+<a href="categoryform">Add Category</a>  </h3>
+<br/><h3>
+<a href="category">View Category</a> </h3>
+<br/><h3>
+<a href="subcategoryform">Add SubCategory</a>  </h3>
+<br/><h3>
+<a href="subcategory">View SubCategory</a> </h3>
 </div>
 </body> 
 </html>

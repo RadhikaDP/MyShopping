@@ -96,15 +96,11 @@ public class OrderController {
 	    	
 	    	ModelAndView model=new ModelAndView("address");   
 	    	int quantity = od.getQuantity();
-	    	int orderid = od.getId();
-	    	System.out.println(orderid);
-	    	if(quantity<0){
-	    		ModelAndView model1=new ModelAndView("redirect:/home");
-	    		return model1;
-	    	}
+	    
 	    	//inserts product details into order table.
-	    	orderService.Addorder(proname,username,quantity,price);
-	    	model.addObject("orderid",orderid);
+	    	oid=orderService.Addorder(proname,username,quantity,price);
+	    	System.out.println(oid);
+	    	model.addObject("od",od);
 			return model;
 	          
 	    }
@@ -116,8 +112,9 @@ public class OrderController {
 	    		return model;
 	    	}
 	    	ModelAndView model=new ModelAndView("ordersuccess"); 
+	    	System.out.println(oid +"............................................before insertion");
 	    	//inserts address details into address table.
-	    	orderService.addAddress(ad);
+	    	orderService.addAddress(ad,oid);
 			return model;
 	          
 	    }

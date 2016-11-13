@@ -28,9 +28,10 @@ if(session.getAttribute("name")==null){
  <body >
  <br/><br/><br/>
   <div align="center">
-<a href="customerform">Add Customer</a>  
+  
+<h3><a href="customerform">Add Customer</a></h3>
 <br/>
-<a href="viewcustomer">View Customers</a> 
+<h3><a href="viewcustomer">View Customers</a> </h3>
 </div>
 </body> 
 </html>

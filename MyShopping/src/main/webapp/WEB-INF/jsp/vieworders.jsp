@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" /> 
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -16,23 +16,43 @@ if(session.getAttribute("name")==null){
 }
 %>
 </script>
+<style type="text/css">
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5}
+</style>
 </head>
 <body>
   
-  
-<h1>Order List</h1>  
-<table border="2" width="70%" cellpadding="2">  
-<tr><th>Product name</th><th>total</th><th>quantity</th><th>Cancel Order</th></tr>  
+ <div class="container">
+  <div class="row">
+  <div class="panel panel-default"> 
+ <div class="panel-heading">
+          <h4>
+            Orders
+          </h4>
+ </div>
+        <div style="overflow-y:auto;">
+<table >  
+<tr><th class="col-xs-2">Product name</th> <th class="col-xs-2">total</th> <th class="col-xs-2">quantity</th> <th class="col-xs-2">Cancel Order</th></tr>  
    <c:forEach var="cust" items="${order}">   
    <tr>   
-   <td>${cust.productname}</td>  
-   <td>${cust.total}</td>  
-   <td>${cust.quantity}</td>  
+   <td class="col-xs-2">${cust.productname}</td>  
+   <td class="col-xs-2">${cust.total}</td>  
+   <td class="col-xs-2">${cust.quantity}</td>  
   
-   <td><a href="cancelOrder/${cust.id}">CancelOrder</a></td>  
+   <td class="col-xs-2"><a href="cancelOrder/${cust.id}">CancelOrder</a></td>  
    </tr>  
    </c:forEach>  
    </table>  
- 
+   </div>
+   </div>
+   </div>
+ </div> 
 </body>
 </html>

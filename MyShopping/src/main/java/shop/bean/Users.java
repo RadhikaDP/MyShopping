@@ -1,5 +1,6 @@
 package shop.bean;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Users {
@@ -8,6 +9,7 @@ public class Users {
 	private String username;
 	@NotEmpty(message="Password cannot be empty")
 	private String password;
+	@Email
 	@NotEmpty(message="email cannot be empty")
 	private String email;
 	@NotEmpty(message="phone cannot be empty")

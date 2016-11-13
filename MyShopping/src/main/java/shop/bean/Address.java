@@ -3,6 +3,7 @@ package shop.bean;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Address {
+	private int orderid;
 	@NotEmpty(message="flatno cannot be empty")
 private String flatno;
 	@NotEmpty(message="locality cannot be empty")
