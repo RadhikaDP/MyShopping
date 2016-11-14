@@ -1,5 +1,6 @@
 package shop.dao.impl;
 
+import java.math.BigInteger;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ import shop.bean.Login;
 import shop.bean.Users;
 import shop.dao.LoginDao;
 import shop.validate.AESCrypt;
+import shop.validate.MD5withsalt;
 
 public class LoginDaoImp implements LoginDao {
 
@@ -32,33 +34,32 @@ public class LoginDaoImp implements LoginDao {
 	public boolean authenticateUser(Login login) throws SQLException {
 
 		boolean b = false;
+		
 		try {
+			String databasepasss;
+			String q1="Select password from public.user where username= ?";
+			PreparedStatement preparestmt = dataSource.getConnection().prepareStatement(q1);
+			preparestmt.setString(1, login.getUsername());
+			ResultSet result = preparestmt.executeQuery();
+			while(result.next()){
+				
+				 databasepasss =result.getString(1);
 
-			String query = "Select username from public.user where username = ? and password = ? ";
-			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
-			pstmt.setString(1, login.getUsername());
-			String encryptedPassword = AESCrypt.encrypt(login.getPassword());
-
-			pstmt.setString(2, encryptedPassword);
-
-			ResultSet count = pstmt.executeQuery();
-
-			int size = 0;
-			try {
-				while (count.next()) {
-					size++;
-				}
-			} catch (Exception ex) {
-				return false;
+				String arryofstring[] = databasepasss.split(":");
+				
+				String databasePass = arryofstring[0];
+				
+				String databaseSalt =arryofstring[1];
+								
+				byte[] salted =MD5withsalt.fromHex(databaseSalt);
+							
+				String checkpass=MD5withsalt.checksecurepassword(login.getPassword(),salted);
+							
+				 b = databasePass.equals(checkpass);
+											
 			}
-
-			if (size == 1) {
-				b = true;
-				System.out.println(b);
-			} else {
-				b = false;
-			}
-
+			
+			
 		}
 
 		catch (Exception e) {

@@ -1,14 +1,14 @@
 package shop.dao.impl;
 
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import shop.bean.Users;
 import shop.dao.RegDao;
-import shop.validate.AESCrypt;
-
+import shop.validate.MD5withsalt;
 public class RegDaoImp implements RegDao {
 	
 	
@@ -37,9 +37,9 @@ public class RegDaoImp implements RegDao {
 		
 		boolean b=false;
 		try{
-			System.out.println(regBean.getUsername());
 			
-		    String sql="insert into public.user(username,password,email,phone) values('"+regBean.getUsername()+"','"+AESCrypt.encrypt(regBean.getPassword())+"','"+regBean.getEmail()+"','"+regBean.getPhone()+"')";  
+			
+		    String sql="insert into public.user(username,password,email,phone) values('"+regBean.getUsername()+"','"+MD5withsalt.getSecurePassword(regBean.getPassword())+"','"+regBean.getEmail()+"','"+regBean.getPhone()+"')";  
 		    int i = template.update(sql);
 		
 		if(i==1){

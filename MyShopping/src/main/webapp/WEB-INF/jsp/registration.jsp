@@ -40,7 +40,11 @@
                 </tr>
                 <tr>
                     
-                    <td><form:input path="phone"  pattern="[0-9]{1,10}" title="Enter 10 digit mobile number" placeholder="Phone Number"/></td>
+                    <td><form:input path="phone"  pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" title="Enter mobile number of this pattern : 123-456-7890
+(123) 456-7890
+123 456 7890
+123.456.7890
++91 (123) 456-7890" placeholder="Phone Number"/></td>
                      <td align="left"><form:errors path="phone" cssClass="error"/></td>
                 </tr>
                 <tr>
