@@ -99,7 +99,7 @@ public class LoginController {
 				if(isactive){
 					HttpSession session= request.getSession(true);
 					
-					session.setMaxInactiveInterval(300);
+					session.setMaxInactiveInterval(600);
 					
 					session.setAttribute("name", login.getUsername());				
 					logger.info(" successfull");

@@ -111,7 +111,7 @@ public class ProductController {
 	    	}
 	    	catch(Exception e){
 	    		
-				String msg="Product Already Exists";
+				String msg="Invalid data ";
 				WarningMsg.showDialog(msg);
 			}
 	        return new ModelAndView("redirect:/product");

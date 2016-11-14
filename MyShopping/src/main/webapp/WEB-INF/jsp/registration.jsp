@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     
-                    <td><form:input path="phone"  pattern="[0-9]" title="Enter 10 digit mobile number" placeholder="Phone Number"/></td>
+                    <td><form:input path="phone"  pattern="[0-9]{1,10}" title="Enter 10 digit mobile number" placeholder="Phone Number"/></td>
                      <td align="left"><form:errors path="phone" cssClass="error"/></td>
                 </tr>
                 <tr>
