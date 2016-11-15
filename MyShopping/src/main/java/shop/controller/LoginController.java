@@ -150,6 +150,31 @@ public class LoginController {
 			}
 
 		} 
+			if(user.equals("Admin")){
+				boolean islogSuccesful;
+				
+					islogSuccesful = adminService.authenticateUser(admin);
+					if (islogSuccesful) {
+						 
+						logger.info(" successfull");
+						
+				    	ModelAndView model=new ModelAndView("adminHome");			    
+				    	return model;
+										
+						} 
+					else {
+
+					logger.info(" failed");
+					String msg="Invalid credentials : Please try again ";
+					WarningMsg.showDialog(msg);
+			    	ModelAndView model=new ModelAndView("adminLogin");			    
+			    	return model;			
+			    	
+					
+			}
+			}
+			}
+		
 		catch (Exception e) {
 	
 			e.printStackTrace();
