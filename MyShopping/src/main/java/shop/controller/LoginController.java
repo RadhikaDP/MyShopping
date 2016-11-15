@@ -78,7 +78,7 @@ public class LoginController {
      * @return 
      */
     @RequestMapping(value={"/login"},method = RequestMethod.POST)
-    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
+    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res,@ModelAttribute("admin")@Valid Admin admin) {
     	
     	if (result.hasErrors()) {
     		
@@ -89,19 +89,27 @@ public class LoginController {
     	}
 		try {
 			
+			HttpSession session= request.getSession(true);
 			
+			session.setMaxInactiveInterval(600);
+			
+			session.setAttribute("name", login.getUsername());		
+			session.setAttribute("role", login.getRole());
+			
+			
+			String user=(String) session.getAttribute("role");
+			//String user="Customer";
+			if(user.equals("Customer"))
+			{
 			boolean islogSuccesful = logService.authenticateUser(login);
 		
 				if (islogSuccesful) {
+					
 				boolean isactive = logService.isActive(login.getUsername(), reg);
-			//	System.out.println("..............."+isactive);
+		
 				
 				if(isactive){
-					HttpSession session= request.getSession(true);
 					
-					session.setMaxInactiveInterval(600);
-					
-					session.setAttribute("name", login.getUsername());				
 					logger.info(" successfull");
 					//returns collection of all  categories.
 					List<Category> category = catService.getUserList();	
