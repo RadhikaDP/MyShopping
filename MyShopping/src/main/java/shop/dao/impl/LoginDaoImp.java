@@ -1,17 +1,13 @@
 package shop.dao.impl;
-
-import java.math.BigInteger;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import shop.bean.Login;
 import shop.bean.Users;
 import shop.dao.LoginDao;
-import shop.validate.AESCrypt;
 import shop.validate.MD5withsalt;
 
 public class LoginDaoImp implements LoginDao {

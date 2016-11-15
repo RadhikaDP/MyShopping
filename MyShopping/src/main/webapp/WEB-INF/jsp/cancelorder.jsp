@@ -6,7 +6,7 @@
 <head>
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null){
+if(session.getAttribute("name")==null || session.getAttribute("role")!="Customer"){
 	response.sendRedirect("/MyShopping/login");
 }
 %>

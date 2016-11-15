@@ -12,10 +12,10 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title><%@ page isELIgnored="false" %>
+<title>Insert title here</title>
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null){
+if(session.getAttribute("name")==null || session.getAttribute("role")!="Admin"){
 	response.sendRedirect("/MyShopping/login");
 }
 %>

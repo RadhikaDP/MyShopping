@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-  <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>    
+ <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <br/>
@@ -36,9 +36,21 @@
                     <td><form:password path="password" name="upass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>
                     <td align="left"><form:errors path="password" cssClass="error"/></td>
                 </tr>            
+           
                 <tr>
-                
-                
+                <td>
+  
+ 				 <form:select path="role" name="role" items="${roles}" >     
+ 			 
+        		  </form:select> 
+  <!--              <select name="type" >
+   <option value="Customer">Customer</option>
+
+   <option value="Admin">Admin</option>
+  </select> -->
+                   </td>
+                </tr>
+                     <tr>
                     <td colspan="2" align="center"><input type="submit" value="login" /></td>
                 </tr>
             </table>

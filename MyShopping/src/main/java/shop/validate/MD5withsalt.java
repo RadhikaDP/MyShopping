@@ -82,7 +82,7 @@ public class MD5withsalt
     }
    /**
     * 
-    * @param hex conversion of hexadecimal to string
+    * @param hex: conversion of hexadecimal to string
     * @return
     */
     public static byte[] fromHex(String hex)

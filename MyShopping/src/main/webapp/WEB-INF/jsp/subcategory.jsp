@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null){
+if(session.getAttribute("name")==null || session.getAttribute("role")!="Admin"){
 	response.sendRedirect("/MyShopping/login");
 }
 %>
