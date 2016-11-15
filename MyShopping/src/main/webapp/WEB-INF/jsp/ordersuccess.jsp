@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="Customer"){
+if(session.getAttribute("name")==null || !session.getAttribute("role").equals("Customer")){
 	response.sendRedirect("/MyShopping/login");
 }
 %>

@@ -16,9 +16,16 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+<%! String role="admin"; %>  
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="Admin"){
+if(session.getAttribute("name")==null ){
+	
 	response.sendRedirect("/MyShopping/login");
+}
+else if(!session.getAttribute("role").equals(role)){
+	
+	response.sendRedirect("/MyShopping/login");
+	
 }
 %>
 </script>

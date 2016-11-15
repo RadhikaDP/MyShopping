@@ -1,21 +1,22 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>  
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
-<br/>
-<br/>
-<head>
+<head><title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
-<link rel="stylesheet" href="<%=request.getContextPath() %>//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" />
+<%@ page isELIgnored="false" %>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<style>
-</style>
+
 </head>
 <body id="login">
  <jsp:include page="/WEB-INF/jsp/temp.jsp"></jsp:include> 
@@ -28,21 +29,20 @@
            
                 <tr>
                     
-                    <td><form:input path="username" name="uname" placeholder="User Name" pattern="[A-Za-z0-1]{1,25}" title="only alphabets and numbers MAXLENGTH=25"/></td>
+                    <td><form:input path="username" name="uname" placeholder="User Name"  title="only alphabets and numbers MAXLENGTH=25"/></td>
                     <td align="left"><form:errors path="username" cssClass="error"/></td>
                 </tr>
                 <tr>
                   
-                    <td><form:password path="password" name="upass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>
+                    <td><form:password path="password" name="upass" placeholder="Password"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>
                     <td align="left"><form:errors path="password" cssClass="error"/></td>
                 </tr>            
            
                 <tr>
                 <td>
-  
- 				 <form:select path="role" name="role" items="${roles}" >     
- 			 
-        		  </form:select> 
+  				<ul>
+ 				<form:select path="role" items="${userroles}"/>
+        		  </ul>
   <!--              <select name="type" >
    <option value="Customer">Customer</option>
 

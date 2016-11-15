@@ -21,7 +21,7 @@
 <script src="http://lab.iamrohit.in/js/location.js"></script>
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="Customer"){
+if(session.getAttribute("name")==null || !session.getAttribute("role").equals("Customer")){
 	response.sendRedirect("/MyShopping/login");
 }
 %>

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import shop.validate.WarningMsg;
 import shop.bean.Admin;
+import shop.bean.Login;
 import shop.service.AdminService;
 
 /**
@@ -63,7 +64,7 @@ public class AdminController {
 	  */
     
     @RequestMapping(value="/admin",method = RequestMethod.POST)
-    public ModelAndView processLogin(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("admin")@Valid Admin admin,BindingResult result) {
+    public ModelAndView processLogin(HttpServletRequest request,HttpServletResponse response,@Valid @ModelAttribute("login") Login login,BindingResult result) {
 
     	/**
 		 * If there is errors in binding result admin is redirected to adminlogin page.
@@ -82,11 +83,8 @@ public class AdminController {
 		  */
 			boolean islogSuccesful;
 			try {
-				islogSuccesful = adminService.authenticateUser(admin);
-				if (islogSuccesful) {
-					 HttpSession session=request.getSession();  
-					 String username=admin.getUsername(); 
-			         session.setAttribute("name",username );
+				islogSuccesful = adminService.authenticateUser(login);
+				if (islogSuccesful) {			
 					logger.info(" successfull");
 					
 			    	ModelAndView model=new ModelAndView("adminHome");			    
@@ -135,6 +133,7 @@ public class AdminController {
     	
     	HttpSession session  = req.getSession();
     	  session.removeAttribute("name");
+    	  session.removeAttribute("role");
     	  session.invalidate();  
     	  return new ModelAndView("redirect:admin");  
     }

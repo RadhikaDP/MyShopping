@@ -17,8 +17,9 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+<%! String role="Customer"; %>  
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="Customer"){
+if(session.getAttribute("name")==null || !session.getAttribute("role").equals(role)){
 	response.sendRedirect("/MyShopping/login");
 }
 %>

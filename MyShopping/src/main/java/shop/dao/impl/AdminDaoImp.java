@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import shop.validate.AESCrypt;
 import shop.bean.Admin;
+import shop.bean.Login;
 import shop.dao.AdminDao;
 
 
@@ -29,9 +30,11 @@ public class AdminDaoImp implements AdminDao{
 	 * authenticateUser() method : This method takes username and password from  login page and checks whether username and password exists in database .
 	 */
 	@Override
-	public boolean authenticateUser(Admin login) throws SQLException  {
+	public boolean authenticateUser(Login login) throws SQLException  {
 			
 		System.out.println(login.getUsername());
+		System.out.println(login.getRole());
+		System.out.println(login.getPassword());
 		boolean b=false;
 		try{
 

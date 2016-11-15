@@ -1,9 +1,9 @@
 package shop.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,14 +56,15 @@ public class LoginController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
     public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
-    	ArrayList<String> roles = new ArrayList<String>();
-    	
-    	roles.add("Customer");
-    	roles.add("Admin");
+    	   Map< String, String > roles = new HashMap<String, String>();
+           roles.put("admin", "ADMIN");
+           roles.put("Customer", "CUSTOMER");
+      
     	
     	ModelAndView model=new ModelAndView("login");
+    	model.addObject("userroles",roles);
     	model.addObject("login",login);
-    	model.addObject("roles",roles);
+
     	logger.info("login model created");
     	
     	//System.out.println(roles);
@@ -90,7 +91,7 @@ public class LoginController {
      * @return 
      */
     @RequestMapping(value={"/login"},method = RequestMethod.POST)
-    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res,@ModelAttribute("admin")@Valid Admin admin) {
+    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
     	
     	if (result.hasErrors()) {
     		
@@ -106,6 +107,7 @@ public class LoginController {
 			session.setMaxInactiveInterval(600);
 			
 			session.setAttribute("name", login.getUsername());		
+			System.out.println(login.getRole()+"...........................");
 			session.setAttribute("role", login.getRole());
 			
 			
@@ -152,10 +154,10 @@ public class LoginController {
 			}
 
 		} 
-			if(user.equals("Admin")){
+			if(user.equals("admin")){
 				boolean islogSuccesful;
 				
-					islogSuccesful = adminService.authenticateUser(admin);
+					islogSuccesful = adminService.authenticateUser(login);
 					if (islogSuccesful) {
 						 
 						logger.info(" successfull");
@@ -196,6 +198,7 @@ public class LoginController {
     	
     	HttpSession session  = req.getSession();
     	  session.removeAttribute("name");
+    	  session.removeAttribute("role");
     	  session.invalidate();  
     	  return new ModelAndView("redirect:login");  
     }

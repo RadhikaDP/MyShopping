@@ -10,7 +10,7 @@
 <html><jsp:include page="/WEB-INF/jsp/adminHome.jsp"></jsp:include> 
 <head><script type="text/javascript">
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="Admin"){
+if(session.getAttribute("name")==null || !session.getAttribute("role").equals("admin")){
 	response.sendRedirect("/MyShopping/login");
 }
 %>
