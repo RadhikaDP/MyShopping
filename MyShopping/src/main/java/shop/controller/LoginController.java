@@ -46,15 +46,25 @@ public class LoginController {
 	@Autowired
 	private SubCategoryService subservice;
 	
+	@Autowired
+	private AdminService adminService;
+	
 	
 	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
     public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
+    	ArrayList<String> roles = new ArrayList<String>();
+    	
+    	roles.add("Customer");
+    	roles.add("Admin");
     	
     	ModelAndView model=new ModelAndView("login");
     	model.addObject("login",login);
-    	logger.info("Registration model created");
+    	model.addObject("roles",roles);
+    	logger.info("login model created");
+    	
+    	//System.out.println(roles);
     	return model;
     }
     
