@@ -107,7 +107,7 @@ public class LoginController {
 			session.setMaxInactiveInterval(600);
 			
 			session.setAttribute("name", login.getUsername());		
-			System.out.println(login.getRole()+"...........................");
+		
 			session.setAttribute("role", login.getRole());
 			
 			
