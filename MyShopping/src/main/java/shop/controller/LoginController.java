@@ -1,14 +1,9 @@
 package shop.controller;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import shop.validate.WarningMsg;
-import shop.bean.Admin;
 import shop.bean.Category;
 import shop.bean.Login;
 import shop.bean.SubCategory;
@@ -148,16 +142,16 @@ public class LoginController {
 				
 				String msg="Invalid Credentials";
 				WarningMsg.showDialog(msg);
-		    	ModelAndView model=new ModelAndView("login");	
-		    	model.addObject("login",login);
-		    	return model;					    	
+				ModelAndView model=new ModelAndView("redirect:login");	
+				return model;
+		    					    	
 			}
 
 		} 
 			if(user.equals("admin")){
 				boolean islogSuccesful;
 				
-					islogSuccesful = adminService.authenticateUser(login);
+					islogSuccesful = adminService.authenticateAdmin(login);
 					if (islogSuccesful) {
 						 
 						logger.info(" successfull");
@@ -171,7 +165,7 @@ public class LoginController {
 					logger.info(" failed");
 					String msg="Invalid credentials : Please try again ";
 					WarningMsg.showDialog(msg);
-			    	ModelAndView model=new ModelAndView("adminLogin");			    
+			    	ModelAndView model=new ModelAndView("redirect:login");			    
 			    	return model;			
 			    	
 					

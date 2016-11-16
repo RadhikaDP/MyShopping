@@ -2,18 +2,21 @@ package shop.dao.impl;
 
 import java.sql.PreparedStatement;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import shop.validate.AESCrypt;
-import shop.bean.Admin;
 import shop.bean.Login;
+import shop.controller.AdminController;
 import shop.dao.AdminDao;
 
 
 public class AdminDaoImp implements AdminDao{
-
+	private Logger logger=Logger.getLogger(AdminDaoImp.class);
 	DataSource dataSource;
 
 	public DataSource getDataSource() {

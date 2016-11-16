@@ -43,11 +43,6 @@
   				<ul>
  				<form:select path="role" items="${userroles}"/>
         		  </ul>
-  <!--              <select name="type" >
-   <option value="Customer">Customer</option>
-
-   <option value="Admin">Admin</option>
-  </select> -->
                    </td>
                 </tr>
                      <tr>

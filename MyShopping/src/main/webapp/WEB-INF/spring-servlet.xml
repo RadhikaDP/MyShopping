@@ -45,9 +45,6 @@
 	<bean id="subService" class="shop.service.impl.SubCategoryServiceImpl" />
 	<bean id="subDao" class="shop.dao.impl.SubCategoryDaoImp" />
 	
-	<bean id="subService2" class="shop.service.impl.SubCategory2ServiceImpl" />
-	<bean id="subDao2" class="shop.dao.impl.SubCategory2DaoImp" />
-	
 	<bean id="orderService" class="shop.service.impl.OrderServiceDaoImpl" />
 	<bean id="orderDao" class="shop.dao.impl.OrderDaoImp" />
 	

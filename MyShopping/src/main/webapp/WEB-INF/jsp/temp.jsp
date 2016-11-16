@@ -25,8 +25,7 @@
 <div >
 			<ul class="dropdownMenu">
 				<li><a href="/MyShopping/login">Sign In</a>
-				<li><a href="/MyShopping/registration">Sign Up</a></li>
-					<li><a href="/MyShopping/admin">Admin</a>
+				<li><a href="/MyShopping/registration">Sign Up</a></li>					
 				<li><a href="/MyShopping/about">About us</a>
 				<li><a href="/MyShopping/contact">contact us</a></li>				
 			</ul>
