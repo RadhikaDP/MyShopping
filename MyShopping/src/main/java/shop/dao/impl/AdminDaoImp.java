@@ -30,42 +30,25 @@ public class AdminDaoImp implements AdminDao{
 	 * authenticateUser() method : This method takes username and password from  login page and checks whether username and password exists in database .
 	 */
 	@Override
-	public boolean authenticateUser(Login login) throws SQLException  {
-			
-		System.out.println(login.getUsername());
-		System.out.println(login.getRole());
-		System.out.println(login.getPassword());
+	public boolean authenticateAdmin(Login login) throws SQLException  {
+
 		boolean b=false;
 		try{
-
-			String query = "Select username from admin where username = ? and password = ? ";
+			String pass=null;
+			
+			String query = "Select password from admin where username = ? ";
 			PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
 			pstmt.setString(1, login.getUsername());
 			
-			String encryptedPassword = AESCrypt.encrypt(login.getPassword());
-			
-			pstmt.setString(2, encryptedPassword);			
-			
-			ResultSet count=pstmt.executeQuery();
-		
-		int size=0;
-		 try {
-		        while(count.next()){
-		            size++;
-		        }
-		    }
-		 catch(Exception ex) {
-			    return false;
+			String encryptedPassword = AESCrypt.encrypt(login.getPassword());			
+			ResultSet result=pstmt.executeQuery();
+			while(result.next()){
+				pass=result.getString(1);
 			}
-		
-		if(size==1){
-			b=true;
-			System.out.println(b);
-		}
-		else {
-			b=false;
-		}
-		
+			b=encryptedPassword.equals(pass);
+			
+			logger.info("admin login successful");
+			
 		}
 
 	catch (Exception e) {
