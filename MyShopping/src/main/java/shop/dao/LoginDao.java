@@ -11,4 +11,7 @@ public interface LoginDao {
 
 	boolean isActive(String username, Users user) throws SQLException;
 
+
+	public String getrole(int id) throws SQLException;
+
 }

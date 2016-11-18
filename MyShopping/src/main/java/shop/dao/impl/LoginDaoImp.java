@@ -76,4 +76,26 @@ public class LoginDaoImp implements LoginDao {
 		return false;
 	}
 
+	@Override
+	public String getrole(int id) throws SQLException {
+		String sql1 = "select roleid from public.userroles where userid ="+id;
+		PreparedStatement pstmt = dataSource.getConnection().prepareStatement(sql1);		
+		int roleid =0;
+		String role = null;
+			ResultSet result = pstmt.executeQuery();
+			while(result.next()){			
+				roleid = result.getInt(1);								
+			}
+			String sql2 = "select role from public.roles where id ="+roleid;
+			 pstmt = dataSource.getConnection().prepareStatement(sql2);
+			 result = pstmt.executeQuery();
+			while(result.next()){			
+				role = result.getString(1);								
+			}
+			System.out.println(role +"role of user");
+		return role;
+
+		
+	}
+
 }

@@ -115,11 +115,7 @@ public class CartDaoImp implements CartDao{
 		
 		if(size==1){
 			b=true;
-		}
-		else {
-			b=false;
-		}
-		
+		}		
 		}
 
 	catch ( Exception e) {

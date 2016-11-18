@@ -1,7 +1,5 @@
 package shop.controller;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +19,9 @@ import shop.bean.Category;
 import shop.bean.Login;
 import shop.bean.SubCategory;
 import shop.bean.Users;
-import shop.service.AdminService;
 import shop.service.CategoryService;
 import shop.service.LoginService;
+import shop.service.RegService;
 import shop.service.SubCategoryService;
 
 
@@ -41,22 +39,18 @@ public class LoginController {
 	
 	@Autowired
 	private SubCategoryService subservice;
+
 	
 	@Autowired
-	private AdminService adminService;
+	   private RegService regService;
 	
 	
 	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
     public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
-    	   Map< String, String > roles = new HashMap<String, String>();
-           roles.put("admin", "ADMIN");
-           roles.put("Customer", "CUSTOMER");
-      
-    	
+    	     	
     	ModelAndView model=new ModelAndView("login");
-    	model.addObject("userroles",roles);
     	model.addObject("login",login);
 
     	logger.info("login model created");
@@ -77,15 +71,15 @@ public class LoginController {
     	model.addObject("sub",sub);	  
     	return model;
     }
-    /**
-     * 
-     * @param login :  modelattributes username and password.
-  	* @param islogSuccesful  : returns true if user is authentic else returns false.
-  	* If user enter in valid credentials then user will be redirected to login page.
-     * @return 
-     */
+    	/**
+     	* 
+     	* @param login :  modelattributes username and password.
+  		* @param islogSuccesful  : returns true if user is authentic else returns false.
+  		* If user enter in valid credentials then user will be redirected to login page.
+  		* @return 
+  		*/
     @RequestMapping(value={"/login"},method = RequestMethod.POST)
-    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result,Users reg,HttpServletRequest request,HttpServletResponse res) {
+    public ModelAndView processLogin(@Valid @ModelAttribute("login") Login login,BindingResult result, Users reg,HttpServletRequest request,HttpServletResponse res) {
     	
     	if (result.hasErrors()) {
     		
@@ -101,9 +95,14 @@ public class LoginController {
 			session.setMaxInactiveInterval(600);
 			
 			session.setAttribute("name", login.getUsername());		
-		
-			session.setAttribute("role", login.getRole());
 			
+			int userid = regService.getuserid(login.getUsername());
+			String role = logService.getrole(userid);
+			
+			
+			session.setAttribute("role", role);
+			logger.info("role is selected");
+			System.out.println(role);
 			
 			String user=(String) session.getAttribute("role");
 			//String user="Customer";
@@ -151,7 +150,7 @@ public class LoginController {
 			if(user.equals("admin")){
 				boolean islogSuccesful;
 				
-					islogSuccesful = adminService.authenticateAdmin(login);
+					islogSuccesful = logService.authenticateUser(login);
 					if (islogSuccesful) {
 						 
 						logger.info(" successfull");
@@ -169,8 +168,8 @@ public class LoginController {
 			    	return model;			
 			    	
 					
-			}
-			}
+			        }
+		     	}
 			}
 		
 		catch (Exception e) {
