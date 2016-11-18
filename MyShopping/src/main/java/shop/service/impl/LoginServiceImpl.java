@@ -29,4 +29,15 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 
+
+
+
+
+
+	@Override
+	public String getrole(int id) throws SQLException {
+		return loginDao.getrole(id);
+	}
+
+
 }

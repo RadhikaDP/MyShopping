@@ -30,9 +30,6 @@
 	<bean id="logService" class="shop.service.impl.LoginServiceImpl" />
 	<bean id="loginDao" class="shop.dao.impl.LoginDaoImp" />
 
-	<bean id="adminService" class="shop.service.impl.AdminServiceImpl" />
-	<bean id="adminDao" class="shop.dao.impl.AdminDaoImp" />
-
 	<bean id="catService" class="shop.service.impl.CategoryServiceImpl" />
 	<bean id="catDao" class="shop.dao.impl.CategoryDaoImp" />
 	

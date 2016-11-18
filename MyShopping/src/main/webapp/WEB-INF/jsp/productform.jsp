@@ -27,7 +27,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
 </head>
 <body>
 <div align="center">
-        <h1>Add New Product</h1>  
+        <h3>Add New Product</h3>  
        <form:form method="post" action="saveproduct" modelAttribute="product">    
         <table >    
  		
@@ -62,7 +62,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
          <tr>
           <tr>    
           <td>Price :</td>    
-          <td><form:input path="price" /></td>  
+          <td><form:input path="price" pattern="[1-9]*" /></td>  
           <td align="left"><form:errors path="price" /></td>
          </tr>   
          <tr>
@@ -79,7 +79,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
         </table>   
                
        </form:form>
-       <a href="productHome">Back</a>
+      
           </div>
           </body>
            

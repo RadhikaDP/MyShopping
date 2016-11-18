@@ -11,9 +11,15 @@ public class RegServiceImpl implements RegService{
 		private RegDao regDao; 
 
 		@Override
-		public boolean isRegSuccesful( Users bean) {
+		public boolean isRegSuccesful( Users bean) throws SQLException {
 
 			return regDao.isRegSuccesful(bean);
+		}
+
+		@Override
+		public int getuserid(String username) throws SQLException {
+			// TODO Auto-generated method stub
+			return regDao.getuserid( username);
 		}
 
 		

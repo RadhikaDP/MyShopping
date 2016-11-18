@@ -49,7 +49,6 @@ public class OrderDaoImp implements OrderDao {
 		int orderid =0;
 		try {
 			orderid = getorderid(proname, username, quantity);
-			System.out.println(orderid +"..........................................");
 			return orderid;
 			
 		} catch (SQLException e) {
@@ -113,9 +112,8 @@ public class OrderDaoImp implements OrderDao {
 		int a =0;
 			ResultSet i = pstmt.executeQuery();
 			while(i.next()){
-			
-				a=	i.getInt(1);
-				System.out.println(a+"..........................................a");
+				
+				a=	i.getInt(1);				
 				return a;	
 				
 			}

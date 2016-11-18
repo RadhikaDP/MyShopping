@@ -14,8 +14,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 
 </head>
 <body id="login">
@@ -27,24 +25,14 @@
         <form:form action="login" method="post" modelAttribute="login"  >
             <table border="0">
            
-                <tr>
-                    
+                <tr>                   
                     <td><form:input path="username" name="uname" placeholder="User Name"  title="only alphabets and numbers MAXLENGTH=25"/></td>
                     <td align="left"><form:errors path="username" cssClass="error"/></td>
                 </tr>
-                <tr>
-                  
+                <tr>                 
                     <td><form:password path="password" name="upass" placeholder="Password"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>
                     <td align="left"><form:errors path="password" cssClass="error"/></td>
-                </tr>            
-           
-                <tr>
-                <td>
-  				<ul>
- 				<form:select path="role" items="${userroles}"/>
-        		  </ul>
-                   </td>
-                </tr>
+                </tr>                      
                      <tr>
                     <td colspan="2" align="center"><input type="submit" value="login" /></td>
                 </tr>

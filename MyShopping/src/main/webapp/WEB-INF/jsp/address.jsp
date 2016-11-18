@@ -42,7 +42,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("C
                 </tr>
                 <tr>
                     
-                    <td><form:input path="locality" placeholder="Locality" pattern="[A-Za-z]{1,25}" title="only alphabets are allowed"/></td>
+                    <td><form:input path="locality" placeholder="Locality" pattern="[A-Za-z_ ]{1,25}" title="only alphabets are allowed"/></td>
                     <td align="left"><form:errors path="locality"/></td>
                 </tr>
                   <tr>
@@ -69,12 +69,12 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("C
                 </tr>
               
                  <tr>     
-                    <td><form:input path="pincode" placeholder="Pincode"  pattern="[0-9]{1,7}" title="only digits are allowed"/></td>
+                    <td><form:input path="pincode" placeholder="Pincode"  pattern="[1-9][0-9]{5}" title="only digits are allowed"/></td>
                     <td align="left"><form:errors path="pincode" /></td>
                 </tr>
                 <tr>
                 	
-                    <td colspan="2" align="center"><input type="submit" value="Continue" /></td>
+                    <td colspan="2" align="center"><input type="submit" value="Place Order" /></td>
                 </tr>
             </table>
            
