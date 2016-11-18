@@ -7,8 +7,8 @@ public class Login {
 	private String username;
 	@NotEmpty
 	private String password;
-	@NotEmpty
-	private String role;
+
+
 	
 	public String getUsername() {
 		return username;

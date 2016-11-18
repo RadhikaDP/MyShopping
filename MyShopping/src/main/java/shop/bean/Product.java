@@ -12,13 +12,14 @@ public class Product {
 	private String productname;
 	@NotEmpty(message="productbrand cannot be empty")
 	private String productbrand;
+	
+	
 	private BigDecimal price;
 	@NotEmpty(message="description cannot be empty")
 	private String description;
 	private int subid;
 	@NotEmpty(message="subcategory cannot be empty")
 	private String category;
-	@NotEmpty(message="subcategory cannot be empty")
 	
 	public int getId() {
 		return id;

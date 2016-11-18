@@ -196,5 +196,36 @@ public class LoginController {
     	  session.invalidate();  
     	  return new ModelAndView("redirect:login");  
     }
+    
+    @RequestMapping(value = "contact",method = RequestMethod.GET)
+
+    public ModelAndView ContactProcess(HttpServletRequest request,HttpServletResponse res){
+    	
+    	ModelAndView model=new ModelAndView("contact");
+    	return model;
+    }
+    @RequestMapping(value = "about",method = RequestMethod.GET)
+
+    public ModelAndView AboutProcess(HttpServletRequest request,HttpServletResponse res){
+    	
+    	ModelAndView model=new ModelAndView("about");
+    	return model;
+    }
+    /**
+     * admin session is invalidated and session attributes are removed.
+     * redirected to admin login page.
+     */
+    @RequestMapping(value = "/adminlogout",method = RequestMethod.GET)
+
+    public ModelAndView adminlogout(HttpServletRequest req,HttpServletResponse res){
+    	
+    	HttpSession session  = req.getSession();
+    	  session.removeAttribute("name");
+    	  session.removeAttribute("role");
+    	  session.invalidate();  
+    	  logger.info("admin session out");
+    	  return new ModelAndView("redirect:login");  
+    	  
+    }
 
 }
