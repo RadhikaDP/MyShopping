@@ -33,16 +33,7 @@ public class ProductController {
 
 	private Logger logger = Logger.getLogger(ProductController.class);
 
-	@RequestMapping(value = "/productHome", method = RequestMethod.GET)
-
-	public ModelAndView LoginProcess(HttpServletRequest request, HttpServletResponse res, Product cat) {
-
-		ModelAndView model = new ModelAndView("productHome");
-		model.addObject("product", cat);
-		logger.info("productHome model created");
-		return model;
-	}
-
+	
 	@RequestMapping("/product")
 	public ModelAndView getUserList(HttpServletRequest request, HttpServletResponse response, Product cat) {
 		// returns collection products

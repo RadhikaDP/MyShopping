@@ -54,8 +54,6 @@ tr:hover {background-color: #f5f5f5}
    </c:forEach>  
    </table>  </div></div></div>
    <br/>  
-   <a href="subcategoryform">Add New Category</a>  
-   <br><a href="categoryHome">Back</a>
    </div>
 </body>
 </html>

@@ -25,14 +25,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerService custService;
 	
-    @RequestMapping(value = "/customer",method = RequestMethod.GET)
-
-    public ModelAndView LoginProcess(HttpServletRequest request,HttpServletResponse res, Users user){
-    	
-    	ModelAndView model=new ModelAndView("customer");
-    	model.addObject("user",user);
-    	return model;
-    }
     /**
      * 
      * @param user : user model with user model attributes.

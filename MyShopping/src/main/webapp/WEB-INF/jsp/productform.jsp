@@ -56,13 +56,13 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
          </tr>          
          <tr>    
           <td>Brand :</td>    
-          <td><form:input path="productbrand" /></td>  
+          <td><form:input path="productbrand" pattern="[A-Za-z0-9]+" title="only digits are allowed" /></td>  
           <td align="left"><form:errors path="productbrand" /></td>
          </tr>   
          <tr>
           <tr>    
           <td>Price :</td>    
-          <td><form:input path="price" pattern="[1-9]*" /></td>  
+          <td><form:input path="price" pattern="[1-9]+" title="only digits are allowed" /></td>  
           <td align="left"><form:errors path="price" /></td>
          </tr>   
          <tr>

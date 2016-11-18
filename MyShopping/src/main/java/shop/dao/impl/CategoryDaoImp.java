@@ -1,10 +1,8 @@
 package shop.dao.impl;
 
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -80,8 +78,15 @@ public class CategoryDaoImp implements CategoryDao{
 
 	@Override
 	public int update(Category c) {
-	    String sql="update public.category set category='"+c.getCategory()+"' where id="+c.getId()+"";  
-	    return template.update(sql);  
+	    /*String sql="update public.category set category='"+ c.getCategory()+"' where id="+c.getId()+"";  */
+		String sql="update public.category set category = ? where id= ? ";  
+	    return template.update(sql,c.getCategory(),c.getId()); 
+	    
+		/*String sql="update public.category set category = :man where id= :woman ";
+	    Map<String, Object> param = new HashMap<>();
+	    param.put("man", c.getCategory());
+	    param.put("woman", c.getId());
+	    return template.update(sql,param);*/
 	}
 
 	/**

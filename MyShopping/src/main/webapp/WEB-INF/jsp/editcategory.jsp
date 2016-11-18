@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 <%
-if(session.getAttribute("name")==null || session.getAttribute("role")!="admin"){
+if(session.getAttribute("name")==null || !session.getAttribute("role").equals("admin")){
 	response.sendRedirect("/MyShopping/login");
 }
 %>
@@ -27,7 +27,7 @@ if(session.getAttribute("name")==null || session.getAttribute("role")!="admin"){
          </tr>   
          <tr>    
           <td>Category Name : </td>   
-          <td><form:input path="category"  /></td>  
+          <td><form:input path="category" pattern="[a-zA-Z0-9]+" required="true" title ="only charecters and digits are allowed"/></td>  
          </tr>             
          <tr>    
           <td> </td>    

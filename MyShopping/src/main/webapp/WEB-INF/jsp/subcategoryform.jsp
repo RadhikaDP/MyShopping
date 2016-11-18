@@ -36,12 +36,12 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
           
           </form:select>
           </td>
-          <td><form:errors path="category"  /></td> 
+          <td><form:errors path="category" /></td> 
          </tr>   
           <tr>           		<td>
          Sub-Category:
           </td>   
-          <td><form:input path="subcategory"  /></td>  
+          <td><form:input path="subcategory"  pattern="[A-Za-z ]+" title="only Characters are allowed"/></td>  
           <td><form:errors path="subcategory"/></td> 
          </tr>   
          <tr>    
@@ -50,7 +50,6 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
          </tr>    
         </table>    
        </form:form>
-       <a href="categoryHome">Back</a>
        </div>
   </body>
 

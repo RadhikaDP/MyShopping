@@ -52,8 +52,6 @@ tr:hover {background-color: #f5f5f5}
    </tr>  
    </c:forEach>  
    </table>  </div></div></div>
-   <br/>  
-   <a href="customerform">Add New Customer</a>  
-     <br>  <a href="customer">Back</a></div>
+</div>
 </body>
 </html>

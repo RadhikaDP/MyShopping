@@ -27,11 +27,11 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
          </tr>   
          <tr>    
           <td>Category Name : </td>   
-          <td><form:input path="category"  /></td>  
+          <td><form:input path="category" pattern="[a-zA-Z0-9 ]+" required="true" title ="only charecters and digits are allowed" /></td>  
          </tr>
           <tr>    
           <td>SubCategory Name : </td>   
-          <td><form:input path="subcategory"  /></td>  
+          <td><form:input path="subcategory"  pattern="[a-zA-Z0-9 ]+" required="true" title ="only charecters and digits are allowed"/></td>  
          </tr>             
          <tr>    
           <td> </td>    

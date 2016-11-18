@@ -29,20 +29,7 @@ public class CategoryController {
 	 */
 	@Autowired
 	private CategoryService catService;
-	/**
-	 * When admin navigates to category section , category model is created and returned.
-	 * 
-	 */
-    @RequestMapping(value = "/categoryHome",method = RequestMethod.GET)
 
-    public ModelAndView Categoryhome(HttpServletRequest request,HttpServletResponse res,Category cat){
-    	
-    	ModelAndView model=new ModelAndView("categoryhome");
-    	model.addObject("category",cat);
-		return model;
-    }
-
-  
 	@RequestMapping("/category")
 	public ModelAndView getcategory(HttpServletRequest request,HttpServletResponse response,Category cat) {			
 		

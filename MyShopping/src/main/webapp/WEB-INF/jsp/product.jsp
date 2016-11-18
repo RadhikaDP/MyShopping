@@ -59,8 +59,7 @@ tr:hover {background-color: #f5f5f5}
    </tr>  
    </c:forEach>  
    </table>  </div></div></div>
-   <br/>  
-   <a href="productform">Add New Product</a>  
-     <br>  <a href="productHome">Back</a></div>
+
+   
 </body>
 </html>

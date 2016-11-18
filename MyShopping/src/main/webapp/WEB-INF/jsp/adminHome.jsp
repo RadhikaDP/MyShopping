@@ -36,10 +36,31 @@ else if(!session.getAttribute("role").equals(role)){
  <div align="center">
 <div >
 			<ul class="dropdownMenu">
-				<li><a href="/MyShopping/admin">Home</a>
-				<li><a href="/MyShopping/categoryHome">Category </a></li>
-					<li><a href="/MyShopping/productHome">Product </a>
-				<li><a href="/MyShopping/customer">Customer </a>
+				<li><a href="#">Home</a>
+				<li><a href="#">Category </a>
+				<ul class="droprightMenu">
+					<li> <a href="/MyShopping/categoryform">Add Category</a></li>
+					<li> <a href="/MyShopping/category">View Category</a></li>
+					<li> <a href="/MyShopping/subcategoryform">Add SubCategory</a> </li>
+					<li> <a href="/MyShopping/subcategory">View SubCategory</a></li>
+				</ul>
+				</li>
+				
+					<li><a href="#">Product </a>
+						<ul class="droprightMenu">
+							<li> <a href="/MyShopping/productform">Add Product</a> </li>
+							<li><a href="/MyShopping/product">View Product</a></li>
+							
+						</ul>
+					</li>
+				<li><a href="#">Customer </a>
+					<ul class="droprightMenu">
+							<li> <a href="/MyShopping/viewcustomer">View Customers</a> </li>
+							<li><a href="/MyShopping/customerform">Add Customer</a></li>
+							
+						</ul>
+				
+				</li>
 				<li><a href="/MyShopping/adminlogout">Logout</a></li>				
 			</ul>
 			</div>		</div>
