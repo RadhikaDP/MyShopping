@@ -22,11 +22,6 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+
 	
 }
