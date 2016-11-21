@@ -55,8 +55,9 @@ else if(!session.getAttribute("role").equals(role)){
 					</li>
 				<li><a href="#">Customer </a>
 					<ul class="droprightMenu">
-							<li> <a href="/MyShopping/viewcustomer">View Customers</a> </li>
 							<li><a href="/MyShopping/customerform">Add Customer</a></li>
+							<li> <a href="/MyShopping/viewcustomer">View Customers</a> </li>
+							
 							
 						</ul>
 				

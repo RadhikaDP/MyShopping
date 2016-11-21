@@ -20,16 +20,30 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
 }
 %>
 </script>
+<style>
+select {
+    width: 100%;
+    height : 70%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: black;
+    color : white;
+    font-weight: bold;
+    font-size: 0.875em;
+}
+</style>
 </head>
 
 <body>
+  <div class="app-cam">
 <div align="center">
-        <h1>Add New sub Category</h1>  
+        <h3>Add New Sub Category</h3>  
        <form:form method="post" action="savesubcategory" modelAttribute="command" >    
         <table >    
          <tr>    
-         		<td>
-         Category:
+         <td>
+        <b>Category:</b>
           </td>
           <td>
           <form:select path="category" name="category" id="category" items="${category}"  >
@@ -39,7 +53,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
           <td><form:errors path="category" /></td> 
          </tr>   
           <tr>           		<td>
-         Sub-Category:
+       <b>  Sub-Category:</b>
           </td>   
           <td><form:input path="subcategory"  pattern="[A-Za-z ]+" title="only Characters are allowed"/></td>  
           <td><form:errors path="subcategory"/></td> 
@@ -50,7 +64,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
          </tr>    
         </table>    
        </form:form>
-       </div>
+       </div></div>
   </body>
 
 </html>

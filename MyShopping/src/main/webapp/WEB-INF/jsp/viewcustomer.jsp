@@ -40,15 +40,14 @@ tr:hover {background-color: #f5f5f5}
           </h4>
  </div> 
 <table >  
-<tr><th class="col-xs-2">Id</th><th class="col-xs-2">Name</th><th class="col-xs-2">Email</th><th class="col-xs-2">Phone</th><th class="col-xs-2">Edit</th><th class="col-xs-2">Delete</th></tr>  
+<tr><th class="col-xs-2">Name</th><th class="col-xs-2">Email</th><th class="col-xs-2">Phone</th><th class="col-xs-2">Edit</th><th class="col-xs-2">Delete</th></tr>  
    <c:forEach var="cust" items="${list}">   
    <tr>  
-   <td class="col-xs-2">${cust.id}</td>  
    <td class="col-xs-2">${cust.username}</td>  
    <td class="col-xs-2">${cust.email}</td>  
    <td class="col-xs-2">${cust.phone}</td>  
-   <td class="col-xs-2"><a href="editcust/${cust.id}">Edit</a></td>  
-   <td class="col-xs-2"><a href="deletecust/${cust.id}">Delete</a></td>  
+   <td class="col-xs-2"><a href="editcust/${cust.id}"><img src="/MyShopping/resources/images/edit.jpg" height="50" width="60"></a></td>  
+   <td class="col-xs-2"><a href="deletecust/${cust.id}"><img src="/MyShopping/resources/images/delete.png" height="47" width="65"></a></td>  
    </tr>  
    </c:forEach>  
    </table>  </div></div></div>

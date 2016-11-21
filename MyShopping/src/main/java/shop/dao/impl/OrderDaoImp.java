@@ -1,6 +1,7 @@
 package shop.dao.impl;
 
 import java.math.BigDecimal;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -104,7 +105,7 @@ public class OrderDaoImp implements OrderDao {
 	}
 
 	private int getorderid(String proname, String username, int quantity) throws SQLException {
-		String query = "Select orderid from public.order where proname = ? and username = ? and quantity = ?";
+		String query = "Select orderid from public.order where proname = ? and username = ? and quantity = ? limit 1";
 		PreparedStatement pstmt = dataSource.getConnection().prepareStatement(query);
 		pstmt.setString(1, proname);
 		pstmt.setString(2, username);

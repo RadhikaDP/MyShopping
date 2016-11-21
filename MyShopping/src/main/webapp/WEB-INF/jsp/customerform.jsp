@@ -19,36 +19,41 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
 %>
 </script>
 </head>
-<body><div align="center">
-        <h1>Add New Customer</h1>  
+<body><div align="center">  <div class="app-cam">
+        <h2>Add New Customer</h2>  
        <form:form method="post" action="save" modelAttribute="registration">    
-        <table >    
-         <tr>    
-          <td>Name : </td>   
-          <td><form:input path="username" pattern="[A-Za-z]{1,25}" title="only alphabets MAXLENGTH=25" /></td>  
-           <td align="left"><form:errors path="username" cssClass="error"/></td>
-         </tr>   
-          <tr>    
-          <td>Password :</td>    
-          <td><form:password path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"/></td>  
-          <td align="left"><form:errors path="password" cssClass="error"/></td>
-         </tr> 
-         <tr>    
-          <td>Email :</td>    
-          <td><form:input path="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email  must be in the following order: characters@characters.domain(2-3 letter) "/></td>  
-          <td align="left"><form:errors path="email" cssClass="error"/></td>
-         </tr>          
-         <tr>    
-          <td>Phone :</td>    
-          <td><form:input path="phone" pattern="[0-9]{1,10}" title="Enter 10 digit mobile number" /></td>  
-          <td align="left"><form:errors path="phone" cssClass="error"/></td>
-         </tr>   
-         <tr>    
-          <td> </td>    
-          <td><input type="submit" value="Save" /></td>    
-         </tr>    
-        </table>    
+        <table border="0">
+             
+                <tr>
+                   
+                    <td><form:input path="username" pattern="[A-Za-z0-1]{1,25}" title="only alphabets and numbers MAXLENGTH=25" placeholder="User Name" /></td>
+                     <td align="left"><form:errors path="username" cssClass="error"/></td>
+                </tr>
+                <tr>
+                    
+                    <td><form:password path="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" placeholder="Password" /></td>
+                     <td align="left"><form:errors path="password" cssClass="error"/></td>
+                </tr>
+                <tr>
+                  
+                    <td><form:input path="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email  must be in the following order: characters@characters.domain(2-3 letter) " placeholder="E-mail" /></td>
+                     <td align="left"><form:errors path="email" cssClass="error"/></td>
+                </tr>
+                <tr>
+                    
+                    <td><form:input path="phone"  pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" title="Enter mobile number of this pattern : 123-456-7890
+(123) 456-7890
+123 456 7890
+123.456.7890
++91 (123) 456-7890" placeholder="Phone Number"/></td>
+                     <td align="left"><form:errors path="phone" cssClass="error"/></td>
+                </tr>
+                <tr>
+                	
+                    <td colspan="2" align="center"><input type="submit" value="Register" /></td>
+                </tr>
+            </table>
        </form:form>
-        <br>  <a href="customer">Back</a></div>
+        <br>  <a href="customer">Back</a></div></div>
        </body>
 </html>

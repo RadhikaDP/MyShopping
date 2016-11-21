@@ -42,14 +42,13 @@ tr:hover {background-color: #f5f5f5}
           </h4>
  </div>
 <table >  
-<tr><th class="col-xs-2">Id</th><th class="col-xs-2">Category</th><th class="col-xs-2">SubCategory</th><th class="col-xs-2">Edit</th><th class="col-xs-2">Delete</th></tr>  
+<tr><th class="col-xs-2">Category</th><th class="col-xs-2">SubCategory</th><th class="col-xs-2">Edit</th><th class="col-xs-2">Delete</th></tr>  
    <c:forEach var="cat" items="${subcategory}">   
    <tr>  
-   <td class="col-xs-2">${cat.id}</td>  
    <td class="col-xs-2">${cat.category}</td>  
    <td class="col-xs-2">${cat.subcategory}</td> 
-   <td class="col-xs-2"><a href="editsubcategory/${cat.id}">Edit</a></td>  
-   <td class="col-xs-2"><a href="deletesubcategory/${cat.id}">Delete</a></td>  
+   <td class="col-xs-2"><a href="editsubcategory/${cat.id}"><img src="/MyShopping/resources/images/edit.jpg" height="50" width="60"></a></td>  
+   <td class="col-xs-2"><a href="deletesubcategory/${cat.id}"><img src="/MyShopping/resources/images/delete.png" height="47" width="65"></a></td>  
    </tr>  
    </c:forEach>  
    </table>  </div></div></div>

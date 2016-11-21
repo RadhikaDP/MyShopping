@@ -57,5 +57,5 @@ tr:hover {background-color: #f5f5f5}
    </table>   
    </div>
    </div></div>  
-</body>
+</body><%-- <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>  --%>
 </html>

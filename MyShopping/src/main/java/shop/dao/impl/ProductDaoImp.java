@@ -84,6 +84,7 @@ public class ProductDaoImp implements ProductDao {
 	public int getsubid(String cat,String sub){
 		String sql="select id from subcategory where category=? and subcategory= ?";
 		int subid = (int)template.queryForObject(sql, new Object[] {cat,sub},Integer.class);
+		System.out.println(subid);
 		return subid;
 	}
 	

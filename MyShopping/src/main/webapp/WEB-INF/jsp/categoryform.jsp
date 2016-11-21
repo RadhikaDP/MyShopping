@@ -21,8 +21,8 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
 </head>
 
 <body>
-<div align="center">
-        <h1>Add New Category</h1>  
+<div align="center"><div class="app-cam">
+        <h3>Add New Category</h3>  
        <form:form method="post" action="savecategory"  modelAttribute="category">    
         <table >    
          <tr>    
@@ -31,12 +31,11 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
           <td align="left"><form:errors path="category" /></td>
          </tr>     
          <tr>    
-          <td> </td>    
+          <td> </td>  </br>  
           <td><input type="submit" value="Save" /></td>    
          </tr>    
         </table>    
-       </form:form>
-       <a href="categoryHome">Back</a></div>
+       </form:form></div></div>
        </body>
 
 </html>

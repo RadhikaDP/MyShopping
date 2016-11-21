@@ -24,6 +24,7 @@ import shop.bean.Cart;
 import shop.bean.Order;
 import shop.service.CartService;
 import shop.service.OrderService;
+import shop.validate.WarningMsg;
 
 
 
@@ -111,10 +112,13 @@ public class OrderController {
 	    		ModelAndView model=new ModelAndView("address");
 	    		return model;
 	    	}
-	    	ModelAndView model=new ModelAndView("ordersuccess"); 
-	    	System.out.println(oid +"............................................before insertion");
+	    	 
 	    	//inserts address details into address table.
 	    	orderService.addAddress(ad,oid);
+		
+			String msg="Your Order has been Placed Successfully";
+			WarningMsg.showDialog(msg);
+			ModelAndView model=new ModelAndView("redirect:home");	
 			return model;
 	          
 	    }
@@ -138,10 +142,15 @@ public class OrderController {
 		    * @return
 		    */
 		   @RequestMapping(value="cancelOrder/{id}",method = RequestMethod.GET)  
-		    public ModelAndView cancelorder(HttpServletRequest request,HttpServletResponse res,@PathVariable int id ){  		
-		         ModelAndView model = new ModelAndView("cancelorder");
+		    public ModelAndView cancelorder(HttpServletRequest request,HttpServletResponse res,@PathVariable int id,HttpSession session  ){  		
+			   session  = request.getSession(false);
+			   String username= (String) session.getAttribute("name");
+		         ModelAndView model = new ModelAndView("vieworders");
 		         //deletes order 
-		         orderService.cancelorder(id);	    	   	    	     	  
+		         orderService.cancelorder(id);	    
+		         // returns collection of Orders from order table of loged user.
+		    	    List<Order> order = orderService.getOrders(username);      	    
+		    	    model.addObject("order",order);	 
 		         return model;
 		    }  
 }

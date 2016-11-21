@@ -24,8 +24,21 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
 <script language="javascript" type="text/javascript">
 
 </script>
+<style>
+select {
+    width: 100%;
+    height : 80%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: black;
+    color : white;
+    font-weight: bold;
+    font-size: 0.875em;
+}
+</style>
 </head>
-<body>
+<body> <div class="app-cam">
 <div align="center">
         <h3>Add New Product</h3>  
        <form:form method="post" action="saveproduct" modelAttribute="product">    
@@ -33,53 +46,49 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
  		
            <tr>    
                                      
-		<td>
-         Select Category:
-          </td>
+
           <td>  
           <form:select path="category" name="category" id="category" items="${category}"  >
           
           </form:select></td>
           </tr>
           <tr>
-          <td>Select SubCategory</td>  
+
               <td>   
           <form:select path="subcategory" name="subcategory" id="subcategory" items="${subcategory}"  >          
           </form:select>  
                     
           </td>  
          </tr>  
-         <tr>    
-          <td>Product Name :</td>    
-          <td><form:input path="productname" /></td>  
+         <tr>       
+          <td><form:input path="productname" placeholder="Product Name" /></td>  
           <td align="left"><form:errors path="productname" /></td>
          </tr>          
          <tr>    
-          <td>Brand :</td>    
-          <td><form:input path="productbrand" pattern="[A-Za-z0-9]+" title="only digits are allowed" /></td>  
+    
+          <td><form:input path="productbrand" pattern="[A-Za-z0-9]+" title="only alphabests and digits are allowed" placeholder="Brand Name" /></td>  
           <td align="left"><form:errors path="productbrand" /></td>
          </tr>   
          <tr>
           <tr>    
-          <td>Price :</td>    
-          <td><form:input path="price" pattern="[1-9]+" title="only digits are allowed" /></td>  
+  
+          <td><form:input path="price" pattern="[0-9]+" title="only digits are allowed" placeholder="Price"/></td>  
           <td align="left"><form:errors path="price" /></td>
          </tr>   
          <tr>
           <tr>    
-          <td>Description :</td>    
-          <td><form:input path="description" /></td>  
+       
+          <td><form:input path="description" placeholder="Description" /></td>  
           <td align="left"><form:errors path="description" /></td>
          </tr>   
       
-         <tr>    
-          <td> </td>    
+         <tr>     
           <td><input type="submit" value="Save" /></td>    
          </tr>            
         </table>   
                
        </form:form>
-      
+      </div>
           </div>
           </body>
            

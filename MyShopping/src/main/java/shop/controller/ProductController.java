@@ -91,7 +91,7 @@ public class ProductController {
 			List<String> subcategory = subService.getcategoryList();
 			// returns list of all categories from category table.
 			List<String> category = subService.getallcategory();
-			model.addObject("subcategory", subcategory);
+			model.addObject("subc  ategory", subcategory);
 			model.addObject("category", category);
 			return model;
 

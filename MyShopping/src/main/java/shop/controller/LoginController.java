@@ -66,7 +66,7 @@ public class LoginController {
     	List<Category> category = catService.getUserList();	
     	//returns collection of all subcategories.
 		List<SubCategory> sub = subservice.getList();
-		ModelAndView model=new ModelAndView("user");
+		ModelAndView model=new ModelAndView("home");
 		model.addObject("category",category);		    	
     	model.addObject("sub",sub);	  
     	return model;
@@ -97,12 +97,14 @@ public class LoginController {
 			session.setAttribute("name", login.getUsername());		
 			
 			int userid = regService.getuserid(login.getUsername());
+			
 			String role = logService.getrole(userid);
 			
+			session.setAttribute("userid", userid);
 			
 			session.setAttribute("role", role);
 			logger.info("role is selected");
-			System.out.println(role);
+
 			
 			String user=(String) session.getAttribute("role");
 			//String user="Customer";
@@ -122,7 +124,7 @@ public class LoginController {
 					List<Category> category = catService.getUserList();	
 					//returns collection of all subcategories.
 					List<SubCategory> sub = subservice.getList();
-					ModelAndView model=new ModelAndView("user");
+					ModelAndView model=new ModelAndView("home");
 					model.addObject("category",category);		    	
 			    	model.addObject("sub",sub);			    
 			    	return model;

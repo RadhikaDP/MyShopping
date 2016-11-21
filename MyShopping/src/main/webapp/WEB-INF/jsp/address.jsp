@@ -26,14 +26,26 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("C
 }
 %>
 </script>
+<style>
+select {
+    width: 100%;
+    padding: 15px 40px 15px 15px; 
+    border: none;
+    border-radius: 2px;
+    background-color: black;
+    color : white;
+    font-weight: bold;
+    font-size: 0.875em;
+}
+</style>
 </head>
 <body>
-
+  <div class="app-cam">
  <div align="center">
-<h3>Enter your Address details </h3>  
+<h3> Address details </h3>  
  ${od.getTotal() } 
  <form:form action="/MyShopping/address1" method="post" modelAttribute="address">
-            <table border="0">
+            <table border="0"   cellspacing=" 10px" >
              
                 <tr >
                    
@@ -69,7 +81,7 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("C
                 </tr>
               
                  <tr>     
-                    <td><form:input path="pincode" placeholder="Pincode"  pattern="[1-9][0-9]{5}" title="only digits are allowed"/></td>
+                    <td><form:input path="pincode" placeholder="Pincode"  pattern="[1-9][0-9]{5}" title="only 6 digits are allowed"/></td>
                     <td align="left"><form:errors path="pincode" /></td>
                 </tr>
                 <tr>
@@ -80,6 +92,6 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("C
            
        </form:form>
         </div>
-
+</div>
 </body>
 </html>

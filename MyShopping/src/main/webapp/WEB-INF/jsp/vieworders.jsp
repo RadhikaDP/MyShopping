@@ -6,6 +6,8 @@
 <html><jsp:include page="/WEB-INF/jsp/user.jsp"></jsp:include> 
 <head>
  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css" /> 
+ <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome.css" />
 <%@ page isELIgnored="false" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -44,8 +46,7 @@ tr:hover {background-color: #f5f5f5}
    <tr>   
    <td class="col-xs-2">${cust.productname}</td>  
    <td class="col-xs-2">${cust.total}</td>  
-   <td class="col-xs-2">${cust.quantity}</td>  
-  
+   <td class="col-xs-2">${cust.quantity}</td>    
    <td class="col-xs-2"><a href="cancelOrder/${cust.id}">CancelOrder</a></td>  
    </tr>  
    </c:forEach>  
@@ -55,4 +56,5 @@ tr:hover {background-color: #f5f5f5}
    </div>
  </div> 
 </body>
+<%-- <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>  --%>
 </html>
