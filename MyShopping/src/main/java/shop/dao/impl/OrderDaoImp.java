@@ -2,6 +2,7 @@ package shop.dao.impl;
 
 import java.math.BigDecimal;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +11,12 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import shop.bean.Address;
 import shop.bean.Order;
+import shop.bean.Product;
 import shop.dao.OrderDao;
 
 public class OrderDaoImp implements OrderDao {
@@ -47,6 +50,7 @@ public class OrderDaoImp implements OrderDao {
 		String sql = "insert into public.order(username,total,quantity,proname) values('" + username + "'," + total
 				+ "," + quantity + ",'" + proname + "')";
 		 template.update(sql);
+		 decreasstock(proname,quantity);
 		int orderid =0;
 		try {
 			orderid = getorderid(proname, username, quantity);
@@ -58,6 +62,11 @@ public class OrderDaoImp implements OrderDao {
 		}
 		return orderid;
 
+	}
+
+	private void decreasstock(String proname, int quantity) {
+		String sql= "update products set stock = stock - "+quantity+" where productname = '"+proname+"'";
+		template.update(sql);
 	}
 
 	// inserts address details into address table.
@@ -91,8 +100,9 @@ public class OrderDaoImp implements OrderDao {
 	 * deletes order from order table with orderid as id
 	 */
 	@Override
-	public int cancelorder(int id) {
+	public int cancelorder(int id,String proname , int quantity) {
 		String sql = "delete from public.order where orderid=" + id + "";
+		increasestock(proname,quantity);
 		return template.update(sql);
 	}
 
@@ -120,4 +130,10 @@ public class OrderDaoImp implements OrderDao {
 			}
 			return a;
 	}
+	private void increasestock(String proname, int quantity) {
+		String sql= "update products set stock = stock + "+quantity+" where productname = '"+proname+"'";
+		template.update(sql);
+	}
+	
+
 }
