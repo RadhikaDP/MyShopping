@@ -43,6 +43,10 @@ if(session.getAttribute("name")==null || !session.getAttribute("role").equals("a
           <td>Price :</td>    
           <td><form:input path="price" /></td>  
          </tr> 
+           <tr>    
+          <td>stock :</td>    
+          <td><form:input path="stock" /></td>  
+         </tr> 
                   <tr>    
           <td>Description :</td>    
           <td><form:input path="description" /></td>  
