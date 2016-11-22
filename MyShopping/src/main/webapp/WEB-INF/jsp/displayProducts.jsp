@@ -47,7 +47,7 @@ tr:hover {background-color: #f5f5f5}
           </h4>
  </div>
 <table  >  
-<tr><th class="col-xs-2">Product name</th><th class="col-xs-2">Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2">Add to cart</th><th class="col-xs-2">Buy Now</th></tr> 
+<tr><th class="col-xs-2">Product name</th><th class="col-xs-2">Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2">Stock</th><th class="col-xs-2">Add to cart</th><th class="col-xs-2">Buy Now</th></tr> 
 
    <c:forEach var="pro" items="${sub2}">   
    <tr>  
@@ -55,6 +55,21 @@ tr:hover {background-color: #f5f5f5}
    <td class="col-xs-2">${pro.productbrand}</td>  
    <td class="col-xs-2">${pro.price}</td>
    <td class="col-xs-2">${pro.description}</td>
+    <td class="col-xs-2">
+    <c:set var="stock" value= "${pro.stock}"/>
+ 	<% 
+ 	String res="Avilable";
+ 	Object ob = pageContext.getAttribute("stock");
+	int test=(Integer)ob;
+	if(test==0){
+		res="Out of Stock";
+	}
+
+	request.setAttribute("res", res);
+    %> 
+    
+      ${res}
+    </td>
    <td class="col-xs-2"><a href="addcart/${pro.id}/${pro.productname}/${pro.subid}">Add to Cart</a></td>  
    <td class="col-xs-2"><a href="buynow/${pro.subcategory}/${pro.id}">Buy Now </a></td>  
    </tr>  
