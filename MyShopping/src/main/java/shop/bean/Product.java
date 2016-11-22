@@ -21,6 +21,14 @@ public class Product {
 	@NotEmpty(message="subcategory cannot be empty")
 	private String category;
 	
+	private int stock;
+	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
 	public int getId() {
 		return id;
 	}
