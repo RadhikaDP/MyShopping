@@ -34,7 +34,13 @@ function  computecost()
   
  	 document.getElementById("total").disabled = "true";  
 	document.getElementById("total").value= quantity*${pro.price};
- 
+
+ if(${pro.stock}==0){
+	 window.alert("Out Of Stock");
+ }
+	if(quantity>${pro.stock}){
+	 window.alert("please try with lesser quantity");
+ }
 
 }
 
@@ -71,7 +77,7 @@ tr:hover {background-color: #f5f5f5}
    <td>${pro.productname}</td>  
    <td>${pro.productbrand}</td>  
    <td>${pro.price}</td>
-   <td>${pro.description}</td>  
+   <td>${pro.description}</td>   
    
    </tr>  
    </table>     </div></div></div>
@@ -80,7 +86,7 @@ tr:hover {background-color: #f5f5f5}
             <table border="0">
            		   <tr>
                     <td>Quantity</td>
-                    <td><form:input path="quantity" name="quantity" id="quantity" pattern="[0-9]{1,2}" title="maximum quantity is 99" placeholder="Quantity" onchange="computecost()"/></td>
+                    <td><form:input path="quantity" name="quantity" id="quantity" pattern="[0-9]{1,3}" title="only digits are allowed" placeholder="Quantity" onchange="computecost()"/></td>
                     <td align="left"><form:errors path="quantity" cssClass="error"/></td>
                     <td></td>
                 </tr>

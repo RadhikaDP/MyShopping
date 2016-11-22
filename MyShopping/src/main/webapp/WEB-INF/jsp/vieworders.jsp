@@ -47,7 +47,7 @@ tr:hover {background-color: #f5f5f5}
    <td class="col-xs-2">${cust.productname}</td>  
    <td class="col-xs-2">${cust.total}</td>  
    <td class="col-xs-2">${cust.quantity}</td>    
-   <td class="col-xs-2"><a href="cancelOrder/${cust.id}">CancelOrder</a></td>  
+   <td class="col-xs-2"><a href="cancelOrder/${cust.id}/${cust.productname}/${cust.quantity}">CancelOrder</a></td>  
    </tr>  
    </c:forEach>  
    </table>  

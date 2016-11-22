@@ -64,20 +64,24 @@ select {
           <td><form:input path="productname" placeholder="Product Name" /></td>  
           <td align="left"><form:errors path="productname" /></td>
          </tr>          
-         <tr>    
-    
+       
+         <tr>       
           <td><form:input path="productbrand" pattern="[A-Za-z0-9]+" title="only alphabests and digits are allowed" placeholder="Brand Name" /></td>  
           <td align="left"><form:errors path="productbrand" /></td>
          </tr>   
-         <tr>
+
           <tr>    
   
-          <td><form:input path="price" pattern="[0-9]+" title="only digits are allowed" placeholder="Price"/></td>  
+          <td><form:input path="price" pattern="[0-9.]+" title="only digits are allowed" placeholder="Price"/></td>  
           <td align="left"><form:errors path="price" /></td>
          </tr>   
-         <tr>
+      
           <tr>    
-       
+          <td><form:input path="stock" pattern="[0-9]+" title="only digits are allowed" placeholder="Stock"/></td>  
+          <td align="left"><form:errors path="price" /></td>
+         </tr>  
+         
+          <tr>          
           <td><form:input path="description" placeholder="Description" /></td>  
           <td align="left"><form:errors path="description" /></td>
          </tr>   

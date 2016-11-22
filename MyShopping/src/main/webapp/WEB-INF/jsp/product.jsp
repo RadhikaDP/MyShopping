@@ -45,7 +45,7 @@ tr:hover {background-color: #f5f5f5}
           </h4>
  </div> 
 <table>  
-<tr><th class="col-xs-2">Subcategory</th> <th class="col-xs-2">Product Name</th><th class="col-xs-2">Product Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2" >Edit</th><th class="col-xs-2">Delete</th></tr>  
+<tr><th class="col-xs-2">Subcategory</th> <th class="col-xs-2">Product Name</th><th class="col-xs-2">Product Brand</th><th class="col-xs-2">Price</th><th class="col-xs-2">Description</th><th class="col-xs-2">Stock</th><th class="col-xs-2" >Edit</th><th class="col-xs-2">Delete</th></tr>  
    <c:forEach var="cat" items="${product}">   
    <tr>  
 
@@ -54,6 +54,7 @@ tr:hover {background-color: #f5f5f5}
    <td class="col-xs-2">${cat.productbrand}</td>  
    <td class="col-xs-2">${cat.price}</td>  
    <td class="col-xs-2">${cat.description}</td> 
+      <td class="col-xs-2">${cat.stock}</td> 
    <td class="col-xs-2"><a href="editproduct/${cat.id}"> <img src="/MyShopping/resources/images/edit.jpg" height="50" width="60"></a></td>  
    <td class="col-xs-2"><a href="deleteproduct/${cat.id}"><img src="/MyShopping/resources/images/delete.png" height="47" width="65"></a></td>  
    </tr>  
