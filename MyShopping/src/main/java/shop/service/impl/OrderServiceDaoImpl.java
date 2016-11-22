@@ -1,13 +1,13 @@
 package shop.service.impl;
 
 import java.math.BigDecimal;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import shop.bean.Address;
 import shop.bean.Order;
-
 import shop.dao.OrderDao;
 import shop.service.OrderService;
 
@@ -30,9 +30,9 @@ private OrderDao orderDao;
 		return orderDao.addAddress( ad,orderid);
 	}
 	@Override
-	public int cancelorder(int id) {
+	public int cancelorder(int id, String proname, int quantity) {
 		
-		return orderDao.cancelorder(id);
+		return orderDao.cancelorder(id, proname, quantity);
 	}
 
 

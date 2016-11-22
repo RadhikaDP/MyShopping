@@ -35,6 +35,7 @@ public class ProductDaoImp implements ProductDao {
 	            e.setDescription(rs.getString(5));
 	            e.setSubid(rs.getInt(7));
 		           e.setCategory(rs.getString(8));
+		           e.setStock(rs.getInt(9));
 	            return e;  
 	        }  
 	    });
@@ -61,7 +62,7 @@ public class ProductDaoImp implements ProductDao {
 	 */
 	@Override
 	public int update(Product c) {
-	    String sql="update public.products set subcategory='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"' where id="+c.getId()+"";  
+	    String sql="update public.products set subcategory='"+c.getSubcategory()+"',productname='"+c.getProductname()+"',productbrand='"+c.getProductbrand()+"',price='"+c.getPrice()+"',description='"+c.getDescription()+"',stock="+c.getStock()+" where id="+c.getId()+"";  
 	    return template.update(sql); 
 	}
 	/**
@@ -74,7 +75,7 @@ public class ProductDaoImp implements ProductDao {
 		cat= c.getCategory();
 		int subid=getsubid(cat,sub);
 
-	    String sql="insert into public.products(subcategory,productname,productbrand,price,description,subid,category) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription() +"',"+subid+",'"+c.getCategory() +"')";  
+	    String sql="insert into public.products(subcategory,productname,productbrand,price,description,subid,category,stock) values('"+c.getSubcategory() +"','"+  c.getProductname()+"','"+   c.getProductbrand() +"','"+  c.getPrice() +"','"+  c.getDescription() +"',"+subid+",'"+c.getCategory() +"',"+c.getStock()+")";  
 	    return template.update(sql); 
 	}
 	/**
@@ -104,6 +105,7 @@ public class ProductDaoImp implements ProductDao {
 	           e.setDescription(rs.getString(5));
 	           e.setSubid(rs.getInt(7));
 	           e.setCategory(rs.getString(8));
+	           e.setStock(rs.getInt(9));
 	            return e;  
 	        }  
 	    });
@@ -124,6 +126,7 @@ public class ProductDaoImp implements ProductDao {
 	           e.setDescription(rs.getString(5));
 	           e.setSubid(rs.getInt(7));
 	           e.setCategory(rs.getString(8));
+	           e.setStock(rs.getInt(9));
 	            return e;  
 	        }  
 	    });

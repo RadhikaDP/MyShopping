@@ -2,12 +2,15 @@ package shop.controller;
 
 
 import java.math.BigDecimal;
+
 import java.util.List;
 
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,23 +21,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import shop.bean.Address;
 import shop.bean.Cart;
 import shop.bean.Order;
 import shop.service.CartService;
 import shop.service.OrderService;
+import shop.service.ProductService;
 import shop.validate.WarningMsg;
 
 
 
 @Controller
 public class OrderController {
-	int oid =90;
+	
+	private Logger logger=Logger.getLogger(OrderController.class);
+	int oid =0;
 	@Autowired
 	private OrderService orderService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private ProductService pService;
 
 	   /**
 	    * 
@@ -100,7 +107,6 @@ public class OrderController {
 	    
 	    	//inserts product details into order table.
 	    	oid=orderService.Addorder(proname,username,quantity,price);
-	    	System.out.println(oid);
 	    	model.addObject("od",od);
 			return model;
 	          
@@ -141,13 +147,15 @@ public class OrderController {
 		    * @param id : order id 
 		    * @return
 		    */
-		   @RequestMapping(value="cancelOrder/{id}",method = RequestMethod.GET)  
-		    public ModelAndView cancelorder(HttpServletRequest request,HttpServletResponse res,@PathVariable int id,HttpSession session  ){  		
+		   @RequestMapping(value="cancelOrder/{id}/{proname}/{quantity}",method = RequestMethod.GET)  
+		    public ModelAndView cancelorder(HttpServletRequest request,HttpServletResponse res,@PathVariable int id,@PathVariable String proname,@PathVariable int quantity,HttpSession session  ){  		
 			   session  = request.getSession(false);
 			   String username= (String) session.getAttribute("name");
 		         ModelAndView model = new ModelAndView("vieworders");
 		         //deletes order 
-		         orderService.cancelorder(id);	    
+		         orderService.cancelorder(id,proname,quantity);	    
+		 		logger.info("order deleted success fully");
+		 		
 		         // returns collection of Orders from order table of loged user.
 		    	    List<Order> order = orderService.getOrders(username);      	    
 		    	    model.addObject("order",order);	 

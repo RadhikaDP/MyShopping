@@ -1,5 +1,7 @@
 package shop.controller;
+import java.io.IOException;
 import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,14 +50,21 @@ public class LoginController {
 	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
-    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse res,Login login){
-    	     	
-    	ModelAndView model=new ModelAndView("login");
-    	model.addObject("login",login);
+    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse response,Login login) throws IOException{
+    	HttpSession session= request.getSession(true);
+    	String user=(String)session.getAttribute("name");
+    	if(user==null){  		
+    		ModelAndView model=new ModelAndView("login");
+        	model.addObject("login",login);
 
-    	logger.info("login model created");
-    	
-    	//System.out.println(roles);
+        	logger.info("login model created");
+        	
+        	//System.out.println(roles);
+        	return model;
+    			 
+    		  } 
+    	ModelAndView model=new ModelAndView("redirect:home");	
+    
     	return model;
     }
     
@@ -107,6 +116,15 @@ public class LoginController {
 
 			
 			String user=(String) session.getAttribute("role");
+			
+			if(user.isEmpty()){
+				logger.info(" failed");
+				
+				String msg="Invalid Credentials";
+				WarningMsg.showDialog(msg);
+				ModelAndView model=new ModelAndView("redirect:login");	
+				return model;
+			}
 			//String user="Customer";
 			if(user.equals("Customer"))
 			{
