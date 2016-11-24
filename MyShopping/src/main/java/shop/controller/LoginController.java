@@ -50,8 +50,8 @@ public class LoginController {
 	//login model is created and returned.
     @RequestMapping(value = "/login",method = RequestMethod.GET)
 
-    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse response,Login login) throws IOException{
-    	HttpSession session= request.getSession(true);
+    public ModelAndView loginProcess(HttpServletRequest request,HttpServletResponse response,Login login,HttpSession session) throws IOException{
+    	 session= request.getSession(false);
     	String user=(String)session.getAttribute("name");
     	if(user==null){  		
     		ModelAndView model=new ModelAndView("login");
@@ -70,7 +70,19 @@ public class LoginController {
     
     @RequestMapping(value = "/home",method = RequestMethod.GET)
 
-    public ModelAndView gethomepage(HttpServletRequest request,HttpServletResponse res,Login login){
+    public ModelAndView gethomepage(HttpServletRequest request,HttpServletResponse res,Login login,HttpSession session){
+       session= request.getSession(false);
+    	String user=(String)session.getAttribute("name");
+    	if(user==null){  		
+    		ModelAndView model=new ModelAndView("login");
+        	model.addObject("login",login);
+
+        	logger.info("login model created");
+        	
+        	//System.out.println(roles);
+        	return model;
+    			 
+    		  } 
     	//returns collection of all  categories.
     	List<Category> category = catService.getUserList();	
     	//returns collection of all subcategories.
@@ -98,14 +110,24 @@ public class LoginController {
     	 
     	}
 		try {
+			int userid =0;
+			 userid = regService.getuserid(login.getUsername());
 			
+			if(userid==0){
+				logger.info(" failed");
+				
+				String msg="Invalid Credentials";
+				WarningMsg.showDialog(msg);
+				ModelAndView model=new ModelAndView("redirect:logout");	
+				return model;
+			}
 			HttpSession session= request.getSession(true);
 			
 			session.setMaxInactiveInterval(600);
 			
 			session.setAttribute("name", login.getUsername());		
 			
-			int userid = regService.getuserid(login.getUsername());
+			
 			
 			String role = logService.getrole(userid);
 			
@@ -117,14 +139,6 @@ public class LoginController {
 			
 			String user=(String) session.getAttribute("role");
 			
-			if(user.isEmpty()){
-				logger.info(" failed");
-				
-				String msg="Invalid Credentials";
-				WarningMsg.showDialog(msg);
-				ModelAndView model=new ModelAndView("redirect:login");	
-				return model;
-			}
 			//String user="Customer";
 			if(user.equals("Customer"))
 			{
@@ -161,7 +175,7 @@ public class LoginController {
 				
 				String msg="Invalid Credentials";
 				WarningMsg.showDialog(msg);
-				ModelAndView model=new ModelAndView("redirect:login");	
+				ModelAndView model=new ModelAndView("redirect:logout");	
 				return model;
 		    					    	
 			}
@@ -184,7 +198,7 @@ public class LoginController {
 					logger.info(" failed");
 					String msg="Invalid credentials : Please try again ";
 					WarningMsg.showDialog(msg);
-			    	ModelAndView model=new ModelAndView("redirect:login");			    
+			    	ModelAndView model=new ModelAndView("redirect:logout");			    
 			    	return model;			
 			    	
 					

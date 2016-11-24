@@ -19,20 +19,11 @@ public class LoginServiceImpl implements LoginService {
 	public boolean authenticateUser(Login login) throws SQLException{	
 		return loginDao.authenticateUser(login);
 	}
-
-	
-
 	@Override
 	public boolean isActive(String username, Users user) throws SQLException {
 		
 		return loginDao.isActive(username, user);
 	}
-
-
-
-
-
-
 
 	@Override
 	public String getrole(int id) throws SQLException {
